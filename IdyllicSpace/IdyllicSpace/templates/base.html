@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    </head>
+
+    <body style="background-color:#FAF4F0;">
+        <!-- navbar -->
+        <div class="navbar">
+            
+        </div>
+        <!-- end of navbar -->
+
+        <div class="logIn">Log in</div>
+        <div class="createAcc" id="change" onclick="changePage">Create an account</div>
+        <div class="line"></div>
+
+            {% block content %}
+            {% endblock content %}
+
+    </body>
+
+</html>
+
+<script>
+    changePage(); {
+        document.getElementById("change").innerHTML = "createAcc"
+    }
+</script>
+
+<style>
+    .navbar {
+        overflow: hidden;
+        margin-top: 0;
+        position: absolute;
+        width: 1544px;
+        height: 64px;
+        left: -9px;
+        top: 0px;
+
+        background-color : #E5C6A9;
+        /* border-radius: 10px 10px 0px 0px; */
+    }
+
+    .logIn {
+        position: absolute;
+        /* width: 87px; */
+        /* height: 43px; */
+        left: 529px;
+        top: 186px;
+
+        font-family: 'Patrick Hand SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 43px;
+        text-transform: uppercase;
+
+        color: #B8A195;
+    }
+
+    .createAcc {
+        position: absolute;
+        /* width: 257px; */
+        /* height: 43px; */
+        left: 669px;
+        top: 186px;
+
+        font-family: 'Patrick Hand SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 43px;
+        text-transform: uppercase;
+
+        color: #B8A195;
+    }
+
+    .line {
+        position: absolute;
+        width: 522px;
+        height: 0px;
+        left: 495px;
+        top: 237px;
+
+        border: 1px solid #999999;
+    }
+</style>
