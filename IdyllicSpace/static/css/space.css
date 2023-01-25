@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.navbar {
+    overflow: hidden;
+    margin-top: 0;
+    position: absolute;
+    width: 100vw;
+    height: 5.9%;
+    left: 0px;
+    top: 0px;
+
+    background-color : #E5C6A9;
+}
+
+.burgerbar {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 18px;
+    top: 7px;
+
+    cursor: pointer;
+}
+
+.dotMenuBtn {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    left: 96.7%;
+    top: 23%;
+
+    cursor: pointer;
+}
+
+ /* ------------- burger content ------------- */
+.burgerContent {
+    display: none; /* Hidden by default */
+    
+    position: absolute;
+    width: 263px;
+    height: 92vh;
+    left: 0px;
+    top: 64px;
+
+    background: #FAF4F0;
+}
+
+.soundBtn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 21px;
+    margin-top: 83vh;
+    cursor: pointer;
+}
+.soundTxt {
+    position: absolute;
+    width: 41px;
+    height: 22px;
+    left: 17px;
+    margin-top: 87vh;
+    text-align: center;
+
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 16px;
+    color: #B8A195;
+}
+
+.muteBtn {
+    display: block;
+
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 85px;
+    margin-top: 83vh;
+    cursor: pointer;
+}
+.unmuteBtn {
+    display: none;
+
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 85px;
+    margin-top: 83vh;
+    cursor: pointer;
+}
+.muteTxt {
+    position: absolute;
+    width: 43px;
+    height: 22px;
+    left: 79px;
+    margin-top: 87vh;
+
+    text-align: center;
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 16px;
+    color: #B8A195;
+}
+
+.deafenBtn {
+    display: block;
+
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 148px;
+    margin-top: 83vh;
+    cursor: pointer;
+}
+.undeafenBtn {
+    display: none;
+
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 148px;
+    margin-top: 83vh;
+    cursor: pointer;
+}
+.deafenTxt {
+    position: absolute;
+    width: 54px;
+    height: 22px;
+    left: 137px;
+    margin-top: 87vh;
+
+    text-align: center;
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 16px;
+    color: #B8A195;
+}
+
+.leaveBtn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 210px;
+    margin-top: 83vh;
+    cursor: pointer;
+}
+.leaveTxt {
+    position: absolute;
+    width: 32px;
+    height: 22px;    
+    left: 211px;
+    margin-top: 87vh;
+
+    text-align: center;
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 16px;
+    color: #B8A195;
+}
+
+ /* ------------- sound content ------------- */
+.soundContainer {
+    display: none; /* Hidden by default */
+    
+    position: absolute;
+    width: 253px;
+    height: 638px;
+    left: 0px;
+    top: 28px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.ambienceTxt {
+    position: absolute;
+    width: 147px;
+    height: 35px;
+    left: 33px;
+    top: 7px;
+
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 26px;
+    line-height: 35px;
+    
+    color: #606060;
+}

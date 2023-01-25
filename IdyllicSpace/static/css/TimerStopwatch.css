@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+.box {
+    position: absolute;
+    width: 130px;
+    height: 60px;
+    margin-top: 89vh;
+    margin-left: 89vw;
+
+    background: #FAF4F0;
+    border-radius: 20px;
+}
+
+.timerIcon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 12px;
+    top: 10px;
+
+    cursor: pointer;
+}
+
+.lineClock {
+    position: absolute;
+    width: 44px;
+    height: 0px;
+    left: 42px;
+    top: 28px;
+    
+    border: 2px solid #B8A195;
+    transform: rotate(-90deg);
+}
+
+.stopwatchIcon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 78px;
+    top: 10px;
+
+    cursor: pointer;
+}
+
+/*------------------------ clockBox ------------------------*/
+.clockBox {
+    display: none;
+
+    position: absolute;
+    width: 305px;
+    height: 160px;
+    margin-top: 80vh;
+    right: 3%;
+
+    background: #FAF4F0;
+    border-radius: 10px;
+}
+
+.startBtn {
+    position: absolute;
+    width: 120px;
+    height: 45px;
+    left: 34px;
+    top: 94px;
+
+    background: #52779C;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+        
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 26px;
+    text-align: center;
+}
+.startBtn:hover {
+    background-color: #b0c4de;
+}
+
+.resetBtn {
+    position: absolute;
+    width: 52px;
+    height: 35px;
+    left: 199px;
+    top: 99px;
+
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 26px;
+    color: #B8A195;
+    cursor: pointer;
+}
+
+.closeClock {
+    position: absolute;
+    width: 14px;
+    height: 15px;
+    left: 281px;
+    top: 11px;
+    cursor: pointer;
+}
+
+.clock {
+    position: absolute;
+    width: 250px;
+    height: 60px;
+    left: 34px;
+    top: 23px;
+
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 39px;
+    letter-spacing: 0.1em;
+    color: #B8A195;
+}
+
+.setBtn {
+    position: absolute;
+    width: 120px;
+    height: 45px;
+    left: 34px;
+    top: 94px;
+
+    background: #7FB3D5;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+        
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 26px;
+    text-align: center;
+}
+.setBtn:hover {
+    background-color: #b0c4de;
+}
+
+.startBtnTM {
+    display: none;
+
+    position: absolute;
+    width: 120px;
+    height: 45px;
+    left: 34px;
+    top: 94px;
+
+    background: #52779C;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+        
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 26px;
+    text-align: center;
+}
+.startBtnTM:hover {
+    background-color: #b0c4de;
+}
+
+.pauseBtn {
+    display: none;
+    
+    position: absolute;
+    width: 120px;
+    height: 45px;
+    left: 34px;
+    top: 94px;
+
+    background: #FF9966;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+        
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 26px;
+    text-align: center;
+}
+.pauseBtn:hover {
+    background-color: #fac271;
+}
+
+.resumeBtn {
+    display: none;
+    
+    position: absolute;
+    width: 120px;
+    height: 45px;
+    left: 34px;
+    top: 94px;
+
+    background: #8FBC8F;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+        
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 26px;
+    text-align: center;
+}
+.resumeBtn:hover {
+    background-color: #bce191;
+}
+
+.setTimer {
+    display: block;
+}
+
+.setTimer_h {
+    position: absolute;
+    width: 14px;
+    height: 47px;
+    left: 83px;
+    top: 33px;
+    
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 35px;
+    letter-spacing: 0.1em;
+    color: #B8A195;
+}
+
+.setTimer_m {
+    position: absolute;
+    width: 17px;
+    height: 47px;
+    left: 169px;
+    top: 33px;
+
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 35px;
+    letter-spacing: 0.1em;
+    color: #B8A195;
+}
+
+.setTimer_s {
+    position: absolute;
+    width: 15px;
+    height: 47px;
+    left: 258px;
+    top: 33px;
+
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 35px;
+    letter-spacing: 0.1em;
+    color: #B8A195;
+}
+
+.selectHour {
+    position: absolute;
+    width: 42px;
+    height: 41px;
+    left: 34px;
+    top: 34px;
+    padding-left: 2px;
+
+    background: #FFFFFF;
+    border: 1px solid #A8A8A8;
+    border-radius: 10px;
+
+    font-family: 'Patrick Hand';
+    font-size: 30px;
+    color: #b3b3b3;
+
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.selectMinute {
+    position: absolute;
+    width: 53px;
+    height: 41px;
+    left: 107px;
+    top: 34px;
+    padding-left: 2px;
+
+    background: #FFFFFF;
+    border: 1px solid #A8A8A8;
+    border-radius: 10px;
+
+    font-family: 'Patrick Hand';
+    font-size: 30px;
+    color: #b3b3b3;
+
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.selectSecond {
+    position: absolute;
+    width: 53px;
+    height: 41px;
+    left: 196px;
+    top: 34px;
+    padding-left: 2px;
+
+    background: #FFFFFF;
+    border: 1px solid #A8A8A8;
+    border-radius: 10px;
+
+    font-family: 'Patrick Hand';
+    font-size: 30px;
+    color: #b3b3b3;
+
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.clockTimer {
+    display: none;
+
+    position: absolute;
+    width: 300px;
+    height: 60px;
+    left: 34px;
+    top: 23px;
+
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 39px;
+    letter-spacing: 0.1em;
+    color: #B8A195;
+}
+
+.timesUp {
+    display: none;
+    position: absolute;
+    width: 122px;
+    height: 54px;
+    left: 51px;
+    top: 83px;
+
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 40px;
+    color: #CA4C46;
+}

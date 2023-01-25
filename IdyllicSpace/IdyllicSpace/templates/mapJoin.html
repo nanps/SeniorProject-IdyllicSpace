@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'enterSpace.html' %}
+{% load static %}
+{% block contentJoin %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
+
+    <div class="mapBox">
+        <img class="closeMapBtn" id="closeMapBtn" type="image" src="{% static 'icon/Xmark.png' %}" onclick="closePopup()"/>
+
+        {% comment %}------- ACADEMY -------{% endcomment %}
+        <form>
+            <img class="academyBtn" id="academy" type="image" src="{% static 'map/Classroom.png' %}" onclick="classroomPopup()"/>
+        </form>
+
+        {% comment %}------- TIMBER -------{% endcomment %}
+        <form>
+            <img class="timberBtn" id="timber" type="image" src="{% static 'map/Forest.png' %}" onclick="forestPopup()"/>
+        </form>
+
+        {% comment %}------- NOSHERY -------{% endcomment %}
+        <form>
+            <img class="nosheryBtn" id="noshery" type="image" src="{% static 'map/Cafe.png' %}" onclick="cafePopup()"/>
+        </form>
+
+        {% comment %}------- ATHENAEUM -------{% endcomment %}
+        <form>
+            <img class="athenaeumBtn" id="athenaeum" type="image" src="{% static 'map/Library.png' %}" onclick="libraryPopup()"/>
+        </form>
+
+        {% comment %}------- SEASHORE -------{% endcomment %}
+        <form>
+            <img class="seashoreBtn" id="seashore" type="image" src="{% static 'map/Beach.png' %}" onclick="beachPopup()"/>
+        </form>
+
+    </div>
+
+    {% block contentRooms %}
+    {% endblock contentRooms %}
+
+    <script>
+        function closePopup() {
+            window.location.pathname = "enterSpace"
+        }
+
+        function classroomPopup() {
+            window.location.pathname = "classroom_rooms/classroom"
+        }
+
+        function forestPopup() {
+            window.location.pathname = "forest_rooms/forest"
+        }
+
+        function cafePopup() {
+            window.location.pathname = "cafe_rooms/cafe"
+        }
+
+        function libraryPopup() {
+            window.location.pathname = "library_rooms/library"
+        }
+
+        function beachPopup() {
+            window.location.pathname = "beach_rooms/beach"
+        }
+    </script>
+
+</html>
+
+<style>
+    
+</style>
+{% endblock contentJoin %}

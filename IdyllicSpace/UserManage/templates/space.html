@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/space.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/TimerStopwatch.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/RightTopMenu.css' %}">
+    </head>
+
+    <body>
+
+    <!-- navbar -->
+    <div class="navbar"></div>
+
+    <img class="burgerbar" id="Burger" src="{% static 'icon/BGburgerbar.png' %}"/>
+
+    <img class="dotMenuBtn" id="dotMenuBtn" src="{% static 'icon/Dot menu.png' %}"/>
+    <!-- end of navbar -->
+
+
+
+
+    <!-- burgerbar -->
+    <div class="burgerContent" id="BurgerContent">
+
+        <!-- default -->
+        <!-- default -->
+
+        <!-- sound content -->
+            <div class="soundContainer" id="soundContainer">
+                <div class="ambienceTxt">Ambience Sound</div>
+            </div>
+        <!-- sound content -->
+
+        <img class="soundBtn" id="soundBtn" src="{% static 'icon/Music.png' %}" onclick="soundFunction()"/>
+        <div class="soundTxt">sound</div>
+
+        <img class="muteBtn" id="muteBtn" src="{% static 'icon/microphone-mute.png' %}" onclick="muteFunction()"/>
+        <img class="unmuteBtn" id="unmuteBtn" src="{% static 'icon/microphone.png' %}" onclick="muteFunction()"/>
+        <div class="muteTxt" id="muteTxt">unmute</div>
+
+        <img class="deafenBtn" id="deafenBtn" src="{% static 'icon/headphone-mute.png' %}" onclick="deafenFunction()"/>
+        <img class="undeafenBtn" id="undeafenBtn" src="{% static 'icon/headphone.png' %}" onclick="deafenFunction()"/>
+        <div class="deafenTxt" id="deafenTxt">undeafen</div>
+
+        <img class="leaveBtn" id="leaveBtn" src="{% static 'icon/back.png' %}"/>
+        <div class="leaveTxt">leave</div>
+    </div>
+    <!-- end of burgerbar -->
+
+
+
+
+    <!-- right top Menu -->
+    <div class="rightTopMenu" id="rightTopMenu">
+
+        <img class="myprofileIcon" src="{% static 'icon/profile(2).png' %}"/>
+        <div class="myprofileTxt" id="myprofileBtn">MY PROFILE</div>
+
+        <img class="settingIcon" src="{% static 'icon/setting(1).png' %}"/>
+        <div class="settingTxt" id="settingBtn">SETTING</div>
+
+        <div class="aboutUsTxt" id="aboutUsBtn">ABOUT US</div>
+
+        <div class="contactUsTxt" id="contactUsBtn">CONTACT US</div>
+
+        <img class="logOutIcon" src="{% static 'icon/logout.png' %}"/>
+        <div class="logOutTxt" id="logOutBtn">LOG OUT</div>
+    </div>
+    <!-- end of right top Menu -->
+
+
+
+    <!-- my profile content -->
+    <div class="myProfileBox" id="myProfileBox">
+        <div class="myProfileHeader">
+            <img class="myProfileBoxCloseBtn" id="myProfileBoxCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+            <div class="myProfileHeaderTxt">MY PROFILE</div>
+        </div>
+
+        <div class="avatarValue" id="avatarValue">{{ userData.avatar }}</div>
+        
+        <!-- my profile content -->
+            <img class="avatarIcon" id="ENTJ_male_Icon" src="{% static 'avatar/ENTJ_male.png' %}"/>
+            <img class="avatarIcon" id="ENTJ_female_Icon" src="{% static 'avatar/ENTJ_female.png' %}"/>
+            <img class="avatarIcon" id="ENTP_male_Icon" src="{% static 'avatar/ENTP_male.png' %}"/>
+            <img class="avatarIcon" id="ENTP_female_Icon" src="{% static 'avatar/ENTP_female.png' %}"/>
+            <img class="avatarIcon" id="ENFJ_male_Icon" src="{% static 'avatar/ENFJ_male.png' %}"/>
+            <img class="avatarIcon" id="ENFJ_female_Icon" src="{% static 'avatar/ENFJ_female.png' %}"/>
+            <img class="avatarIcon" id="ENFP_male_Icon" src="{% static 'avatar/ENFP_male.png' %}"/>
+            <img class="avatarIcon" id="ENFP_female_Icon" src="{% static 'avatar/ENFP_female.png' %}"/>
+            <img class="avatarIcon" id="ESTJ_male_Icon" src="{% static 'avatar/ESTJ_male.png' %}"/>
+            <img class="avatarIcon" id="ESTJ_female_Icon" src="{% static 'avatar/ESTJ_female.png' %}"/>
+            <img class="avatarIcon" id="ESFJ_male_Icon" src="{% static 'avatar/ESFJ_male.png' %}"/>
+            <img class="avatarIcon" id="ESFJ_female_Icon" src="{% static 'avatar/ESFJ_female.png' %}"/>
+            <img class="avatarIcon" id="ESTP_male_Icon" src="{% static 'avatar/ESTP_male.png' %}"/>
+            <img class="avatarIcon" id="ESTP_female_Icon" src="{% static 'avatar/ESTP_female.png' %}"/>
+            <img class="avatarIcon" id="ESFP_male_Icon" src="{% static 'avatar/ESFP_male.png' %}"/>
+            <img class="avatarIcon" id="ESFP_female_Icon" src="{% static 'avatar/ESFP_female.png' %}"/>
+            <img class="avatarIcon" id="INTJ_male_Icon" src="{% static 'avatar/INTJ_male.png' %}"/>
+            <img class="avatarIcon" id="INTJ_female_Icon" src="{% static 'avatar/INTJ_female.png' %}"/>
+            <img class="avatarIcon" id="INTP_male_Icon" src="{% static 'avatar/INTP_male.png' %}"/>
+            <img class="avatarIcon" id="INTP_female_Icon" src="{% static 'avatar/INTP_female.png' %}"/>
+            <img class="avatarIcon" id="INFJ_male_Icon" src="{% static 'avatar/INFJ_male.png' %}"/>
+            <img class="avatarIcon" id="INFJ_female_Icon" src="{% static 'avatar/INFJ_female.png' %}"/>
+            <img class="avatarIcon" id="INFP_male_Icon" src="{% static 'avatar/INFP_male.png' %}"/>
+            <img class="avatarIcon" id="INFP_female_Icon" src="{% static 'avatar/INFP_female.png' %}"/>
+            <img class="avatarIcon" id="ISTJ_male_Icon" src="{% static 'avatar/ISTJ_male.png' %}"/>
+            <img class="avatarIcon" id="ISTJ_female_Icon" src="{% static 'avatar/ISTJ_female.png' %}"/>
+            <img class="avatarIcon" id="ISFJ_male_Icon" src="{% static 'avatar/ISFJ_male.png' %}"/>
+            <img class="avatarIcon" id="ISFJ_female_Icon" src="{% static 'avatar/ISFJ_female.png' %}"/>
+            <img class="avatarIcon" id="ISTP_male_Icon" src="{% static 'avatar/ISTP_male.png' %}"/>
+            <img class="avatarIcon" id="ISTP_female_Icon" src="{% static 'avatar/ISTP_female.png' %}"/>
+            <img class="avatarIcon" id="ISFP_male_Icon" src="{% static 'avatar/ISFP_male.png' %}"/>
+            <img class="avatarIcon" id="ISFP_female_Icon" src="{% static 'avatar/ISFP_female.png' %}"/>
+        <!-- my profile content -->
+
+        <button class="editAvatarBtn" id="editAvatarBtn">edit avatar</button>
+
+        <div class="nameTxt">name</div>
+        <div class="displayNameValue" id="displayNameValue">{{ userData.displayName }}</div>
+        <div class="editNameBtnBG">
+            <img class="editNameBtn" id="editNameBtn" src="{% static 'icon/Edit.png' %}"/>
+        </div>
+
+        <div class="bioTxt">bio</div>
+        <div class="bioValue" id="bioValue">{{ userData.bio }}</div>
+        <div class="editBioBtnBG">
+            <img class="editBioBtn" id="editBioBtn" src="{% static 'icon/Edit.png' %}"/>
+        </div>
+
+        <div class="moodTxt">mood</div>
+
+        <button class="normalBtnBG">
+            <img class="normalBtn" id="normalBtn" src="{% static 'icon/Mood-normal.png' %}"/>
+        </button >
+
+        <button class="happyBtnBG">
+            <img class="happyBtn" id="happyBtn" src="{% static 'icon/Mood-happy.png' %}"/>
+        </button >
+
+        <button class="sadBtnBG">
+            <img class="sadBtn" id="sadBtn" src="{% static 'icon/Mood-cry.png' %}"/>
+        </button>
+  
+        <button class="nerdBtnBG">
+            <img class="nerdBtn" id="nerdBtn" src="{% static 'icon/Mood-nerd.png' %}"/>
+        </button>
+
+    </div>
+    <!-- end of my profile content -->
+
+    <!-- edit display name content -->
+    <div class="editBox" id="editDisplayNameBox">
+        <div class="editHeader">
+            <img class="editCloseBtn" id="editDisplayNameCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+        </div>
+
+        <div class="editTxt">Change your display name</div>
+
+        <div class="labelTxt">name</div>
+
+        <form name="DisplayNameForm" method="POST">
+            {% csrf_token %}
+            <input class="inputNewInfo" type="text" id="newName" name="displayName"></input>
+            <button class="saveNewInfoBtn" type="submit" id="saveNameBtn">save</button>
+        </form>
+    </div>
+    <!-- end of edit display name content -->
+
+    <!-- edit bio content -->
+    <div class="editBox" id="editBioBox">
+        <div class="editHeader">
+            <img class="editCloseBtn" id="editBioCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+        </div>
+
+        <div class="editTxt">Change your bio</div>
+
+        <div class="labelTxt">bio</div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input class="inputNewInfo" type="text" id="newBio" name="bio"></input>
+            <button class="saveNewInfoBtn" type="submit" id="saveBioBtn">save</button>
+        </form>
+    </div>
+    <!-- end of edit bio content -->
+
+
+    <!-- setting content -->
+    <div class="settingBox" id="settingBox">
+        <div class="settingHeader">
+            <img class="settingCloseBtn" id="settingCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+            <div class="settingHeaderTxt">SETTING</div>
+        </div>
+
+        <div class="accountTxt">Account</div>
+        <div class="emailTxt">e-mail</div>
+        <div class="emailValue">{{ user.email }}</div>
+
+        <div class="usernameTxt">username</div>
+        <div class="usernameValue">{{ user.username }}</div>
+
+        <div class="pwTxt">password</div>
+        <div class="pwShow">**************</div>
+
+        <button class="changePwBtn" id="changePwBtn">change</button>
+    </div>
+    <!-- setting content -->
+
+    <!-- change password content -->
+    <div class="changePwBox" id="changePwBox">
+        <div class="changePwHeader">
+            <img class="changePwCloseBtn" id="changePwCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+        </div>
+
+        <div class="changePwTitleTxt">Change your password</div>
+
+        <div class="oldPwTxt">old password</div>
+        <input class="oldPwInput" type="password" id="oldPw"></input>
+
+        <div class="newPwTxt">new password</div>
+        <input class="newPwInput" type="password" id="newPw"></input>
+
+        <div class="confirmPwTxt">confirm password</div>
+        <input class="confirmPwInput" type="password" id="confirmPw"></input>
+
+        <button class="saveNewPwBtn" id="saveNewPwBtn">save</button>
+    </div>
+    <!-- end of change password content -->
+
+    <!-- log out box -->
+    <div class="logOutBox" id="logOutBox">
+        <div class="logOutHeader">
+            <div class="logOutHeaderTxt">LOG OUT</div>
+        </div>
+
+        <div class="logOutContentTxt">Are you sure you want to log out?</div>
+        
+        <button class="loggingOutBtn" id="loggingOutBtn">Log out</button>
+        <button class="cancelBtn" id="cancelBtn">Cancel</button>
+    </div>
+    <!-- end of log out box -->
+
+    <!-- Timer and Stopwatch -->
+    <div class="box">
+        <img class="timerIcon" id="timerIcon" src="{% static 'icon/sandclock.png' %}" onclick="OpenTimer()"/>
+        <div class="lineClock"></div>
+        <img class="stopwatchIcon" id="stopwatchIcon" src="{% static 'icon/stopwatch.png' %}" onclick="OpenStopwatch()"/>
+    </div>
+
+    <!-- timer -->
+        <div class="clockBox" id="Timer">
+            <img class="closeClock" id="closeClockBtn" src="{% static 'icon/Xmark.png' %}" onclick="closeClockFunction()"/>
+
+                <div class="clockTimer" id="timerClock">Time</div>
+
+                <div class="setTimer" id="setTimer">
+                    <div class="setTimer_h">h</div>
+                    <select class="selectHour" id="selectHour" name="TimerHour">
+                        <option value="00">0</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                    </select>
+
+                    <div class="setTimer_m">m</div>
+                    <select class="selectMinute" id="selectMinute" name="TimerMinute">
+                        <option value="00">0</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                        <option value="51">51</option>
+                        <option value="52">52</option>
+                        <option value="53">53</option>
+                        <option value="54">54</option>
+                        <option value="55">55</option>
+                        <option value="56">56</option>
+                        <option value="57">57</option>
+                        <option value="58">58</option>
+                        <option value="59">59</option>
+                    </select>
+
+                    <div class="setTimer_s">s</div>
+                    <select class="selectSecond" id="selectSecond" name="TimerSecond">
+                        <option value="00">0</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                        <option value="51">51</option>
+                        <option value="52">52</option>
+                        <option value="53">53</option>
+                        <option value="54">54</option>
+                        <option value="55">55</option>
+                        <option value="56">56</option>
+                        <option value="57">57</option>
+                        <option value="58">58</option>
+                        <option value="59">59</option>
+                    </select>
+                </div>
+
+                <button class="setBtn" id="setTimerBtn" type="submit" onclick="setTimer()">Set</button>
+                <button class="startBtnTM" id="startTimerBtn" onclick="PauseResume()">Start</button>
+                <button class="pauseBtn" id="pauseTimerBtn" onclick="PauseResume()">Pause</button>
+                <button class="resumeBtn" id="resumeTimerBtn" onclick="PauseResume()">Resume</button>
+                <div class="timesUp" id="timesUp">Times Up
+                    <audio autoplay loop  id="timesUpAudio">
+                        <source src="{% static 'mp3/TimesUp.mp3' %}">
+                    </audio>
+                </div>
+
+                <div class="resetBtn" id="resetTimer" onclick="Reset_timer()">Reset</div>
+        </div>
+    <!-- end of timer -->
+
+    <!-- stopwatch -->
+    <div class="clockBox" id="Stopwatch">
+        <img class="closeClock" id="closeClockBtn" src="{% static 'icon/Xmark.png' %}" onclick="closeClockFunction()"/>
+
+            <div class="clock" id="stopWatchClock">00h 00m 00s</div>
+
+            <button class="startBtn" id="startStopwatch" onclick="startStop_SW()">Start</button>
+            <div class="resetBtn" id="resetStopwatch" onclick="Reset_SW()">Reset</div>
+        </div>
+    <!-- end of stopwatch -->
+
+    <!-- end of Timer and Stopwatch -->
+
+    </body>
+
+
+
+
+    <script>
+        // ----------- Burgerbar -----------
+        var Burger = document.getElementById("Burger");
+        var BurgerContent = document.getElementById("BurgerContent");
+
+        function BurgerFunction() {
+            if(BurgerContent.style.display == "none") {
+                BurgerContent.style.display = "block";
+            }
+            else {
+                BurgerContent.style.display = "none";
+            }
+        }
+
+        Burger.addEventListener('click', BurgerFunction)
+        
+        // ----------- sound -----------
+        var soundBtn = document.getElementById("soundBtn");
+        var soundContainer = document.getElementById("soundContainer");
+
+        function soundFunction() {
+            if(soundContainer.style.display == "none") {
+                soundContainer.style.display = "block";
+            }
+            else {
+                soundContainer.style.display = "none";
+            }
+        }
+
+        // ----------- mute -----------
+        var muteBtn = document.getElementById("muteBtn");
+        var unmuteBtn = document.getElementById("unmuteBtn");
+        var muteTxt = document.getElementById("muteTxt");
+
+        function muteFunction() {
+            if(muteBtn.style.display == "block") {
+                muteBtn.style.display = "none";
+                unmuteBtn.style.display = "block";
+                muteTxt.innerHTML = "mute";
+            }
+            else {
+                muteBtn.style.display = "block";
+                unmuteBtn.style.display = "none";
+                muteTxt.innerHTML = "unmute";
+            }
+        }
+
+        // ----------- undeafen -----------
+        var deafenBtn = document.getElementById("deafenBtn");
+        var undeafenBtn = document.getElementById("undeafenBtn");
+        var deafenTxt = document.getElementById("deafenTxt");
+
+        function deafenFunction() {
+            if(deafenBtn.style.display == "block") {
+                deafenBtn.style.display = "none";
+                undeafenBtn.style.display = "block";
+                deafenTxt.innerHTML = "deafen";
+            }
+            else {
+                deafenBtn.style.display = "block";
+                undeafenBtn.style.display = "none";
+                deafenTxt.innerHTML = "undeafen";
+            }
+        }
+
+        // ----------- right top menu -----------
+        var MenuBtn = document.getElementById("dotMenuBtn");
+        var MenuContent = document.getElementById("rightTopMenu");
+
+        function MenuFunction() {
+            if(MenuContent.style.display == "none") {
+                MenuContent.style.display = "block";
+            }
+            else {
+                MenuContent.style.display = "none";
+            }
+        }
+
+        MenuBtn.addEventListener('click', MenuFunction)
+
+        // ----------- my profile -----------
+        var myProfileBoxCloseBtn = document.getElementById("myProfileBoxCloseBtn");
+        var myProfileBox = document.getElementById("myProfileBox");
+        var myprofileBtn = document.getElementById("myprofileBtn");
+
+        function openMyProfileFunction() {
+            myProfileBox.style.display = "block";
+            MenuContent.style.display = "none";
+        }
+
+        function closeMyProfileFunction() {
+            myProfileBox.style.display = "none";
+        }
+
+        myprofileBtn.addEventListener('click', openMyProfileFunction)
+        myProfileBoxCloseBtn.addEventListener('click', closeMyProfileFunction)
+
+
+        // avatar 
+        avatarValue = document.getElementById("avatarValue").innerText;
+        if (avatarValue == "ENTJ_male") { document.getElementById("ENTJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ENTJ_female") { document.getElementById("ENTJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ENTP_male") { document.getElementById("ENTP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ENTP_female") { document.getElementById("ENTP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ENFJ_male") { document.getElementById("ENFJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ENFJ_female") { document.getElementById("ENFJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ENFP_male") { document.getElementById("ENFP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ENFP_female") { document.getElementById("ENFP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ESTJ_male") { document.getElementById("ESTJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ESTJ_female") { document.getElementById("ESTJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ESFJ_male") { document.getElementById("ESFJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ESFJ_female") { document.getElementById("ESFJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ESTP_male") { document.getElementById("ESTP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ESTP_female") { document.getElementById("ESTP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ESFP_male") { document.getElementById("ESFP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ESFP_female") { document.getElementById("ESFP_female_Icon").style.display = "block"; }
+        if (avatarValue == "INTJ_male") { document.getElementById("INTJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "INTJ_female") { document.getElementById("INTJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "INTP_male") { document.getElementById("INTP_male_Icon").style.display = "block"; }
+        if (avatarValue == "INTP_female") { document.getElementById("INTP_female_Icon").style.display = "block"; }
+        if (avatarValue == "INFJ_male") { document.getElementById("INFJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "INFJ_female") { document.getElementById("INFJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "INFP_male") { document.getElementById("INFP_male_Icon").style.display = "block"; }
+        if (avatarValue == "INFP_female") { document.getElementById("INFP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ISTJ_male") { document.getElementById("ISTJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ISTJ_female") { document.getElementById("ISTJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ISFJ_male") { document.getElementById("ISFJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ISFJ_female") { document.getElementById("ISFJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ISTP_male") { document.getElementById("ISTP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ISTP_female") { document.getElementById("ISTP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ISFP_male") { document.getElementById("ISFP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ISFP_female") { document.getElementById("ISFP_female_Icon").style.display = "block"; }
+        // avatar
+
+
+        var editAvatarBtn = document.getElementById("editAvatarBtn")
+        function editAvatarFunction() {
+            window.location.pathname = "userManage/maleAvatar"
+        }
+        editAvatarBtn.addEventListener('click', editAvatarFunction)
+        {% comment %} ----------------------------- {% endcomment %}
+
+        var editNameBtn = document.getElementById("editNameBtn");
+        var editDisplayNameBox = document.getElementById("editDisplayNameBox");
+        var editDisplayNameCloseBtn = document.getElementById("editDisplayNameCloseBtn");
+
+        function openEditNameFunction() {
+            editDisplayNameBox.style.display = "block";
+            editBioBox.style.display = "none";
+        }
+
+        function closeEditNameFunction() {
+            editDisplayNameBox.style.display = "none";
+        }
+
+        editNameBtn.addEventListener('click', openEditNameFunction)
+        editDisplayNameCloseBtn.addEventListener('click', closeEditNameFunction)
+
+        var newName = document.getElementById("newName");
+        newName.value = document.getElementById("displayNameValue").innerHTML;
+        {% comment %} ----------------------------- {% endcomment %}
+
+        var editBioBtn = document.getElementById("editBioBtn");
+        var editBioBox = document.getElementById("editBioBox");
+        var editBioCloseBtn = document.getElementById("editBioCloseBtn");
+
+        function openEditBioFunction() {
+            editBioBox.style.display = "block";
+            editDisplayNameBox.style.display = "none";
+        }
+
+        function closeEditBioFunction() {
+            editBioBox.style.display = "none";
+        }
+
+        editBioBtn.addEventListener('click', openEditBioFunction)
+        editBioCloseBtn.addEventListener('click', closeEditBioFunction)
+
+        var newBio = document.getElementById("newBio");
+        newBio.value = document.getElementById("bioValue").innerHTML;
+        {% comment %} ----------------------------- {% endcomment %}
+
+        // ----------- setting -----------
+        var settingCloseBtn = document.getElementById("settingCloseBtn");
+        var settingBox = document.getElementById("settingBox");
+        var settingBtn = document.getElementById("settingBtn");
+
+        function openSettingFunction() {
+            settingBox.style.display = "block";
+            MenuContent.style.display = "none";
+        }
+
+        function closeSettingFunction() {
+            settingBox.style.display = "none";
+        }
+
+        settingBtn.addEventListener('click', openSettingFunction)
+        settingCloseBtn.addEventListener('click', closeSettingFunction)
+        {% comment %} ----------------------------- {% endcomment %}
+        
+        var changePwBtn = document.getElementById("changePwBtn");
+        var changePwBox = document.getElementById("changePwBox");
+        var changePwCloseBtn = document.getElementById("changePwCloseBtn");
+
+        function openChangePwFunction() {
+            changePwBox.style.display = "block";
+        }
+
+        function closeChangePwFunction() {
+            changePwBox.style.display = "none";
+        }
+
+        changePwBtn.addEventListener('click', openChangePwFunction)
+        changePwCloseBtn.addEventListener('click', closeChangePwFunction)
+        {% comment %} ----------------------------- {% endcomment %}
+
+
+        // ----------------------- stopwatch and timer -----------------------
+        var Stopwatch = document.getElementById("Stopwatch");
+        var Timer = document.getElementById("Timer");
+
+        function OpenStopwatch() {
+            Stopwatch.style.display = "block";
+        }
+        function OpenTimer() {
+            Timer.style.display = "block";
+        }
+
+        var closeClock = document.getElementById("closeClock");
+
+        function closeClockFunction() {
+            Stopwatch.style.display = "none";
+            Timer.style.display = "none";
+        }
+
+
+
+        // ----------- log out-----------
+        var cancelBtn = document.getElementById("cancelBtn");
+        var logOutBox = document.getElementById("logOutBox");
+        var logOutBtn = document.getElementById("logOutBtn");
+
+        function openLogOutFunction() {
+            logOutBox.style.display = "block";
+            MenuContent.style.display = "none";
+        }
+
+        function closeLogOutFunction() {
+            logOutBox.style.display = "none";
+        }
+
+        logOutBtn.addEventListener('click', openLogOutFunction)
+        cancelBtn.addEventListener('click', closeLogOutFunction)
+
+        var loggingOutBtn = document.getElementById("loggingOutBtn");
+        function logOut() {
+            window.location.pathname = "logOut/"
+        }
+        loggingOutBtn.addEventListener('click', logOut)
+
+        {% comment %} ----------------------------- {% endcomment %}
+
+
+
+        // ----------- stopwatch -----------
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        let displaySeconds = 0;
+        let displayMinutes = 0;
+        let displayHours =  0;
+
+        let status = 'Stopped';
+        let interval = '';
+
+        function StartWatch() {
+            seconds++;
+
+            if(seconds/60 === 1) {
+                seconds=0;
+                minutes++;
+
+                if(minutes/60 === 1) {
+                    minutes=0;
+                    hours++;
+                }
+            }
+
+            if(seconds < 10 ) {
+                displaySeconds = '0' + seconds.toString();
+            }
+            else {
+                displaySeconds = seconds;
+            }
+
+            if(minutes < 10 ) {
+                displayMinutes = '0' + minutes.toString();
+            }
+            else {
+                displayMinutes = minutes;
+            }
+
+            if(hours < 10 ) {
+                displayHours = '0' + hours.toString();
+            }
+            else {
+                displayHours = hours;
+            }
+
+            document.getElementById('stopWatchClock').innerHTML = displayHours + "h " + displayMinutes + "m " + displaySeconds + "s ";
+        }
+
+        function startStop_SW() {
+            if(status == 'Stopped') {
+                interval = window.setInterval(StartWatch,1000);
+                document.getElementById('startStopwatch').innerHTML = 'Stop';
+                document.getElementById('startStopwatch').style.background = '#94322D';
+                status = 'Started';
+            }
+            else if(status == 'Started') {
+                window.clearInterval(interval);
+                document.getElementById('startStopwatch').innerHTML = 'Start';
+                document.getElementById('startStopwatch').style.background = '#52779C';
+                status = 'Stopped';
+            }
+        }
+
+        function Reset_SW() {
+            seconds = 0;
+            hours = 0;
+            minutes = 0;
+            window.clearInterval(interval);
+            document.getElementById('stopWatchClock').innerHTML = '00h 00m 00s';
+            document.getElementById('startStopwatch').innerHTML = 'Start';
+            status = 'Stopped';
+        }
+
+        // ----------- timer -----------    
+
+        var setTimerBtn = document.getElementById("setTimerBtn");
+        var startTimerBtn = document.getElementById("startTimerBtn");
+        var pauseTimerBtn = document.getElementById("pauseTimerBtn");
+        var resumeTimerBtn = document.getElementById("resumeTimerBtn");
+        var timesUp = document.getElementById("timesUp");
+
+        let hoursCDN;
+        let minutesCDN;
+        let secondsCDN;
+
+        function setTimer() {
+            var selectHour = document.getElementById("selectHour").value;
+            var selectMinute = document.getElementById("selectMinute").value;
+            var selectSecond = document.getElementById("selectSecond").value;
+            
+            hoursCDN = parseInt(document.getElementById("selectHour").value);
+            minutesCDN = parseInt(document.getElementById("selectMinute").value);
+            secondsCDN = parseInt(document.getElementById("selectSecond").value);
+
+            document.getElementById("setTimer").style.display = "none";
+            setTimerBtn.style.display = "none";
+            timesUp.style.display = "none";
+            startTimerBtn.style.display = "block"
+
+            if(secondsCDN < 10 ) {
+                displaySeconds = '0' + secondsCDN.toString();
+            }
+            else {
+                displaySeconds = secondsCDN;
+            }
+    
+            if(minutesCDN < 10 ) {
+                displayMinutes = '0' + minutesCDN.toString();
+            }
+            else {
+                displayMinutes = minutesCDN;
+            }
+    
+            if(hoursCDN < 10 ) {
+                displayHours = '0' + hoursCDN.toString();
+            }
+            else {
+                displayHours = hoursCDN;
+            }
+
+            document.getElementById("timerClock").style.display = "block";
+            document.getElementById("timerClock").innerHTML = displayHours + "h " + displayMinutes + "m " + displaySeconds + "s ";
+        }
+
+        let intervalCDN = '';
+        let statusCDN = 'Stopped';
+
+        function countdown() {
+            setTimerBtn.style.display = "none"
+            startTimerBtn.style.display = "none"
+            pauseTimerBtn.style.display = "block"
+            resumeTimerBtn.style.display = "none"
+            timesUp.style.display = "none";
+
+            if (secondsCDN===0 && minutesCDN>0) {
+                secondsCDN = 59;
+                minutesCDN--;
+            }
+
+            if (secondsCDN===0 && minutesCDN===0 && hoursCDN>0) {
+                minutesCDN = 59;
+                secondsCDN = 59;
+                hoursCDN--;
+
+            }
+
+            secondsCDN--;
+
+            if(secondsCDN===0 && minutesCDN===0 && hoursCDN===0) {
+                statusCDN = 'Stopped';
+                window.clearInterval(intervalCDN);
+
+                setTimerBtn.style.display = "none";
+                startTimerBtn.style.display = "none";
+                pauseTimerBtn.style.display = "none";
+                resumeTimerBtn.style.display = "none";
+                timesUp.style.display = "block";
+
+                document.getElementById("timesUpAudio").play();
+            }
+                
+            if(secondsCDN < 10 ) {
+                displaySeconds = '0' + secondsCDN.toString();
+            }
+            else {
+                displaySeconds = secondsCDN.toString();
+            }
+    
+            if(minutesCDN < 10 ) {
+                displayMinutes = '0' + minutesCDN.toString();
+            }
+            else {
+                displayMinutes = minutesCDN.toString();
+            }
+    
+            if(hoursCDN < 10 ) {
+                displayHours = '0' + hoursCDN.toString();
+            }
+            else {
+                displayHours = hoursCDN.toString();
+            }
+            
+                document.getElementById('timerClock').innerHTML = displayHours + "h " + displayMinutes + "m " + displaySeconds + "s ";
+        }
+
+        function PauseResume() {
+            if(statusCDN == 'Stopped') {
+                setTimerBtn.style.display = "none"
+                startTimerBtn.style.display = "none"
+                pauseTimerBtn.style.display = "block"
+                resumeTimerBtn.style.display = "none"
+                timesUp.style.display = "none";
+
+                statusCDN = 'Started';
+                intervalCDN = window.setInterval(countdown,1000);
+            }
+            else if(statusCDN == 'Started') {
+                setTimerBtn.style.display = "none"
+                startTimerBtn.style.display = "none"
+                pauseTimerBtn.style.display = "none"
+                resumeTimerBtn.style.display = "block"
+                timesUp.style.display = "none";
+
+                statusCDN = 'Stopped';
+                window.clearInterval(intervalCDN);
+            }
+        }
+
+        function Reset_timer() {
+            window.clearInterval(intervalCDN);
+
+            setTimerBtn.style.display = "block";
+            startTimerBtn.style.display = "none"
+            pauseTimerBtn.style.display = "none"
+            resumeTimerBtn.style.display = "none"
+            timesUp.style.display = "none";
+
+            document.getElementById("timerClock").style.display = "none";
+            document.getElementById("setTimer").style.display = "block";
+
+            document.getElementById("timesUpAudio").pause();
+        }
+
+    </script>
+</html>

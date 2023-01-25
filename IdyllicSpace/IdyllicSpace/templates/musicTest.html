@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <img class="play-pauseBtn" id="icon" src="{% static 'icon/music-play.png' %}" onclick="playSound()"/>
+
+    <audio loop id="oceanWave">
+        <source src="{% static 'mp3/mixkit-small-waves-harbor-rocks-1208.mp3' %}" type="audio/mp3">
+    </audio>
+
+    <div class="waveSoundText">Ocean Wave Sound</div>
+
+    <div class="volume">
+        <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+        <input type="range" min="0" max="100" value="90" onchange="volume_change()" id="volume">  
+     </div>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
+        .play-pauseBtn {
+            position: absolute;
+            width: 37px;
+            height: 37px;
+            left: 42px;
+            top: 101px;
+
+            cursor: pointer;
+        }
+
+        .waveSoundText {
+            position: absolute;
+            width: 168px;
+            height: 35px;
+            left: 93px;
+            top: 101px;
+
+            font-family: 'Patrick Hand SC';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 32px;
+            text-align: center;
+
+            color: #B8A195;
+
+            pointer-events: none;
+        }
+
+        /* volume part */
+        input[type="range"] {
+            {% comment %} -webkit-appearance: none; {% endcomment %}
+            width: 50%;
+            outline: none;
+            height: 2px;
+            margin: 0 15px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            background: #E5C6A9;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .volume {
+            position: absolute;
+
+            top: 18%;
+            left: 0;
+            width: 20%;
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .volume i {
+            cursor: pointer;
+            padding: 8px 15px;
+            color: #E5C6A9;
+        }
+
+    </style>
+
+    <script>
+        var oceanWave = document.getElementById("oceanWave");
+        var icon = document.getElementById("icon");
+        let recent_volume = document.querySelector('#volume');
+
+        function playSound() {
+            if(oceanWave.paused) {
+                icon.src = "{% static 'icon/music-pause.png' %}";
+                oceanWave.play();
+                
+            } else {
+                icon.src = "{% static 'icon/music-play.png' %}";
+                oceanWave.pause();
+            }
+        }
+
+        function volume_change() {
+            oceanWave.volume = recent_volume.value / 100;
+        }
+    </script>
+{% endblock content %}

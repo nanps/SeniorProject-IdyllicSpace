@@ -14,12 +14,50 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.logIn, name='logIn'),
+    path('logOut/', auth_views.LogoutView.as_view(), name='logOut'),
+
+    path('', auth_views.LoginView.as_view(template_name='logIn.html'), name='logIn'),
+
+    path('home/', include('UserManage.urls')), # /home/home
+
     path('createAcc/', views.createAcc, name='createAcc'),
+    path('signUpSuccess/', views.signUpSuccess, name='signUpSuccess'),
+
+    path('forgotPassEmail/', views.forgotPassEmail, name='forgotPassEmail'),
+    path('forgotPassPassword/', views.forgotPassPassword, name='forgotPassPassword'),
+    path('checkEmailPage/', views.checkEmailPage, name='checkEmailPage'),
+    path('resetPassSuccess/', views.resetPassSuccess, name='resetPassSuccess'),
+
+    path('userManage/', include('UserManage.urls')), # /userManage/enterDisplayName
+        # /userManage/maleAvatar
+        # /userManage/femaleAvatar
+        # /userManage/mysteryAvatar
+        # /userManage/space
+
+    path('enterCode/', views.enterCode, name='enterCode'),
+    path('enterSpace/', views.enterSpace, name='enterSpace'),
+    path('musicTest/', views.musicTest, name='musicTest'),
+    path('statusLogIn/', views.statusLogIn, name='statusLogIn'),
+
+    path('mapJoin/', views.mapJoin, name='mapJoin'),
+    path('mapCreate/', include('SpaceRoom.urls')),
+
+    path('classroom_create/', include('SpaceRoom.urls')), # /classroom_create/createClassroom
+    path('forest_create/', include('SpaceRoom.urls')), # /forest_create/createForest
+    path('cafe_create/', include('SpaceRoom.urls')), # /cafe_create/createCafe
+    path('library_create/', include('SpaceRoom.urls')), # /library_create/createLibrary
+    path('beach_create/', include('SpaceRoom.urls')), # /beach_create/createBeach
+
+    path('classroom_rooms/', include('SpaceRoom.urls')), # /classroom_rooms/classroom
+    path('forest_rooms/', include('SpaceRoom.urls')), # /forest_rooms/forest
+    path('cafe_rooms/', include('SpaceRoom.urls')), # /cafe_rooms/cafe
+    path('library_rooms/', include('SpaceRoom.urls')), # /library_rooms/library
+    path('beach_rooms/', include('SpaceRoom.urls')), # /beach_rooms/beach
 ]

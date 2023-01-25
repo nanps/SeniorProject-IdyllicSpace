@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+{% extends 'mapJoin.html' %}
+{% load static %}
+
+{% block contentRooms %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}"> 
+    </head>
+
+    <body>
+        <span class="edge"></span>
+
+        {% comment %}------------------------------ POPUP ------------------------------{% endcomment %}
+        <div class="popUp" id="popUp">
+            <div class="popUp_Header">
+                <span id="close">
+                    <img class="closeBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                </span>
+            </div>
+            <div class="popUp_Body">
+                {% comment %}----- POPUP CONTENT -----{% endcomment %}
+                <div class="text">Please select to join a space</div>
+
+                <div class="roomContainer">
+                    {% for room in rooms %}
+                        {% if room.location == "Cafe" %}
+                            <div class="roomBox">
+                                <div class="userAmount">0/10</div>
+                                <div class="roomName">{{ room.roomName }}</div>
+                                <div class="roomDescription">{{ room.description }}</div>
+                                <div class="joinBtn">JOIN</div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% comment %}----- POPUP CONTENT -----{% endcomment %}
+            </div>
+        </div>
+        {% comment %}------------------------------ POPUP ------------------------------{% endcomment %}
+
+    </body>
+
+    <script>
+        {% comment %}--- close popup ---{% endcomment %}
+        var span = document.getElementById("close");
+
+        span.onclick = function() {
+            window.location.pathname = "mapJoin";
+        }
+    </script>
+
+</html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+    .popUp {
+        display: block;
+        position: fixed;
+        top: 160px;
+        left: 18%;
+            
+        box-sizing: border-box;
+
+        position: relative;
+        width: 1250px;
+        height: 730px;
+
+        background: #FAF4F0;
+        border: 3px solid #B8A195;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+    }
+
+    .popUp_Header {
+        height: 50px;
+        top: 0px;
+
+        background: #E5C6A9;
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .closeBtn {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        left: 1201px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .popUp_Body {
+        position: absolute;
+
+        width: 1215px;
+        height: 653px;
+        left: 16px;
+        top: 60px;
+
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+
+    
+    
+    .text {
+        position: absolute;
+        width: 339px;
+        height: 43px;
+        left: 117px;
+        top: 60px;
+
+        font-family: 'Patrick Hand SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 43px;
+
+        color: #B8A195;
+    }
+
+    .roomContainer {
+        position: absolute;
+        width: 1205px;
+        top: 120px;
+        left: 45px;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .roomContainer > div {
+        margin: 25px;
+        padding: 26px;
+    }
+
+    .roomBox {  
+        width: 270px;
+        height: 227px;
+
+        background: #FFFFFF;
+        border-radius: 15px;
+    }
+
+    .userAmount {
+        top: 11px;
+
+        font-family: 'Patrick Hand SC';
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 27px;
+        text-align: center;
+        letter-spacing: 0.1em;
+
+        color: rgba(184, 161, 149, 0.7);
+    }
+
+    .roomName {
+        top: 38px;
+
+        font-family: 'Patrick Hand SC';
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 54px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        color: #B8A195;
+    }
+
+    .roomDescription {
+        top: 92px;
+        
+        font-family: 'Patrick Hand SC';
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 25px;
+        text-align: center;
+        
+        color: #E5C6A9;
+    }
+
+    .joinBtn {
+        width: 160px;
+        height: 45px;
+        margin-top: 45px;
+        margin-bottom: 20px;
+        margin-left: 55px;
+
+        background: #52779C;
+        border-radius: 10px;
+        cursor: pointer;
+
+        font-family: 'Patrick Hand SC';
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 38px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }.joinBtn:hover {
+        background-color: #b0c4de;
+    }
+</style>
+{% endblock contentRooms %}
