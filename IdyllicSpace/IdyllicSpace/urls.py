@@ -25,7 +25,7 @@ urlpatterns = [
 
     path('', auth_views.LoginView.as_view(template_name='logIn.html'), name='logIn'),
 
-    path('home/', include('UserManage.urls')), # /home/home
+    path('home/', include('Space.urls')), # /home/home
 
     path('createAcc/', views.createAcc, name='createAcc'),
     path('signUpSuccess/', views.signUpSuccess, name='signUpSuccess'),
@@ -35,11 +35,12 @@ urlpatterns = [
     path('checkEmailPage/', views.checkEmailPage, name='checkEmailPage'),
     path('resetPassSuccess/', views.resetPassSuccess, name='resetPassSuccess'),
 
-    path('userManage/', include('UserManage.urls')), # /userManage/enterDisplayName
-        # /userManage/maleAvatar
-        # /userManage/femaleAvatar
-        # /userManage/mysteryAvatar
-        # /userManage/space
+    path('Space/', include('Space.urls')), 
+        # /Space/enterDisplayName
+        # /Space/maleAvatar
+        # /Space/femaleAvatar
+        # /Space/mysteryAvatar
+        # /Space/space
 
     path('enterCode/', views.enterCode, name='enterCode'),
     path('enterSpace/', views.enterSpace, name='enterSpace'),
@@ -47,17 +48,17 @@ urlpatterns = [
     path('statusLogIn/', views.statusLogIn, name='statusLogIn'),
 
     path('mapJoin/', views.mapJoin, name='mapJoin'),
-    path('mapCreate/', include('SpaceRoom.urls')),
+    path('mapCreate/', include('Space.urls')), # /mapCreate/create
 
-    path('classroom_create/', include('SpaceRoom.urls')), # /classroom_create/createClassroom
-    path('forest_create/', include('SpaceRoom.urls')), # /forest_create/createForest
-    path('cafe_create/', include('SpaceRoom.urls')), # /cafe_create/createCafe
-    path('library_create/', include('SpaceRoom.urls')), # /library_create/createLibrary
-    path('beach_create/', include('SpaceRoom.urls')), # /beach_create/createBeach
+    path('classroom_create/', include('Space.urls')), # /classroom_create/createClassroom
+    path('forest_create/', include('Space.urls')), # /forest_create/createForest
+    path('cafe_create/', include('Space.urls')), # /cafe_create/createCafe
+    path('library_create/', include('Space.urls')), # /library_create/createLibrary
+    path('beach_create/', include('Space.urls')), # /beach_create/createBeach
 
-    path('classroom_rooms/', include('SpaceRoom.urls')), # /classroom_rooms/classroom
-    path('forest_rooms/', include('SpaceRoom.urls')), # /forest_rooms/forest
-    path('cafe_rooms/', include('SpaceRoom.urls')), # /cafe_rooms/cafe
-    path('library_rooms/', include('SpaceRoom.urls')), # /library_rooms/library
-    path('beach_rooms/', include('SpaceRoom.urls')), # /beach_rooms/beach
+    path('classroom_rooms/', include('Space.urls')), # /classroom_rooms/classroom
+    path('forest_rooms/', include('Space.urls')), # /forest_rooms/forest
+    path('cafe_rooms/', include('Space.urls')), # /cafe_rooms/cafe
+    path('library_rooms/', include('Space.urls')), # /library_rooms/library
+    path('beach_rooms/', include('Space.urls')), # /beach_rooms/beach
 ]

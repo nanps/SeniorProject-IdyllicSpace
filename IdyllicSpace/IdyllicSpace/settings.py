@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'SpaceRoom',
-    'UserManage',
+    'Space',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +58,7 @@ ROOT_URLCONF = 'IdyllicSpace.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'IdyllicSpace/templates', 'SpaceRoom/templates', 'UserManage/templates'],
+        'DIRS': [BASE_DIR / 'IdyllicSpace/templates', 'Space/templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
