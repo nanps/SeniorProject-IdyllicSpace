@@ -41,6 +41,7 @@ urlpatterns = [
         # /Space/femaleAvatar
         # /Space/mysteryAvatar
         # /Space/space
+        # /Space/chatRoomTest
 
     path('enterCode/', views.enterCode, name='enterCode'),
     path('enterSpace/', views.enterSpace, name='enterSpace'),

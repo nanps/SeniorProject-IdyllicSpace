@@ -31,7 +31,7 @@
                                 <div class="userAmount">0/10</div>
                                 <div class="roomName">{{ room.roomName }}</div>
                                 <div class="roomDescription">{{ room.description }}</div>
-                                <div class="joinBtn">JOIN</div>
+                                <button class="joinBtn" href="{% url 'chatRoomTest' room.slug %}">JOIN</button>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -50,6 +50,7 @@
         span.onclick = function() {
             window.location.pathname = "mapJoin";
         }
+
     </script>
 
 </html>
@@ -194,6 +195,7 @@
         background: #52779C;
         border-radius: 10px;
         cursor: pointer;
+        border: 0;
 
         font-family: 'Patrick Hand SC';
         font-weight: 400;

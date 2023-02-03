@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import SpaceRoom, UserManage
+from .models import SpaceRoom, UserManage, Message
 from django.contrib.auth.models import User
 from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm
 from django.contrib import messages
@@ -28,6 +28,12 @@ def space(request) :
     user = User.objects.get(username=usernameInput)
 
     return render(request, 'space.html', {'userData':userData,'user':user} )
+
+def chatRoomTest(request, slug) :
+    room = Room.objects.get(slug=slug)
+    messages = Message.objects.filter(room=room)[0:25]
+
+    return render(request, 'chatRoomTest.html', {'room': room, 'messages': messages})
 
 
 def enterDisplayName(request) :

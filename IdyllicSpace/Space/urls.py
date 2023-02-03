@@ -14,6 +14,7 @@ urlpatterns = [
     path('mysteryAvatar/', views.mysteryAvatar, name='mysteryAvatar'),
 
     path('space/', views.space, name='space'),
+    path('<slug:slug>/', views.chatRoomTest, name='chatRoomTest'),
 
     path('create', views.mapCreate, name='create'),
     
