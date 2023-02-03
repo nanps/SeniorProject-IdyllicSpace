@@ -19,6 +19,17 @@ body {
     background-color : #E5C6A9;
 }
 
+.chatIcon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 96.041%;
+    top: 92.037%;
+    cursor: pointer;
+    
+    background-color: #E5C6A9;
+}
+
 .burgerbar {
     position: absolute;
     width: 50px;
