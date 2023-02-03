@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/RightTopMenu.css' %}">
     </head>
 
-    <body>
+    <body style="background-color:#f5e3da;">
 
     <!-- navbar -->
     <div class="navbar">
@@ -248,9 +248,15 @@
 
 
 
-    <!-- chat icon -->
+    <!-- chat icon & content -->
     <img class="chatIcon" id="chatIcon" src="{% static 'icon/Chat.png' %}"/>
-    <!-- end of chat icon -->
+
+    <div class="chatContentBox" id="chatContentBox">
+        <div class="chatHeader">
+            <img class="chatCloseBtn" id="chatCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+        </div>
+    </div>
+    <!-- end of chat icon & content -->
 
 
 
@@ -512,6 +518,7 @@
         function MenuFunction() {
             if(MenuContent.style.display == "none") {
                 MenuContent.style.display = "block";
+                chatContentBox.style.display = "none";
             }
             else {
                 MenuContent.style.display = "none";
@@ -663,9 +670,11 @@
 
         function OpenStopwatch() {
             Stopwatch.style.display = "block";
+            chatContentBox.style.display = "none";
         }
         function OpenTimer() {
             Timer.style.display = "block";
+            chatContentBox.style.display = "none";
         }
 
         var closeClock = document.getElementById("closeClock");
@@ -674,6 +683,28 @@
             Stopwatch.style.display = "none";
             Timer.style.display = "none";
         }
+
+
+
+        // ----------- chat-----------
+        var chatCloseBtn = document.getElementById("chatCloseBtn");
+        var chatContentBox = document.getElementById("chatContentBox");
+        var chatIcon = document.getElementById("chatIcon");
+
+        function openChatFunction() {
+            chatContentBox.style.display = "block";
+
+            Stopwatch.style.display = "none";
+            Timer.style.display = "none";
+            MenuContent.style.display = "none";
+        }
+
+        function closeChatFunction() {
+            chatContentBox.style.display = "none";
+        }
+
+        chatIcon.addEventListener('click', openChatFunction)
+        chatCloseBtn.addEventListener('click', closeChatFunction)
 
 
 

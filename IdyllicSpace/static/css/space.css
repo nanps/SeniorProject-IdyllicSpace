@@ -24,11 +24,46 @@ body {
     width: 50px;
     height: 50px;
     left: 96.041%;
-    top: 92.037%;
+    margin-top: 89.5vh;
     cursor: pointer;
-    
-    background-color: #E5C6A9;
 }
+ /* ------------- chat content ------------- */
+.chatContentBox {
+    display: none;
+    position: absolute;
+    margin-top: 47vh;
+    margin-left: 72.5vw;
+
+    width: 480px;
+    height: 408px;
+    
+    background: #FAF4F0;
+    border: 3px solid #B8A195;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.chatHeader {
+    position: absolute;
+    width: 480px;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+
+    background: #E5C6A9;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.chatCloseBtn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 436px;
+    top: 10px;
+    cursor: pointer;
+}
+ /* ------------- chat content ------------- */
+
 
 .burgerbar {
     position: absolute;
