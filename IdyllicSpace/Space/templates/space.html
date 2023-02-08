@@ -10,12 +10,15 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/RightTopMenu.css' %}">
     </head>
 
-    <body style="background-color:#f5e3da;">
+    {% block spaceContent %}
+    {% endblock spaceContent %}
+
+    <body>
 
     <!-- navbar -->
     <div class="navbar">
 
-    <img class="burgerbar" id="Burger" src="{% static 'icon/BGburgerbar.png' %}"/>
+    <img class="burgerbar" id="Burger" src="{% static 'icon/burgerBar.png' %}"/>
 
     <img class="dotMenuBtn" id="dotMenuBtn" src="{% static 'icon/Dot menu.png' %}"/>
     </div>
@@ -31,13 +34,13 @@
         <!-- default -->
 
         <!-- sound content -->
-            <div class="soundContainer" id="soundContainer">
-                <div class="ambienceTxt">Ambience Sound</div>
-            </div>
+            {% block soundContent %}
+            {% endblock soundContent %}
         <!-- sound content -->
 
         <img class="soundBtn" id="soundBtn" src="{% static 'icon/Music.png' %}" onclick="soundFunction()"/>
-        <div class="soundTxt">sound</div>
+        <img class="spaceBtn" id="spaceBtn" src="{% static 'logo/sheep/IMG_2168.png' %}" onclick="soundFunction()"/>
+        <div class="soundTxt" id="soundTxt">sound</div>
 
         <img class="muteBtn" id="muteBtn" src="{% static 'icon/microphone-mute.png' %}" onclick="muteFunction()"/>
         <img class="unmuteBtn" id="unmuteBtn" src="{% static 'icon/microphone.png' %}" onclick="muteFunction()"/>
@@ -464,14 +467,22 @@
         
         // ----------- sound -----------
         var soundBtn = document.getElementById("soundBtn");
+        var spaceBtn = document.getElementById("spaceBtn");
         var soundContainer = document.getElementById("soundContainer");
+        var soundTxt = document.getElementById("soundTxt");
 
         function soundFunction() {
             if(soundContainer.style.display == "none") {
                 soundContainer.style.display = "block";
+                soundTxt.innerHTML = "space";
+                soundBtn.style.display = "none";
+                spaceBtn.style.display = "block";
             }
             else {
                 soundContainer.style.display = "none";
+                soundTxt.innerHTML = "sound";
+                soundBtn.style.display = "block";
+                spaceBtn.style.display = "none";
             }
         }
 

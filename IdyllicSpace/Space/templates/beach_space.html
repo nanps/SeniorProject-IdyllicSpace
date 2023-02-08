@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+{% extends 'space.html' %}
+{% load static %}
+
+{% block spaceContent %}
+    <body background="{% static 'wallpaper/Beach.png' %}">
+        
+    </body>
+    
+    <style>
+
+    </style>
+
+    <script>
+
+    </script>
+{% endblock spaceContent %}
+
+{% block soundContent %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="soundContainer" id="soundContainer">
+        <div class="soundTypeTxt" style="left:33px; top:2px;">Ambience Sound</div>
+
+        <div class="beachAmbienceContainer">
+            {% comment %} OCEAN WAVE {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:6px;" id="oceanWavePP" src="{% static 'icon/music-play.png' %}" onclick="playOceanWave()"/>
+
+            <audio loop id="oceanWave">
+                <source src="{% static 'mp3/ambience/mixkit-small-waves-harbor-rocks-1208.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:6px;">Ocean Wave</div>
+
+            <div class="volume" style="left:26px; top:53px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="oceanWave_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} WINDY BEACH {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:87px;" id="windyBeachPP" src="{% static 'icon/music-play.png' %}" onclick="playWindyBeach()"/>
+
+            <audio loop id="windyBeach">
+                <source src="{% static 'mp3/ambience/wind-beach.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:87px;">Windy Beach</div>
+
+            <div class="volume" style="left:26px; top:137px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="windyBeach_volume_change()" id="volume">  
+            </div>
+        </div>
+
+        <div class="soundTypeTxt" style="left:33px; top:260px;">Melody Sound</div>
+        <div class="instrumentTxt" style="left:33px; top:320px;">Piano Music <br>(happy vibes)</div>
+
+        {% comment %} -------------- PIANO -------------- {% endcomment %}
+        <div class="melodyContainer" style="left:9px; top:390px;">
+            {% comment %} PIANO-1 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:6px;" id="piano-1PP" src="{% static 'icon/music-play.png' %}" onclick="playPiano1()"/>
+
+            <audio loop id="piano-1">
+                <source src="{% static 'mp3/melody/piano/piano-1.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:6px;">Piano track 1</div>
+
+            <div class="volume" style="left:26px; top:53px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="piano1_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} PIANO-2 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:87px;" id="piano-2PP" src="{% static 'icon/music-play.png' %}" onclick="playPiano2()"/>
+
+            <audio loop id="piano-2">
+                <source src="{% static 'mp3/melody/piano/piano-2.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:87px;">Piano track 2</div>
+
+            <div class="volume" style="left:26px; top:137px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="piano2_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} PIANO-3 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:171px;" id="piano-3PP" src="{% static 'icon/music-play.png' %}" onclick="playPiano3()"/>
+
+            <audio loop id="piano-3">
+                <source src="{% static 'mp3/melody/piano/piano-3.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:171px;">Piano track 3</div>
+
+            <div class="volume" style="left:26px; top:221px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="piano3_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} PIANO-4 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:255px;" id="piano-4PP" src="{% static 'icon/music-play.png' %}" onclick="playPiano4()"/>
+
+            <audio loop id="piano-4">
+                <source src="{% static 'mp3/melody/piano/piano-4.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:255px;">Piano track 4</div>
+
+            <div class="volume" style="left:26px; top:302px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="piano4_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} PIANO-5 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:336px;" id="piano-5PP" src="{% static 'icon/music-play.png' %}" onclick="playPiano5()"/>
+
+            <audio loop id="piano-5">
+                <source src="{% static 'mp3/melody/piano/piano-5.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:336px;">Piano track 5</div>
+
+            <div class="volume" style="left:26px; top:383px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="piano5_volume_change()" id="volume">  
+            </div>
+        </div>
+
+        <div class="instrumentTxt" style="left:33px; top:825px;">Violin Music <br>(sad vibes)</div>
+        
+        {% comment %} -------------- VIOLIN -------------- {% endcomment %}
+        <div class="melodyContainer" style="left:9px; top:900px;">
+            {% comment %} VIOLIN-1 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:6px;" id="violin-1PP" src="{% static 'icon/music-play.png' %}" onclick="playViolin1()"/>
+
+            <audio loop id="violin-1">
+                <source src="{% static 'mp3/melody/violin/violin-1.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:6px;">Violin track 1</div>
+
+            <div class="volume" style="left:26px; top:53px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="violin1_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} VIOLIN-2 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:87px;" id="violin-2PP" src="{% static 'icon/music-play.png' %}" onclick="playViolin2()"/>
+
+            <audio loop id="violin-2">
+                <source src="{% static 'mp3/melody/violin/violin-2.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:87px;">Violin track 2</div>
+
+            <div class="volume" style="left:26px; top:137px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="violin2_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} VILOIN-3 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:171px;" id="violin-3PP" src="{% static 'icon/music-play.png' %}" onclick="playViolin3()"/>
+
+            <audio loop id="violin-3">
+                <source src="{% static 'mp3/melody/violin/violin-3.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:171px;">Violin track 3</div>
+
+            <div class="volume" style="left:26px; top:221px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="violin3_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} VIOLIN-4 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:255px;" id="violin-4PP" src="{% static 'icon/music-play.png' %}" onclick="playViolin4()"/>
+
+            <audio loop id="violin-4">
+                <source src="{% static 'mp3/melody/violin/violin-4.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:255px;">Violin track 4</div>
+
+            <div class="volume" style="left:26px; top:302px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="violin4_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} VIOLIN-5 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:336px;" id="violin-5PP" src="{% static 'icon/music-play.png' %}" onclick="playViolin5()"/>
+
+            <audio loop id="violin-5">
+                <source src="{% static 'mp3/melody/violin/violin-5.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:336px;">Violin track 5</div>
+
+            <div class="volume" style="left:26px; top:383px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="violin5_volume_change()" id="volume">  
+            </div>
+        </div>
+    
+        <div class="instrumentTxt" style="left:33px; top:1338px;">Flute Music <br>(neutral and calm vibes)</div>
+        
+        {% comment %} -------------- FLUTE -------------- {% endcomment %}
+        <div class="melodyContainer" style="left:9px; top:1415px;">
+            {% comment %} FLUTE-1 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:6px;" id="flute-1PP" src="{% static 'icon/music-play.png' %}" onclick="playFlute1()"/>
+
+            <audio loop id="flute-1">
+                <source src="{% static 'mp3/melody/flute/flute-1.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:6px;">Flute track 1</div>
+
+            <div class="volume" style="left:26px; top:53px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="flute1_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} FLUTE-2 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:87px;" id="flute-2PP" src="{% static 'icon/music-play.png' %}" onclick="playFlute2()"/>
+
+            <audio loop id="flute-2">
+                <source src="{% static 'mp3/melody/flute/flute-2.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:87px;">Flute track 2</div>
+
+            <div class="volume" style="left:26px; top:137px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="flute2_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} FLUTE-3 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:171px;" id="flute-3PP" src="{% static 'icon/music-play.png' %}" onclick="playFlute3()"/>
+
+            <audio loop id="flute-3">
+                <source src="{% static 'mp3/melody/flute/flute-3.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:171px;">Flute track 3</div>
+
+            <div class="volume" style="left:26px; top:221px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="flute3_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} FLUTE-4 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:255px;" id="flute-4PP" src="{% static 'icon/music-play.png' %}" onclick="playFlute4()"/>
+
+            <audio loop id="flute-4">
+                <source src="{% static 'mp3/melody/flute/flute-4.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:255px;">Flute track 4</div>
+
+            <div class="volume" style="left:26px; top:302px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="flute4_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} FLUTE-5 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:336px;" id="flute-5PP" src="{% static 'icon/music-play.png' %}" onclick="playFlute5()"/>
+
+            <audio loop id="flute-5">
+                <source src="{% static 'mp3/melody/flute/flute-5.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:336px;">Flute track 5</div>
+
+            <div class="volume" style="left:26px; top:383px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="flute5_volume_change()" id="volume">  
+            </div>
+        </div>
+
+        <div class="instrumentTxt" style="left:33px; top:1850px;">Harp Music <br>(meditation and healing)</div>
+        
+        {% comment %} -------------- HARP -------------- {% endcomment %}
+        <div class="melodyContainer" style="left:9px; top:1927px;">
+            {% comment %} HARP-1 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:6px;" id="harp-1PP" src="{% static 'icon/music-play.png' %}" onclick="playHarp1()"/>
+
+            <audio loop id="harp-1">
+                <source src="{% static 'mp3/melody/harp/harp-1.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:6px;">Harp track 1</div>
+
+            <div class="volume" style="left:26px; top:53px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="harp1_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} HARP-2 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:87px;" id="harp-2PP" src="{% static 'icon/music-play.png' %}" onclick="playHarp2()"/>
+
+            <audio loop id="harp-2">
+                <source src="{% static 'mp3/melody/harp/harp-2.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:87px;">Harp track 2</div>
+
+            <div class="volume" style="left:26px; top:137px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="harp2_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} HARP-3 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:171px;" id="harp-3PP" src="{% static 'icon/music-play.png' %}" onclick="playHarp3()"/>
+
+            <audio loop id="harp-3">
+                <source src="{% static 'mp3/melody/harp/harp-3.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:171px;">Harp track 3</div>
+
+            <div class="volume" style="left:26px; top:221px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="harp3_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} HARP-4 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:255px;" id="harp-4PP" src="{% static 'icon/music-play.png' %}" onclick="playHarp4()"/>
+
+            <audio loop id="harp-4">
+                <source src="{% static 'mp3/melody/flute/flute-4.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:255px;">Harp track 4</div>
+
+            <div class="volume" style="left:26px; top:302px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="harp4_volume_change()" id="volume">  
+            </div>
+
+            {% comment %} HARP-5 {% endcomment %}
+            <img class="play-pauseBtn" style="left:5px; top:336px;" id="harp-5PP" src="{% static 'icon/music-play.png' %}" onclick="playHarp5()"/>
+
+            <audio loop id="harp-5">
+                <source src="{% static 'mp3/melody/harp/harp-5.mp3' %}" type="audio/mp3">
+            </audio>
+
+            <div class="soundTitleText" style="left:61px; top:336px;">Harp track 5</div>
+
+            <div class="volume" style="left:26px; top:383px;">
+                <i class="fa fa-volume-up" aria-hidden="true"" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="harp5_volume_change()" id="volume">  
+            </div>
+        </div>
+            
+    </div>
+
+    <style>
+        .beachAmbienceContainer {
+            position: absolute;
+            width: 242px;
+            height: 200px;
+            left: 9px;
+            top: 56px;
+        }
+
+        .melodyContainer {
+            position: absolute;
+            width: 242px;
+            height: 430px;
+        }
+
+        .soundTypeTxt {
+            position: absolute;
+
+            font-family: 'Patrick Hand SC';
+            font-style: bold;
+            font-weight: 500;
+            font-size: 32px;
+            color: #B8A195;
+        }
+        .instrumentTxt {
+            position: absolute;
+
+            font-family: 'Patrick Hand SC';
+            font-style: normal;
+            font-size: 22px;
+            color: #B8A195;
+        }
+
+        .play-pauseBtn {
+            position: absolute;
+            width: 37px;
+            height: 37px;
+
+            cursor: pointer;
+        }
+
+        .soundTitleText {
+            position: absolute;
+
+            font-family: 'Patrick Hand SC';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 26px;
+            line-height: 35px;
+
+            color: #B8A195;
+            pointer-events: none;
+        }
+
+        /* volume part */
+        input[type="range"] {
+            /* -webkit-appearance: none; */
+            /* width: 50%; */
+            outline: none;
+            height: 2px;
+            margin: 0 15px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            background: #E5C6A9;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .volume {
+            position: absolute;
+            width: 205px;
+            height: 30px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .volume i {
+            cursor: pointer;
+            /* padding: 8px 15px; */
+            color: #E5C6A9;
+        }
+
+        /* volume */
+        .oceanWave_volume {
+            position: absolute;
+            width: 205px;
+            height: 30px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }.oceanWave_volume i {
+            cursor: pointer;
+            /* padding: 8px 15px; */
+            color: #E5C6A9;
+        }
+
+
+    </style>
+
+    <script>
+        /*  AMBIENCE */
+        /* OCEAN WAVE */
+        var oceanWave = document.getElementById("oceanWave");
+        var oceanWavePP = document.getElementById("oceanWavePP"); /*play-paused*/
+        function playOceanWave() {
+            if(oceanWave.paused) {
+                oceanWavePP.src = "{% static 'icon/music-pause.png' %}";
+                oceanWave.play();
+                
+            } else {
+                oceanWavePP.src = "{% static 'icon/music-play.png' %}";
+                oceanWave.pause();
+            }
+        }
+
+        /*  WINDY BEACH */
+        var windyBeach = document.getElementById("windyBeach");
+        var windyBeachPP = document.getElementById("windyBeachPP"); /*play-paused*/
+        function playWindyBeach() {
+            if(windyBeach.paused) {
+                windyBeachPP.src = "{% static 'icon/music-pause.png' %}";
+                windyBeach.play();
+                
+            } else {
+                windyBeachPP.src = "{% static 'icon/music-play.png' %}";
+                windyBeach.pause();
+            }
+        }
+
+
+        /* MELODY */
+        /*  PIANO */
+        var piano1 = document.getElementById("piano-1");
+        var piano1PP = document.getElementById("piano-1PP"); /*play-paused*/
+        function playPiano1() {
+            if(piano1.paused) {
+                piano1PP.src = "{% static 'icon/music-pause.png' %}";
+                piano1.play();
+                
+            } else {
+                piano1PP.src = "{% static 'icon/music-play.png' %}";
+                piano1.pause();
+            }
+        }
+        var piano2 = document.getElementById("piano-2");
+        var piano2PP = document.getElementById("piano-2PP"); /*play-paused*/
+        function playPiano2() {
+            if(piano2.paused) {
+                piano2PP.src = "{% static 'icon/music-pause.png' %}";
+                piano2.play();
+                
+            } else {
+                piano2PP.src = "{% static 'icon/music-play.png' %}";
+                piano2.pause();
+            }
+        }
+        var piano3 = document.getElementById("piano-3");
+        var piano3PP = document.getElementById("piano-3PP"); /*play-paused*/
+        function playPiano3() {
+            if(piano3.paused) {
+                piano3PP.src = "{% static 'icon/music-pause.png' %}";
+                piano3.play();
+                
+            } else {
+                piano3PP.src = "{% static 'icon/music-play.png' %}";
+                piano3.pause();
+            }
+        }
+        var piano4 = document.getElementById("piano-4");
+        var piano4PP = document.getElementById("piano-4PP"); /*play-paused*/
+        function playPiano4() {
+            if(piano4.paused) {
+                piano4PP.src = "{% static 'icon/music-pause.png' %}";
+                piano4.play();
+                
+            } else {
+                piano4PP.src = "{% static 'icon/music-play.png' %}";
+                piano4.pause();
+            }
+        }
+        var piano5 = document.getElementById("piano-5");
+        var piano5PP = document.getElementById("piano-5PP"); /*play-paused*/
+        function playPiano5() {
+            if(piano5.paused) {
+                piano5PP.src = "{% static 'icon/music-pause.png' %}";
+                piano5.play();
+                
+            } else {
+                piano5PP.src = "{% static 'icon/music-play.png' %}";
+                piano5.pause();
+            }
+        }
+
+        /*  VIOLIN */
+        var violin1 = document.getElementById("violin-1");
+        var violin1PP = document.getElementById("violin-1PP"); /*play-paused*/
+        function playViolin1() {
+            if(violin1.paused) {
+                violin1PP.src = "{% static 'icon/music-pause.png' %}";
+                violin1.play();
+                
+            } else {
+                violin1PP.src = "{% static 'icon/music-play.png' %}";
+                violin1.pause();
+            }
+        }
+        var violin2 = document.getElementById("violin-2");
+        var violin2PP = document.getElementById("violin-2PP"); /*play-paused*/
+        function playViolin2() {
+            if(violin2.paused) {
+                violin2PP.src = "{% static 'icon/music-pause.png' %}";
+                violin2.play();
+                
+            } else {
+                violin2PP.src = "{% static 'icon/music-play.png' %}";
+                violin2.pause();
+            }
+        }
+        var violin3 = document.getElementById("violin-3");
+        var violin3PP = document.getElementById("violin-3PP"); /*play-paused*/
+        function playViolin3() {
+            if(violin3.paused) {
+                violin3PP.src = "{% static 'icon/music-pause.png' %}";
+                violin3.play();
+                
+            } else {
+                violin3PP.src = "{% static 'icon/music-play.png' %}";
+                violin3.pause();
+            }
+        }
+        var violin4 = document.getElementById("violin-4");
+        var violin4PP = document.getElementById("violin-4PP"); /*play-paused*/
+        function playViolin4() {
+            if(violin4.paused) {
+                violin4PP.src = "{% static 'icon/music-pause.png' %}";
+                violin4.play();
+                
+            } else {
+                violin4PP.src = "{% static 'icon/music-play.png' %}";
+                violin4.pause();
+            }
+        }
+        var violin5 = document.getElementById("violin-5");
+        var violin5PP = document.getElementById("violin-5PP"); /*play-paused*/
+        function playViolin5() {
+            if(violin5.paused) {
+                violin5PP.src = "{% static 'icon/music-pause.png' %}";
+                violin5.play();
+                
+            } else {
+                violin5PP.src = "{% static 'icon/music-play.png' %}";
+                violin5.pause();
+            }
+        }
+
+        /*  FLUTE */
+        var flute1 = document.getElementById("flute-1");
+        var flute1PP = document.getElementById("flute-1PP"); /*play-paused*/
+        function playFlute1() {
+            if(flute1.paused) {
+                flute1PP.src = "{% static 'icon/music-pause.png' %}";
+                flute1.play();
+                
+            } else {
+                flute1PP.src = "{% static 'icon/music-play.png' %}";
+                flute1.pause();
+            }
+        }
+        var flute2 = document.getElementById("flute-2");
+        var flute2PP = document.getElementById("flute-2PP"); /*play-paused*/
+        function playFlute2() {
+            if(flute2.paused) {
+                flute2PP.src = "{% static 'icon/music-pause.png' %}";
+                flute2.play();
+                
+            } else {
+                flute2PP.src = "{% static 'icon/music-play.png' %}";
+                flute2.pause();
+            }
+        }
+        var flute3 = document.getElementById("flute-3");
+        var flute3PP = document.getElementById("flute-3PP"); /*play-paused*/
+        function playFlute3() {
+            if(flute3.paused) {
+                flute3PP.src = "{% static 'icon/music-pause.png' %}";
+                flute3.play();
+                
+            } else {
+                flute3PP.src = "{% static 'icon/music-play.png' %}";
+                flute3.pause();
+            }
+        }
+        var flute4 = document.getElementById("flute-4");
+        var flute4PP = document.getElementById("flute-4PP"); /*play-paused*/
+        function playFlute4() {
+            if(flute4.paused) {
+                flute4PP.src = "{% static 'icon/music-pause.png' %}";
+                flute4.play();
+                
+            } else {
+                flute4PP.src = "{% static 'icon/music-play.png' %}";
+                flute4.pause();
+            }
+        }
+        var flute5 = document.getElementById("flute-5");
+        var flute5PP = document.getElementById("flute-5PP"); /*play-paused*/
+        function playFlute5() {
+            if(flute5.paused) {
+                flute5PP.src = "{% static 'icon/music-pause.png' %}";
+                flute5.play();
+                
+            } else {
+                flute5PP.src = "{% static 'icon/music-play.png' %}";
+                flute5.pause();
+            }
+        }
+
+        /*  HARP */
+        var harp1 = document.getElementById("harp-1");
+        var harp1PP = document.getElementById("harp-1PP"); /*play-paused*/
+        function playHarp1() {
+            if(harp1.paused) {
+                harp1PP.src = "{% static 'icon/music-pause.png' %}";
+                harp1.play();
+                
+            } else {
+                harp1PP.src = "{% static 'icon/music-play.png' %}";
+                harp1.pause();
+            }
+        }
+        var harp2 = document.getElementById("harp-2");
+        var harp2PP = document.getElementById("harp-2PP"); /*play-paused*/
+        function playHarp2() {
+            if(harp2.paused) {
+                harp2PP.src = "{% static 'icon/music-pause.png' %}";
+                harp2.play();
+                
+            } else {
+                harp2PP.src = "{% static 'icon/music-play.png' %}";
+                harp2.pause();
+            }
+        }
+        var harp3 = document.getElementById("harp-3");
+        var harp3PP = document.getElementById("harp-3PP"); /*play-paused*/
+        function playHarp3() {
+            if(harp3.paused) {
+                harp3PP.src = "{% static 'icon/music-pause.png' %}";
+                harp3.play();
+                
+            } else {
+                harp3PP.src = "{% static 'icon/music-play.png' %}";
+                harp3.pause();
+            }
+        }
+        var harp4 = document.getElementById("harp-4");
+        var harp4PP = document.getElementById("harp-4PP"); /*play-paused*/
+        function playHarp4() {
+            if(harp4.paused) {
+                harp4PP.src = "{% static 'icon/music-pause.png' %}";
+                harp4.play();
+                
+            } else {
+                harp4PP.src = "{% static 'icon/music-play.png' %}";
+                harp4.pause();
+            }
+        }
+        var harp5 = document.getElementById("harp-5");
+        var harp5PP = document.getElementById("harp-5PP"); /*play-paused*/
+        function playHarp5() {
+            if(harp5.paused) {
+                harp5PP.src = "{% static 'icon/music-pause.png' %}";
+                harp5.play();
+                
+            } else {
+                harp5PP.src = "{% static 'icon/music-play.png' %}";
+                harp5.pause();
+            }
+        }
+
+
+
+        /* ambience volume */
+        let oceanWave_recent_volume = document.querySelectorAll('#volume')[0];
+        let windyBeach_recent_volume = document.querySelectorAll('#volume')[1];
+
+        function oceanWave_volume_change() {
+            oceanWave.volume = oceanWave_recent_volume.value / 100;
+        }
+        function windyBeach_volume_change() {
+            windyBeach.volume = windyBeach_recent_volume.value / 100;
+        }
+
+        /* melody volume */
+        let piano1_recent_volume = document.querySelectorAll('#volume')[2];
+        let piano2_recent_volume = document.querySelectorAll('#volume')[3];
+        let piano3_recent_volume = document.querySelectorAll('#volume')[4];
+        let piano4_recent_volume = document.querySelectorAll('#volume')[5];
+        let piano5_recent_volume = document.querySelectorAll('#volume')[6];
+
+        function piano1_volume_change() {
+            piano1.volume = piano1_recent_volume.value / 100;
+        }
+        function piano2_volume_change() {
+            piano2.volume = piano2_recent_volume.value / 100;
+        }
+        function piano3_volume_change() {
+            piano3.volume = piano3_recent_volume.value / 100;
+        }
+        function piano4_volume_change() {
+            piano4.volume = piano4_recent_volume.value / 100;
+        }
+        function piano5_volume_change() {
+            piano5.volume = piano5_recent_volume.value / 100;
+        }
+
+        let violin1_recent_volume = document.querySelectorAll('#volume')[7];
+        let violin2_recent_volume = document.querySelectorAll('#volume')[8];
+        let violin3_recent_volume = document.querySelectorAll('#volume')[9];
+        let violin4_recent_volume = document.querySelectorAll('#volume')[10];
+        let violin5_recent_volume = document.querySelectorAll('#volume')[11];
+
+        function violin1_volume_change() {
+            violin1.volume = violin1_recent_volume.value / 100;
+        }
+        function violin2_volume_change() {
+            violin2.volume = violin2_recent_volume.value / 100;
+        }
+        function violin3_volume_change() {
+            violin3.volume = violin3_recent_volume.value / 100;
+        }
+        function violin4_volume_change() {
+            violin4.volume = violin4_recent_volume.value / 100;
+        }
+        function violin5_volume_change() {
+            violin5.volume = violin5_recent_volume.value / 100;
+        }
+
+        let flute1_recent_volume = document.querySelectorAll('#volume')[12];
+        let flute2_recent_volume = document.querySelectorAll('#volume')[13];
+        let flute3_recent_volume = document.querySelectorAll('#volume')[14];
+        let flute4_recent_volume = document.querySelectorAll('#volume')[15];
+        let flute5_recent_volume = document.querySelectorAll('#volume')[16];
+
+        function flute1_volume_change() {
+            flute1.volume = flute1_recent_volume.value / 100;
+        }
+        function flute2_volume_change() {
+            flute2.volume = flute2_recent_volume.value / 100;
+        }
+        function flute3_volume_change() {
+            flute3.volume = flute3_recent_volume.value / 100;
+        }
+        function flute4_volume_change() {
+            flute4.volume = flute4_recent_volume.value / 100;
+        }
+        function flute5_volume_change() {
+            flute5.volume = flute5_recent_volume.value / 100;
+        }
+
+        let harp1_recent_volume = document.querySelectorAll('#volume')[17];
+        let harp2_recent_volume = document.querySelectorAll('#volume')[18];
+        let harp3_recent_volume = document.querySelectorAll('#volume')[19];
+        let harp4_recent_volume = document.querySelectorAll('#volume')[20];
+        let harp5_recent_volume = document.querySelectorAll('#volume')[21];
+
+        function harp1_volume_change() {
+            harp1.volume = harp1_recent_volume.value / 100;
+        }
+        function harp2_volume_change() {
+            harp2.volume = harp2_recent_volume.value / 100;
+        }
+        function harp3_volume_change() {
+            harp3.volume = harp3_recent_volume.value / 100;
+        }
+        function harp4_volume_change() {
+            harp4.volume = harp4_recent_volume.value / 100;
+        }
+        function harp5_volume_change() {
+            harp5.volume = harp5_recent_volume.value / 100;
+        }
+    </script>
+{% endblock soundContent %}

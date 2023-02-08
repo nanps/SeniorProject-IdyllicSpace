@@ -91,9 +91,9 @@ body {
     
     position: absolute;
     width: 263px;
-    height: 92vh;
+    height: 94vh;
     left: 0px;
-    top: 64px;
+    top: 60px;
 
     background: #FAF4F0;
 }
@@ -103,7 +103,17 @@ body {
     width: 30px;
     height: 30px;
     left: 21px;
-    margin-top: 83vh;
+    margin-top: 85vh;
+    cursor: pointer;
+}
+.spaceBtn {
+    display: none;
+
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 21px;
+    margin-top: 85vh;
     cursor: pointer;
 }
 .soundTxt {
@@ -111,7 +121,7 @@ body {
     width: 41px;
     height: 22px;
     left: 17px;
-    margin-top: 87vh;
+    margin-top: 89vh;
     text-align: center;
 
     font-family: 'Patrick Hand SC';
@@ -127,7 +137,7 @@ body {
     width: 30px;
     height: 30px;
     left: 85px;
-    margin-top: 83vh;
+    margin-top: 85vh;
     cursor: pointer;
 }
 .unmuteBtn {
@@ -137,7 +147,7 @@ body {
     width: 30px;
     height: 30px;
     left: 85px;
-    margin-top: 83vh;
+    margin-top: 85vh;
     cursor: pointer;
 }
 .muteTxt {
@@ -145,7 +155,7 @@ body {
     width: 43px;
     height: 22px;
     left: 79px;
-    margin-top: 87vh;
+    margin-top: 89vh;
 
     text-align: center;
     font-family: 'Patrick Hand SC';
@@ -161,7 +171,7 @@ body {
     width: 30px;
     height: 30px;
     left: 148px;
-    margin-top: 83vh;
+    margin-top: 85vh;
     cursor: pointer;
 }
 .undeafenBtn {
@@ -171,7 +181,7 @@ body {
     width: 30px;
     height: 30px;
     left: 148px;
-    margin-top: 83vh;
+    margin-top: 85vh;
     cursor: pointer;
 }
 .deafenTxt {
@@ -179,7 +189,7 @@ body {
     width: 54px;
     height: 22px;
     left: 137px;
-    margin-top: 87vh;
+    margin-top: 89vh;
 
     text-align: center;
     font-family: 'Patrick Hand SC';
@@ -193,7 +203,7 @@ body {
     width: 30px;
     height: 30px;
     left: 210px;
-    margin-top: 83vh;
+    margin-top: 85vh;
     cursor: pointer;
 }
 .leaveTxt {
@@ -201,7 +211,7 @@ body {
     width: 32px;
     height: 22px;    
     left: 211px;
-    margin-top: 87vh;
+    margin-top: 89vh;
 
     text-align: center;
     font-family: 'Patrick Hand SC';
@@ -216,25 +226,10 @@ body {
     
     position: absolute;
     width: 253px;
-    height: 638px;
+    height: 820px;
     left: 0px;
     top: 28px;
 
     overflow-y: scroll;
     overflow-x: hidden;
-}
-
-.ambienceTxt {
-    position: absolute;
-    width: 147px;
-    height: 35px;
-    left: 33px;
-    top: 7px;
-
-    font-family: 'Patrick Hand SC';
-    font-style: normal;
-    font-size: 26px;
-    line-height: 35px;
-    
-    color: #606060;
 }

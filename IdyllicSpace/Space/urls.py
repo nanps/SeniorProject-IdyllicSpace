@@ -29,4 +29,10 @@ urlpatterns = [
     path('cafe', views.Cafe_Rooms, name='cafe_rooms'),
     path('library', views.Library_Rooms, name='library_rooms'),
     path('beach', views.Beach_Rooms, name='beach_rooms'),
+
+    path('classroomSpace', views.Classroom_Space, name='classroomSpace'),
+    path('forestSpace', views.Forest_Space, name='forestSpace'),
+    path('cafeSpace', views.Cafe_Space, name='cafeSpace'),
+    path('librarySpace', views.Library_Space, name='librarySpace'),
+    path('beachSpace', views.Beach_Space, name='beachSpace'),
 ]
