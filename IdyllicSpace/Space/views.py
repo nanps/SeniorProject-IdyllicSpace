@@ -22,13 +22,13 @@ def home(request) :
 
 
 def space(request) :
-    # usernameInput = request.user
+    usernameInput = request.user
 
-    # userData = UserManage.objects.get(username=usernameInput)
-    # user = User.objects.get(username=usernameInput)
+    userData = UserManage.objects.get(username=usernameInput)
+    user = User.objects.get(username=usernameInput)
 
-    # return render(request, 'space.html', {'userData':userData,'user':user} )
-    return render(request, 'space.html')
+    return render(request, 'space.html', {'userData':userData,'user':user} )
+    # return render(request, 'space.html')
 
 
 def chatRoomTest(request) :
