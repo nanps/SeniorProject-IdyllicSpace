@@ -296,3 +296,68 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+/* ------------- other's profile content ------------- */
+.profileBox {
+    /* display: none; */
+
+    position: absolute;
+    width: 580px;
+    height: 318px;
+    left: 35%;
+    top: 33%;
+    
+    background: #FAF4F0;
+    border: 3px solid #B8A195;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.profileBoxHeader {
+    position: absolute;
+    width: 580px;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+
+    background: #E5C6A9;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.profileCloseBtn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 535px;
+    top: 8px;
+
+    cursor: pointer;
+}
+.profileBoxHeaderTxt {
+    position: absolute;
+    width: 118px;
+    height: 38px;
+    left: 240px;
+    top: 4px;
+    
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 28px;
+    line-height: 38px;
+    color: #FFFFFF;
+}
+.profileBioValue {
+    position: absolute;
+    width: 199px;
+    height: 72px;
+    left: 306px;
+    top: 150px;
+    
+    background: #FFFFFF;
+    border-radius: 10px;
+
+    font-family: 'Patrick Hand';
+    font-style: normal;
+    font-size: 24px;
+    color: #B8A195;
+    text-align: center;
+}

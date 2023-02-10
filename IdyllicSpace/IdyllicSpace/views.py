@@ -7,6 +7,14 @@ from django.contrib.auth.models import User
 
 
 def logIn(request) :    
+    # if request.method == 'POST':
+
+    #     form = LogInForm(request.POST)
+        # if form.is_valid() :
+            
+        # else :
+        #     messages.info(request, 'Please try again.')
+
     return render(request, 'logIn.html')
 
 def createAcc(request) :

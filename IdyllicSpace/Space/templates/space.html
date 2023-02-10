@@ -87,7 +87,7 @@
 
         <div class="avatarValue" id="avatarValue">{{ userData.avatar }}</div>
         
-        <!-- my profile content -->
+        <!-- avatar -->
             <img class="avatarIcon" id="ENTJ_male_Icon" src="{% static 'avatar/ENTJ_male.png' %}"/>
             <img class="avatarIcon" id="ENTJ_female_Icon" src="{% static 'avatar/ENTJ_female.png' %}"/>
             <img class="avatarIcon" id="ENTP_male_Icon" src="{% static 'avatar/ENTP_male.png' %}"/>
@@ -120,7 +120,7 @@
             <img class="avatarIcon" id="ISTP_female_Icon" src="{% static 'avatar/ISTP_female.png' %}"/>
             <img class="avatarIcon" id="ISFP_male_Icon" src="{% static 'avatar/ISFP_male.png' %}"/>
             <img class="avatarIcon" id="ISFP_female_Icon" src="{% static 'avatar/ISFP_female.png' %}"/>
-        <!-- my profile content -->
+        <!-- avatar -->
 
         <button class="editAvatarBtn" id="editAvatarBtn">edit avatar</button>
 
@@ -248,6 +248,61 @@
         <button class="cancelBtn" id="cancelBtn">Cancel</button>
     </div>
     <!-- end of log out box -->
+
+
+
+    <!-- other's profile box -->
+    <div class="profileBox" id="profileBox">
+        <div class="profileBoxHeader">
+            <div class="profileBoxHeaderTxt">PROFILE</div>
+            <img class="profileCloseBtn" id="profileCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+        </div>
+
+        <div class="avatarValue" id="profileAvatarValue">{{ userData.avatar }}</div>
+        
+        <!-- avatar -->
+            <img class="avatarIcon" id="ENTJ_male_Icon" src="{% static 'avatar/ENTJ_male.png' %}"/>
+            <img class="avatarIcon" id="ENTJ_female_Icon" src="{% static 'avatar/ENTJ_female.png' %}"/>
+            <img class="avatarIcon" id="ENTP_male_Icon" src="{% static 'avatar/ENTP_male.png' %}"/>
+            <img class="avatarIcon" id="ENTP_female_Icon" src="{% static 'avatar/ENTP_female.png' %}"/>
+            <img class="avatarIcon" id="ENFJ_male_Icon" src="{% static 'avatar/ENFJ_male.png' %}"/>
+            <img class="avatarIcon" id="ENFJ_female_Icon" src="{% static 'avatar/ENFJ_female.png' %}"/>
+            <img class="avatarIcon" id="ENFP_male_Icon" src="{% static 'avatar/ENFP_male.png' %}"/>
+            <img class="avatarIcon" id="ENFP_female_Icon" src="{% static 'avatar/ENFP_female.png' %}"/>
+            <img class="avatarIcon" id="ESTJ_male_Icon" src="{% static 'avatar/ESTJ_male.png' %}"/>
+            <img class="avatarIcon" id="ESTJ_female_Icon" src="{% static 'avatar/ESTJ_female.png' %}"/>
+            <img class="avatarIcon" id="ESFJ_male_Icon" src="{% static 'avatar/ESFJ_male.png' %}"/>
+            <img class="avatarIcon" id="ESFJ_female_Icon" src="{% static 'avatar/ESFJ_female.png' %}"/>
+            <img class="avatarIcon" id="ESTP_male_Icon" src="{% static 'avatar/ESTP_male.png' %}"/>
+            <img class="avatarIcon" id="ESTP_female_Icon" src="{% static 'avatar/ESTP_female.png' %}"/>
+            <img class="avatarIcon" id="ESFP_male_Icon" src="{% static 'avatar/ESFP_male.png' %}"/>
+            <img class="avatarIcon" id="ESFP_female_Icon" src="{% static 'avatar/ESFP_female.png' %}"/>
+            <img class="avatarIcon" id="INTJ_male_Icon" src="{% static 'avatar/INTJ_male.png' %}"/>
+            <img class="avatarIcon" id="INTJ_female_Icon" src="{% static 'avatar/INTJ_female.png' %}"/>
+            <img class="avatarIcon" id="INTP_male_Icon" src="{% static 'avatar/INTP_male.png' %}"/>
+            <img class="avatarIcon" id="INTP_female_Icon" src="{% static 'avatar/INTP_female.png' %}"/>
+            <img class="avatarIcon" id="INFJ_male_Icon" src="{% static 'avatar/INFJ_male.png' %}"/>
+            <img class="avatarIcon" id="INFJ_female_Icon" src="{% static 'avatar/INFJ_female.png' %}"/>
+            <img class="avatarIcon" id="INFP_male_Icon" src="{% static 'avatar/INFP_male.png' %}"/>
+            <img class="avatarIcon" id="INFP_female_Icon" src="{% static 'avatar/INFP_female.png' %}"/>
+            <img class="avatarIcon" id="ISTJ_male_Icon" src="{% static 'avatar/ISTJ_male.png' %}"/>
+            <img class="avatarIcon" id="ISTJ_female_Icon" src="{% static 'avatar/ISTJ_female.png' %}"/>
+            <img class="avatarIcon" id="ISFJ_male_Icon" src="{% static 'avatar/ISFJ_male.png' %}"/>
+            <img class="avatarIcon" id="ISFJ_female_Icon" src="{% static 'avatar/ISFJ_female.png' %}"/>
+            <img class="avatarIcon" id="ISTP_male_Icon" src="{% static 'avatar/ISTP_male.png' %}"/>
+            <img class="avatarIcon" id="ISTP_female_Icon" src="{% static 'avatar/ISTP_female.png' %}"/>
+            <img class="avatarIcon" id="ISFP_male_Icon" src="{% static 'avatar/ISFP_male.png' %}"/>
+            <img class="avatarIcon" id="ISFP_female_Icon" src="{% static 'avatar/ISFP_female.png' %}"/>
+        <!-- avatar -->
+
+        <div class="nameTxt">name</div>
+        <div class="displayNameValue" id="profileDisplayNameValue">{{ userData.displayName }}</div>
+
+        <div class="bioTxt">bio</div>
+        <div class="profileBioValue" id="profileBioValue">{{ userData.bio }}</div>
+
+    </div>
+    <!-- end of other's profile box -->
 
 
 
