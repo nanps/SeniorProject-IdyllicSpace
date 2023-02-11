@@ -1,21 +1,23 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
 
 
 def logIn(request) :    
-    # if request.method == 'POST':
+    if request.method == 'POST':
+        usernameNEW = request.POST['username']
+        passwordNEW = request.POST['password']
+        user = authenticate(request, username=usernameNEW, password=passwordNEW)
+        if user is not None :
+            login(request, user)
+        else :
+            messages.info(request, 'Please try again.')
 
-    #     form = LogInForm(request.POST)
-        # if form.is_valid() :
-            
-        # else :
-        #     messages.info(request, 'Please try again.')
-
-    return render(request, 'logIn.html')
+    else :
+        return render(request, 'logIn.html')
 
 def createAcc(request) :
     if request.method == 'POST':
@@ -27,11 +29,6 @@ def createAcc(request) :
 
         form = SignUpForm(request.POST)
         if form.is_valid():
-
-            user = form.save()
-
-            login(request, user)
-
             return render(request, 'signUpSuccess.html')
         else:
             if User.objects.filter(email=emailNEW).exists():
