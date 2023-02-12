@@ -31,16 +31,6 @@ def space(request) :
     # return render(request, 'space.html')
 
 
-def chatRoomTest(request) :
-    return render(request, 'chatRoomTest.html')
-
-# def chatRoomSlugTest(request, slug) :
-#     room = Room.objects.get(slug=slug)
-#     messages = Message.objects.filter(room=room)[0:25]
-
-#     return render(request, 'chatRoomTest.html', {'room': room, 'messages': messages})
-
-
 def enterDisplayName(request) :
 
     usernameInput = request.user
@@ -296,32 +286,38 @@ def Beach_Rooms(request):
 
 
 
+
 # --------------- CLASSROOM (SPACE) ---------------
 # @login_required
-def Classroom_Space(request):
+def Classroom_Space(request, slug):
+    room = SpaceRoom.objects.get(slug=slug)
 
-    return render(request, 'classroom_space.html')
+    return render(request, 'classroom_space.html', {'room': room})
 
 # --------------- FOREST (SPACE) ---------------
 # @login_required
-def Forest_Space(request):
+def Forest_Space(request, slug):
+    room = SpaceRoom.objects.get(slug=slug)
 
-    return render(request, 'forest_space.html')
+    return render(request, 'forest_space.html', {'room': room})
 
 # --------------- CAFE (SPACE) ---------------
 # @login_required
-def Cafe_Space(request):
+def Cafe_Space(request, slug):
+    room = SpaceRoom.objects.get(slug=slug)
 
-    return render(request, 'cafe_space.html')
+    return render(request, 'cafe_space.html', {'room': room})
 
 # --------------- LIBRARY (SPACE) ---------------
 # @login_required
-def Library_Space(request):
+def Library_Space(request, slug):
+    room = SpaceRoom.objects.get(slug=slug)
 
-    return render(request, 'library_space.html')
+    return render(request, 'library_space.html', {'room': room})
 
 # --------------- BEACH (SPACE) ---------------
 # @login_required
-def Beach_Space(request):
+def Beach_Space(request, slug):
+    room = SpaceRoom.objects.get(slug=slug)
 
-    return render(request, 'beach_space.html')
+    return render(request, 'beach_space.html', {'room': room})

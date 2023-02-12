@@ -78,8 +78,5 @@ def mapCreate(request) :
 def mapJoin(request) :
     return render(request, 'mapJoin.html')
 
-def musicTest(request) :
-    return render(request, 'musicTest.html')
-
 def statusLogIn(request) :
     return render(request, 'statusLogIn.html')

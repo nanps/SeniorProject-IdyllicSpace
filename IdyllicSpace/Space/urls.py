@@ -13,9 +13,6 @@ urlpatterns = [
     path('femaleAvatar/', views.femaleAvatar, name='femaleAvatar'),
     path('mysteryAvatar/', views.mysteryAvatar, name='mysteryAvatar'),
 
-    path('space/', views.space, name='space'),
-    path('<slug:slug>/', views.chatRoomTest, name='chatRoomTest'),
-
     path('create', views.mapCreate, name='create'),
     
     path('createClassroom', views.Classroom_Create, name='createClassroom'),
@@ -30,9 +27,11 @@ urlpatterns = [
     path('library', views.Library_Rooms, name='library_rooms'),
     path('beach', views.Beach_Rooms, name='beach_rooms'),
 
-    path('classroomSpace', views.Classroom_Space, name='classroomSpace'),
-    path('forestSpace', views.Forest_Space, name='forestSpace'),
-    path('cafeSpace', views.Cafe_Space, name='cafeSpace'),
-    path('librarySpace', views.Library_Space, name='librarySpace'),
-    path('beachSpace', views.Beach_Space, name='beachSpace'),
+    path('space/', views.space, name='space'),
+
+    path('<slug:slug>/', views.Classroom_Space, name='classroomSpace'),
+    path('<slug:slug>/', views.Forest_Space, name='forestSpace'),
+    path('<slug:slug>/', views.Cafe_Space, name='cafeSpace'),
+    path('<slug:slug>/', views.Library_Space, name='librarySpace'),
+    path('<slug:slug>/', views.Beach_Space, name='beachSpace'),
 ]

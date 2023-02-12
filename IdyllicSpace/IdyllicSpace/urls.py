@@ -43,15 +43,10 @@ urlpatterns = [
         # /Space/space
         # /Space/chatRoomTest
 
-        # /Space/classroomSpace
-        # /Space/forestSpace
-        # /Space/cafeSpace
-        # /Space/librarySpace
-        # /Space/beachSpace
+        # /Space/<slug:slug>/      url for open Space Room
 
     path('enterCode/', views.enterCode, name='enterCode'),
     path('enterSpace/', views.enterSpace, name='enterSpace'),
-    path('musicTest/', views.musicTest, name='musicTest'),
     path('statusLogIn/', views.statusLogIn, name='statusLogIn'),
 
     path('mapJoin/', views.mapJoin, name='mapJoin'),

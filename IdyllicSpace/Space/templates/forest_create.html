@@ -29,12 +29,14 @@
                     <input class="location" id="locate" name="location"></input>
 
                     <div class="nameText">name</div>
-                    <input class="inputNAME" type="text" id="spaceName" name="roomName" placeholder="Enter New Space's Name"></input>
+                    <input class="inputNAME" type="text" id="spaceName" name="roomName" onclick="createSlug()" placeholder="Enter New Space's Name"></input>
+
+                    <input class="slugInput" id="slugInput" name="slug"></input>
 
                     <div class="capacityText">capacity</div>
                     
                     <div class="dropdown"> 
-                        <select class="selectCAPAC" name="capacity">
+                        <select class="selectCAPAC" name="capacity" onclick="createSlug()">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -51,7 +53,7 @@
                     <div class="capacityMax">maximum of 10</div>
 
                     <div class="descriptionText">description</div>
-                    <textarea class="inputDESC" rows="2" type="text" id="description" name="description" placeholder="Enter Space's Description"></textarea>
+                    <textarea class="inputDESC" rows="2" type="text" id="description" name="description" onclick="createSlug()" placeholder="Enter Space's Description"></textarea>
             
                     <button class="createRoomButton" type="submit">
                         <div class="textCreate">create</div>
@@ -75,18 +77,30 @@
     </body>
 
     <script>
-        {% comment %}--- close popup ---{% endcomment %}
+        /*--- close popup ---*/
         var span = document.getElementById("close");
 
         span.onclick = function() {
             window.location.pathname = "mapCreate/create";
         }
 
-        {% comment %}--- set location ---{% endcomment %}
+        /*--- set location ---*/
         var locateInput = document.getElementById("locate");
 
         window.onload = function() {
             locateInput.value = "Forest";
+        }
+
+        /*--- slug ---*/
+        function getRandomNum(max) {
+            return (Math.floor(Math.random() * max)).toString();
+        }
+
+        var room_name = document.getElementById("spaceName");
+        var slug = document.getElementById("slugInput");
+
+        function createSlug() {
+            slug.value = room_name.value.replace(/\s/g, '') + locateInput.value + getRandomNum(500);
         }
     </script>
 
@@ -97,6 +111,10 @@
     @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
     .location {
+        display: none;
+    }
+    
+    .slugInput {
         display: none;
     }
 

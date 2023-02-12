@@ -31,7 +31,10 @@
                                 <div class="userAmount">0/10</div>
                                 <div class="roomName">{{ room.roomName }}</div>
                                 <div class="roomDescription">{{ room.description }}</div>
-                                <button class="joinBtn">JOIN</button>
+
+                                <input class="slugInput" id="slugInput" value="{{ room.slug }}" name="roomSlug"></input>
+                                <button class="joinBtn" id="joinBtn">JOIN</button>
+
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -44,13 +47,33 @@
     </body>
 
     <script>
-        {% comment %}--- close popup ---{% endcomment %}
+        /*--- close popup ---*/
         var span = document.getElementById("close");
 
         span.onclick = function() {
             window.location.pathname = "mapJoin";
         }
 
+        /*--- slug ---*/
+        let slugInputArray = document.querySelectorAll('#slugInput');
+        let joinButtonArray = document.querySelectorAll('#joinBtn');
+
+        const slugArray = [];
+        const pathArray = [];
+
+        for (let i = 0; i < slugInputArray.length; i++) {
+            var index = slugArray.length;
+            slugArray[index] = slugInputArray[i].value;
+        
+            var path_url = "Space/" + slugInputArray[i].value;
+            pathArray[index] = path_url;
+        }
+
+        for (let i = 0; i < joinButtonArray.length; i++) {
+            joinButtonArray[i].addEventListener("click", function() {
+                window.location.pathname = pathArray[i];
+            });
+        }
     </script>
 
 </html>
@@ -206,6 +229,10 @@
         color: #FFFFFF;
     }.joinBtn:hover {
         background-color: #b0c4de;
+    }
+
+    .slugInput {
+        display: none;
     }
 </style>
 {% endblock contentRooms %}
