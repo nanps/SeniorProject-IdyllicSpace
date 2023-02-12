@@ -43,7 +43,11 @@ urlpatterns = [
         # /Space/space
         # /Space/chatRoomTest
 
-        # /Space/<slug:slug>/      url for open Space Room
+        # /Space/Classroom/<slug:slug>/      url for open Space Room
+        # /Space/Forest/<slug:slug>/ 
+        # /Space/Cafe/<slug:slug>/ 
+        # /Space/Library/<slug:slug>/ 
+        # /Space/Beach/<slug:slug>/ 
 
     path('enterCode/', views.enterCode, name='enterCode'),
     path('enterSpace/', views.enterSpace, name='enterSpace'),

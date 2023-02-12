@@ -29,9 +29,9 @@ urlpatterns = [
 
     path('space/', views.space, name='space'),
 
-    path('<slug:slug>/', views.Classroom_Space, name='classroomSpace'),
-    path('<slug:slug>/', views.Forest_Space, name='forestSpace'),
-    path('<slug:slug>/', views.Cafe_Space, name='cafeSpace'),
-    path('<slug:slug>/', views.Library_Space, name='librarySpace'),
-    path('<slug:slug>/', views.Beach_Space, name='beachSpace'),
+    path('Classroom/<slug:slug>/', views.Classroom_Space, name='classroomSpace'),
+    path('Forest/<slug:slug>/', views.Forest_Space, name='forestSpace'),
+    path('Cafe/<slug:slug>/', views.Cafe_Space, name='cafeSpace'),
+    path('Library/<slug:slug>/', views.Library_Space, name='librarySpace'),
+    path('Beach/<slug:slug>/', views.Beach_Space, name='beachSpace'),
 ]
