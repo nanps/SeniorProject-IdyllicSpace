@@ -168,6 +168,7 @@ def Classroom_Create(request) :
         if form.is_valid():
 
             form.save()
+            return redirect('classroom_rooms')
 
         else :
             messages.info(request, "Space Name cannot be blank.")
@@ -184,6 +185,7 @@ def Forest_Create(request) :
         if form.is_valid():
 
             form.save()
+            return redirect('forest_rooms')
 
         else :
             messages.info(request, "Space Name cannot be blank.")
@@ -200,6 +202,7 @@ def Cafe_Create(request) :
         if form.is_valid():
 
             form.save()
+            return redirect('cafe_rooms')
 
         else :
             messages.info(request, "Space Name cannot be blank.")
@@ -216,6 +219,7 @@ def Library_Create(request) :
         if form.is_valid():
 
             form.save()
+            return redirect('library_rooms')
 
         else :
             messages.info(request, "Space Name cannot be blank.")
@@ -232,6 +236,7 @@ def Beach_Create(request) :
         if form.is_valid():
 
             form.save()
+            return redirect('beach_rooms')
 
         else :
             messages.info(request, "Space Name cannot be blank.")

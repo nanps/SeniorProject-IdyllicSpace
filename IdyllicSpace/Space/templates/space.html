@@ -50,7 +50,7 @@
         <img class="undeafenBtn" id="undeafenBtn" src="{% static 'icon/headphone.png' %}" onclick="deafenFunction()"/>
         <div class="deafenTxt" id="deafenTxt">undeafen</div>
 
-        <img class="leaveBtn" id="leaveBtn" src="{% static 'icon/back.png' %}"/>
+        <img class="leaveBtn" id="leaveBtn" onclick="leaveRoom()" src="{% static 'icon/back.png' %}"/>
         <div class="leaveTxt">leave</div>
     </div>
     <!-- end of burgerbar -->
@@ -580,6 +580,13 @@
                 undeafenBtn.style.display = "none";
                 deafenTxt.innerHTML = "undeafen";
             }
+        }
+
+        // ----------- leaveBtn -----------
+        var leaveBtn = document.getElementById("leaveBtn");
+
+        function leaveRoom() {
+            window.location.pathname = "enterSpace/";
         }
 
         // ----------- right top menu -----------
