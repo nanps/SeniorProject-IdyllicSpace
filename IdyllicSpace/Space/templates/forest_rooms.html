@@ -28,7 +28,7 @@
                     {% for room in rooms %}
                         {% if room.location == "Forest" %}
                             <div class="roomBox">
-                                <div class="userAmount">0/10</div>
+                                <div class="userAmount">0/{{ room.capacity }}</div>
                                 <div class="roomName">{{ room.roomName }}</div>
                                 <div class="roomDescription">{{ room.description }}</div>
 
