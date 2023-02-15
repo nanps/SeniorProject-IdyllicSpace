@@ -9,53 +9,60 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
-    <body style="background-color:#FAF4F0;">
+    <div id="welcome">
+        <img class="welcomeTxt" src="{% static 'logo/IMG_2163.png' %}"/>
+        <img class="webLogo" src="{% static 'logo/IMG_2157.png' %}"/>
+    </div>
+
+    <div class="pageContainer" id="pageContainer">
+        <body style="background-color:#FAF4F0;">
+            
+            <button class="buttonToLogIn" type="button" onclick="changePageLogIn()">Log In</button>
+            <button class="buttonToCreateAcc" type="button" onclick="changePageCreateAcc()">Create account</button>
+            <div class="line"></div>
+
+            <div class="underline"></div>
+
+            <div class="instruction">Log in with your account</div>
         
-        <button class="buttonToLogIn" type="button" onclick="changePageLogIn()">Log In</button>
-        <button class="buttonToCreateAcc" type="button" onclick="changePageCreateAcc()">Create account</button>
-        <div class="line"></div>
-
-        <div class="underline"></div>
-
-        <div class="instruction">Log in with your account</div>
-    
-        <form method="POST">
-            {% csrf_token %}
-    
-            <input class="inputUSR" type="text" id="username" name="username" placeholder="USERNAME"></input>
-            <input class="inputPW" type="password" id="password" name="password" placeholder="PASSWORD"></input>
-    
-            <button class="button" type="submit">Log in</button>
-    
-        </form>
+            <form method="POST">
+                {% csrf_token %}
         
-        <div class="forgotPW" onclick="changePageForgotPass()">Forgot your password?</div>
+                <input class="inputUSR" type="text" id="username" name="username" placeholder="USERNAME"></input>
+                <input class="inputPW" type="password" id="password" name="password" placeholder="PASSWORD"></input>
+        
+                <button class="button" type="submit">Log in</button>
+        
+            </form>
+            
+            <div class="forgotPW" onclick="changePageForgotPass()">Forgot your password?</div>
 
-        <!------------------------alert-box----------------------------->
-        {% if messages %}
-        <div class="msg">
-            {% for message in messages %}
-                <div {% if message.tags %} class="alert" id="AB" {% endif %}>{{ message }}
-                     
-                    <span class="close-btn" id="closeAlert">
-                        <i class="fa fa-close"></i>
-                    </span>
-                </div>
-            {% endfor %}
-         </div>
-        {% endif %}
-         
-         <script>
-            var span = document.getElementById("closeAlert");
-            var alertBox = document.getElementById("AB");
- 
-            span.onclick = function() {
-                AB.style.display = "none";
-            }
-         </script>
-         <!-------------------------------------------------------------->
+            <!------------------------alert-box----------------------------->
+            {% if messages %}
+            <div class="msg">
+                {% for message in messages %}
+                    <div {% if message.tags %} class="alert" id="AB" {% endif %}>{{ message }}
+                        
+                        <span class="close-btn" id="closeAlert">
+                            <i class="fa fa-close"></i>
+                        </span>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <script>
+                var span = document.getElementById("closeAlert");
+                var alertBox = document.getElementById("AB");
+    
+                span.onclick = function() {
+                    AB.style.display = "none";
+                }
+            </script>
+            <!-------------------------------------------------------------->
 
-    </body>
+        </body>
+    </div>
 
     <script>
         function changePageCreateAcc() {
@@ -69,6 +76,17 @@
         function changePageForgotPass() {
             window.location.pathname = "forgotPassEmail"
         }
+        
+        
+        /*----------- welcoming -----------*/
+        window.addEventListener("load", function() {
+            setTimeout(showPage, 2800);
+        })
+
+        function showPage() {
+            document.getElementById("welcome").style.display = "none";
+            document.getElementById("pageContainer").style.display = "block";
+        }
     </script>
 
 </html>
@@ -76,6 +94,24 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+    .webLogo {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        left: 40.625%;
+        top: 36.2037%;
+    }
+    .welcomeTxt {
+        position: absolute;
+        width: 312px;
+        height: 76px;
+        left: 40.3125%;
+        top: 28.33333%;
+    }
+    .pageContainer {
+        display: none;
+    }
 
     body {
         margin: 0;

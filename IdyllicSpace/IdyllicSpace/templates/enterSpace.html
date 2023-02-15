@@ -3,21 +3,25 @@
 {% load static %}
 
 {% block content %}
+    <img class="preloader" id="preloader" src="{% static 'logo/IMG_2159.gif' %}"/>
 
-    <div class="Head">start or join a space</div>
-    <div class="line"></div>
+    <div class="pageContainer" id="pageContainer">
+        <div class="Head">start or join a space</div>
+        <div class="line"></div>
 
-    <button class="createButton" onclick="goToCreate()">Create New Space</button>
+        <button class="createButton" onclick="goToCreate()">Create New Space</button>
 
-    <button class="joinButton" onclick="goToJoin()">Join a Space</button>
+        <button class="joinButton" onclick="goToJoin()">Join a Space</button>
 
-    <img class="letterIcon" src="{% static 'icon/letter.png' %}"/>
+        <img class="letterIcon" src="{% static 'icon/letter.png' %}"/>
+    </div>
+    
+        {% block contentJoin %}
+        {% endblock contentJoin %}
 
-    {% block contentJoin %}
-    {% endblock contentJoin %}
-
-    {% block contentCreate %}
-    {% endblock contentCreate %}
+        {% block contentCreate %}
+        {% endblock contentCreate %}
+    
 
     <script>
         function goToCreate() {
@@ -27,10 +31,31 @@
         function goToJoin() {
             window.location.pathname = "mapJoin"
         }
+
+        /*----------- loading -----------*/
+        window.addEventListener("load", function() {
+            setTimeout(showPage, 1200);
+        })
+
+        function showPage() {
+            document.getElementById("preloader").style.display = "none";
+            document.getElementById("pageContainer").style.display = "block";
+        }
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
+    .preloader {
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        left: 43.4895833%;
+        top: 38.425925925925924%;
+    }
+    .pageContainer {
+        display: none;
+    }
 
     .Head {
         position: absolute;

@@ -4,25 +4,41 @@
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/createAvatar.css' %}">
 
-    <div class="instruction">Select your Avatar</div>
+    <img class="preloader" id="preloader" src="{% static 'logo/IMG_2159.gif' %}"/>
 
-    <button class="maleButton" type="submit" onclick="selectMale()">
-        <img class="genderIcon" src="{% static 'icon/maleButton.png' %}"/>
-    </button>
+    <div class="pageContainer" id="pageContainer">
+        <div class="instruction">Select your Avatar</div>
 
-    <button class="femaleButton" type="submit" onclick="selectFemale()">
-        <img class="genderIcon" src="{% static 'icon/femaleButton.png' %}"/>
-    </button>
+        <button class="maleButton" type="submit" onclick="selectMale()">
+            <img class="genderIcon" src="{% static 'icon/maleButton.png' %}"/>
+        </button>
 
-    <button class="mysteryButton" type="submit" onclick="selectMystery()">
-        <img class="genderIcon" src="{% static 'icon/Question.png' %}"/>
-    </button>
+        <button class="femaleButton" type="submit" onclick="selectFemale()">
+            <img class="genderIcon" src="{% static 'icon/femaleButton.png' %}"/>
+        </button>
 
-    {% block maleAvatar %}
-    {% endblock maleAvatar%}
+        <button class="mysteryButton" type="submit" onclick="selectMystery()">
+            <img class="genderIcon" src="{% static 'icon/Question.png' %}"/>
+        </button>
 
-    {% block femaleAvatar %}
-    {% endblock femaleAvatar %}
+        {% block maleAvatar %}
+        {% endblock maleAvatar%}
+
+        {% block femaleAvatar %}
+        {% endblock femaleAvatar %}
+    </div>
+
+    <script>
+        /*----------- loading -----------*/
+        window.addEventListener("load", function() {
+            setTimeout(showPage, 1200);
+        })
+
+        function showPage() {
+            document.getElementById("preloader").style.display = "none";
+            document.getElementById("pageContainer").style.display = "block";
+        }
+    </script>
 
     <script>
         function selectMale() {
@@ -47,6 +63,17 @@
             height: 100vh;
         }
 
+        .preloader {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            left: 43.4895833%;
+            top: 38.425925925925924%;
+        }
+        .pageContainer {
+            display: none;
+        }
+        
         .instruction {
             position: absolute;
             width: 233px;
