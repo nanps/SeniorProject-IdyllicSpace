@@ -7,6 +7,10 @@ body {
     height: 100vh;
 }
 
+.slugInput {
+    display: none;
+}
+
 .navbar {
     overflow: hidden;
     margin-top: 0;
@@ -298,8 +302,19 @@ body {
 }
 
 /* ------------- other's profile content ------------- */
+.profileBtn {
+    position: absolute;
+    width: 166px;
+    height: 46px;
+    left: 1400px;
+    top: 113px;
+
+    background: #D9D9D9;
+    border: 0;
+    border-radius: 10px;
+}
 .profileBox {
-    /* display: none; */
+    display: none;
 
     position: absolute;
     width: 580px;

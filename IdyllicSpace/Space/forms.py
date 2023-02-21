@@ -16,3 +16,8 @@ class SpaceRoomForm(ModelForm) :
     class Meta:
         model = SpaceRoom
         fields = '__all__'
+
+class BioForm(ModelForm) :
+    class Meta:
+        model = UserManage
+        fields = ('bio',)

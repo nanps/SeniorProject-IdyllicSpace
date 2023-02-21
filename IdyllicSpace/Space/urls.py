@@ -13,6 +13,10 @@ urlpatterns = [
     path('femaleAvatar/', views.femaleAvatar, name='femaleAvatar'),
     path('mysteryAvatar/', views.mysteryAvatar, name='mysteryAvatar'),
 
+    # path('maleAvatar_edit/', views.maleAvatarEdit, name='maleAvatarEdit'),
+    # path('femaleAvatar_edit/', views.femaleAvatarEdit, name='femaleAvatarEdit'),
+    # path('mysteryAvatar_edit/', views.mysteryAvatarEdit, name='mysteryAvatarEdit'),
+
     path('create', views.mapCreate, name='create'),
     
     path('createClassroom', views.Classroom_Create, name='createClassroom'),

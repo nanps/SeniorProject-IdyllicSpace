@@ -165,6 +165,8 @@
             <img class="editCloseBtn" id="editDisplayNameCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
         </div>
 
+        <input class="slugInput" id="slugInput" value="{{ room.slug }}" name="roomSlug"></input>
+
         <div class="editTxt">Change your display name</div>
 
         <div class="labelTxt">name</div>
@@ -183,11 +185,13 @@
             <img class="editCloseBtn" id="editBioCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
         </div>
 
+        <input class="slugInput" id="slugInput" value="{{ room.slug }}" name="roomSlug"></input>
+
         <div class="editTxt">Change your bio</div>
 
         <div class="labelTxt">bio</div>
 
-        <form method="POST">
+        <form name="BioForm" method="POST">
             {% csrf_token %}
             <input class="inputNewInfo" type="text" id="newBio" name="bio"></input>
             <button class="saveNewInfoBtn" type="submit" id="saveBioBtn">save</button>
@@ -254,6 +258,8 @@
 
 
     <!-- other's profile box -->
+    <button class="profileBtn" id="profileBtn">other's profile</button> <!-- must edit !! -->
+
     <div class="profileBox" id="profileBox">
         <div class="profileBoxHeader">
             <div class="profileBoxHeaderTxt">PROFILE</div>
@@ -512,6 +518,8 @@
 
 
     <script>
+        document.getElementById("timesUpAudio").pause();
+        
         // ----------- Burgerbar -----------
         var Burger = document.getElementById("Burger");
         var BurgerContent = document.getElementById("BurgerContent");
@@ -611,6 +619,7 @@
         var myProfileBoxCloseBtn = document.getElementById("myProfileBoxCloseBtn");
         var myProfileBox = document.getElementById("myProfileBox");
         var myprofileBtn = document.getElementById("myprofileBtn");
+        var saveNameBtn = document.getElementById("saveNameBtn");
 
         function openMyProfileFunction() {
             myProfileBox.style.display = "block";
@@ -623,6 +632,7 @@
 
         myprofileBtn.addEventListener('click', openMyProfileFunction)
         myProfileBoxCloseBtn.addEventListener('click', closeMyProfileFunction)
+        saveNameBtn.addEventListener('click', closeMyProfileFunction)
 
 
         // avatar 
@@ -687,6 +697,16 @@
 
         var newName = document.getElementById("newName");
         newName.value = document.getElementById("displayNameValue").innerHTML;
+
+        /*--- slug ---*/
+        function autoRefresh() {
+            window.location = window.location.href;
+        }
+
+        document.getElementById('saveNameBtn').addEventListener("click", function() {
+            setInterval('autoRefresh()');
+        });
+
         {% comment %} ----------------------------- {% endcomment %}
 
         var editBioBtn = document.getElementById("editBioBtn");
@@ -707,6 +727,11 @@
 
         var newBio = document.getElementById("newBio");
         newBio.value = document.getElementById("bioValue").innerHTML;
+
+        document.getElementById('saveBioBtn').addEventListener("click", function() {
+            setInterval('autoRefresh()');
+        });
+
         {% comment %} ----------------------------- {% endcomment %}
 
         // ----------- setting -----------
@@ -743,6 +768,21 @@
         changePwCloseBtn.addEventListener('click', closeChangePwFunction)
         {% comment %} ----------------------------- {% endcomment %}
 
+        // ----------------------- other's profile --------------------
+        var profileCloseBtn = document.getElementById("profileCloseBtn");
+        var profileBox = document.getElementById("profileBox");
+        var profileBtn = document.getElementById("profileBtn"); //must edit !!!!!
+
+        function openProfileFunction() {
+            profileBox.style.display = "block";
+        }
+
+        function closeProfileFunction() {
+            profileBox.style.display = "none";
+        }
+
+        profileBtn.addEventListener('click', openProfileFunction)
+        profileCloseBtn.addEventListener('click', closeProfileFunction)
 
         // ----------------------- stopwatch and timer -----------------------
         var Stopwatch = document.getElementById("Stopwatch");

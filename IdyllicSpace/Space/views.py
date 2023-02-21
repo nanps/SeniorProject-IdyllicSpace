@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import SpaceRoom, UserManage, Message
 from django.contrib.auth.models import User
-from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm
+from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm
 from django.contrib import messages
 
 
@@ -151,6 +151,8 @@ def mysteryAvatar(request) :
         form = AvatarForm()
 
     return render(request, 'mysteryAvatar.html')
+
+#Edit Avatar
 
 
 # map
@@ -325,4 +327,28 @@ def Library_Space(request, slug):
 def Beach_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
 
-    return render(request, 'beach_space.html', {'room': room})
+    usernameInput = request.user
+
+    userData = UserManage.objects.get(username=usernameInput)
+    user = User.objects.get(username=usernameInput)
+
+    if request.method == 'POST':
+        DNform = DisplayNameForm(request.POST)
+        if DNform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = DNform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['displayName'])
+        #else :
+            #messages.info(request, "Display Name cannot be blank.")
+
+        BIOform = BioForm(request.POST)
+        if BIOform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceBio = BIOform.save(commit=False)
+                instanceBio.username = request.user
+                instanceBio.save(update_fields=['bio'])
+        #else :
+            #messages.info(request, "Display Name cannot be blank.")
+
+    return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user})
