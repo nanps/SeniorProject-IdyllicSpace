@@ -174,7 +174,7 @@
         <form name="DisplayNameForm" method="POST">
             {% csrf_token %}
             <input class="inputNewInfo" type="text" id="newName" name="displayName"></input>
-            <button class="saveNewInfoBtn" type="submit" id="saveNameBtn">save</button>
+            <button class="saveNewInfoBtn" type="submit" id="saveNameBtn" onclick="window.location.reload();">save</button>
         </form>
     </div>
     <!-- end of edit display name content -->
@@ -674,7 +674,7 @@
 
         var editAvatarBtn = document.getElementById("editAvatarBtn")
         function editAvatarFunction() {
-            window.location.pathname = "Space/maleAvatar"
+            window.location.pathname = "Space/maleAvatar_edit"
         }
         editAvatarBtn.addEventListener('click', editAvatarFunction)
         {% comment %} ----------------------------- {% endcomment %}
@@ -698,13 +698,10 @@
         var newName = document.getElementById("newName");
         newName.value = document.getElementById("displayNameValue").innerHTML;
 
-        /*--- slug ---*/
-        function autoRefresh() {
-            window.location = window.location.href;
-        }
-
         document.getElementById('saveNameBtn').addEventListener("click", function() {
-            setInterval('autoRefresh()');
+            setTimeout(function() {
+                window.location.href = window.location;
+             }, 10);
         });
 
         {% comment %} ----------------------------- {% endcomment %}
@@ -729,7 +726,9 @@
         newBio.value = document.getElementById("bioValue").innerHTML;
 
         document.getElementById('saveBioBtn').addEventListener("click", function() {
-            setInterval('autoRefresh()');
+            setTimeout(function() {
+                window.location.href = window.location;
+            }, 10);
         });
 
         {% comment %} ----------------------------- {% endcomment %}

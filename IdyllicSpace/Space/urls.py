@@ -13,9 +13,10 @@ urlpatterns = [
     path('femaleAvatar/', views.femaleAvatar, name='femaleAvatar'),
     path('mysteryAvatar/', views.mysteryAvatar, name='mysteryAvatar'),
 
-    # path('maleAvatar_edit/', views.maleAvatarEdit, name='maleAvatarEdit'),
-    # path('femaleAvatar_edit/', views.femaleAvatarEdit, name='femaleAvatarEdit'),
-    # path('mysteryAvatar_edit/', views.mysteryAvatarEdit, name='mysteryAvatarEdit'),
+    path('maleAvatar_edit/', views.maleAvatarEdit, name='maleAvatarEdit'),
+    path('femaleAvatar_edit/', views.femaleAvatarEdit, name='femaleAvatarEdit'),
+    path('mysteryAvatar_edit/', views.mysteryAvatarEdit, name='mysteryAvatarEdit'),
+    path('editAvatarSuccess/', views.editAvatarSuccess, name='editAvatarSuccess'),
 
     path('create', views.mapCreate, name='create'),
     
@@ -31,7 +32,11 @@ urlpatterns = [
     path('library', views.Library_Rooms, name='library_rooms'),
     path('beach', views.Beach_Rooms, name='beach_rooms'),
 
-    path('space/', views.space, name='space'),
+    path('classroomConfirm', views.Classroom_Confirm, name='classroomConfirm'),
+    path('forestConfirm', views.Forest_Confirm, name='forestConfirm'),
+    path('cafeConfirm', views.Cafe_Confirm, name='cafeConfirm'),
+    path('libraryConfirm', views.Library_Confirm, name='libraryConfirm'),
+    path('beachConfirm', views.Beach_Confirm, name='beachConfirm'),
 
     path('Classroom/<slug:slug>/', views.Classroom_Space, name='classroomSpace'),
     path('Forest/<slug:slug>/', views.Forest_Space, name='forestSpace'),

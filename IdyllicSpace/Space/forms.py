@@ -21,3 +21,8 @@ class BioForm(ModelForm) :
     class Meta:
         model = UserManage
         fields = ('bio',)
+
+class CurrentSpaceRoomForm(ModelForm) :
+    class Meta:
+        model = UserManage
+        fields = ('currentSpaceRoom',)

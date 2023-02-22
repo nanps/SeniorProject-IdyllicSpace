@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import SpaceRoom, UserManage, Message
 from django.contrib.auth.models import User
-from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm
+from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm
 from django.contrib import messages
 
 
@@ -19,16 +19,6 @@ def home(request) :
             return redirect('maleAvatar')
 
     return render(request, 'home.html')
-
-
-def space(request) :
-    usernameInput = request.user
-
-    userData = UserManage.objects.get(username=usernameInput)
-    user = User.objects.get(username=usernameInput)
-
-    return render(request, 'space.html', {'userData':userData,'user':user} )
-    # return render(request, 'space.html')
 
 
 def enterDisplayName(request) :
@@ -153,12 +143,81 @@ def mysteryAvatar(request) :
     return render(request, 'mysteryAvatar.html')
 
 #Edit Avatar
+def maleAvatarEdit(request) :
+    usernameInput = request.user
+    if request.method == 'POST':
+        form = AvatarForm(request.POST)
+        if form.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = form.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['avatar'])
 
+                return redirect('editAvatarSuccess')
+        else :
+            messages.info(request, "You must choose one Avatar.")
+    else:
+        form = AvatarForm()
+
+    return render(request, 'maleAvatar_edit.html')
+
+
+def femaleAvatarEdit(request) :
+    usernameInput = request.user
+    if request.method == 'POST':
+        form = AvatarForm(request.POST)
+        if form.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = form.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['avatar'])
+
+                return redirect('editAvatarSuccess')
+        else :
+            messages.info(request, "You must choose one Avatar.")
+    else:
+        form = AvatarForm()
+
+    return render(request, 'femaleAvatar_edit.html')
+
+
+def mysteryAvatarEdit(request) :
+    usernameInput = request.user
+    if request.method == 'POST':
+        form = AvatarForm(request.POST)
+        if form.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+
+                instance = form.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['avatar'])
+
+                return redirect('editAvatarSuccess')
+        else :
+            messages.info(request, "You must choose one Avatar.")
+    else:
+        form = AvatarForm()
+
+    return render(request, 'mysteryAvatar_edit.html')
+
+def editAvatarSuccess(request) :
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    return render(request, 'editAvatarSuccess.html', {'userData':userData})
 
 # map
 # @login_required
 def mapCreate(request) :
-    return render(request, 'mapCreate.html')
+    usernameInput = request.user
+
+    userData = UserManage.objects.get(username=usernameInput)
+    user = User.objects.get(username=usernameInput)
+
+    return render(request, 'editAvatarSuccess.html', {'userData':userData,'user':user})
+
+
+
 
 
 # --------------- CLASSROOM (CREATE) ---------------
@@ -249,12 +308,34 @@ def Beach_Create(request) :
 
 
 
+
 # --------------- CLASSROOM (JOIN) ---------------
 # @login_required
 def Classroom_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
-    return render(request, 'classroom_rooms.html', {'rooms':rooms})
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    usernameInput = request.user
+    if request.method == 'POST':
+        CSRform = CurrentSpaceRoomForm(request.POST)
+        if CSRform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = CSRform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['currentSpaceRoom'])
+            return redirect('classrommConfirm')
+
+    return render(request, 'classroom_rooms.html', {'rooms':rooms, 'userData':userData,})
+
+def Classroom_Confirm(request):
+    rooms = SpaceRoom.objects.all()
+
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    return render(request, 'classroom_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
 # @login_required
 def Room(request, roomName):
@@ -267,29 +348,112 @@ def Room(request, roomName):
 def Forest_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
-    return render(request, 'forest_rooms.html', {'rooms':rooms})
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    usernameInput = request.user
+    if request.method == 'POST':
+        CSRform = CurrentSpaceRoomForm(request.POST)
+        if CSRform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = CSRform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['currentSpaceRoom'])
+            return redirect('forestConfirm')
+
+    return render(request, 'forest_rooms.html', {'rooms':rooms, 'userData':userData,})
+
+def Forest_Confirm(request):
+    rooms = SpaceRoom.objects.all()
+
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    return render(request, 'forest_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
 # --------------- CAFE (JOIN) ---------------
 # @login_required
 def Cafe_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
-    return render(request, 'cafe_rooms.html', {'rooms':rooms})
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    usernameInput = request.user
+    if request.method == 'POST':
+        CSRform = CurrentSpaceRoomForm(request.POST)
+        if CSRform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = CSRform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['currentSpaceRoom'])
+            return redirect('cafeConfirm')
+
+    return render(request, 'cafe_rooms.html', {'rooms':rooms, 'userData':userData, })
+
+def Cafe_Confirm(request):
+    rooms = SpaceRoom.objects.all()
+
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    return render(request, 'cafe_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
 # --------------- LIBRARY (JOIN) ---------------
 # @login_required
 def Library_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
-    return render(request, 'library_rooms.html', {'rooms':rooms})
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    usernameInput = request.user
+    if request.method == 'POST':
+        CSRform = CurrentSpaceRoomForm(request.POST)
+        if CSRform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = CSRform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['currentSpaceRoom'])
+            return redirect('libraryConfirm')
+
+    return render(request, 'library_rooms.html', {'rooms':rooms, 'userData':userData, })
+
+def Library_Confirm(request):
+    rooms = SpaceRoom.objects.all()
+
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    return render(request, 'library_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
 # --------------- BEACH (JOIN) ---------------
 # @login_required
 def Beach_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
-    return render(request, 'beach_rooms.html', {'rooms':rooms})
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
 
+    usernameInput = request.user
+    if request.method == 'POST':
+        CSRform = CurrentSpaceRoomForm(request.POST)
+        if CSRform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = CSRform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['currentSpaceRoom'])
+            return redirect('beachConfirm')
+
+    return render(request, 'beach_rooms.html', {'rooms':rooms, 'userData':userData, })
+
+def Beach_Confirm(request):
+    rooms = SpaceRoom.objects.all()
+
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    return render(request, 'beach_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
 
 
@@ -339,8 +503,10 @@ def Beach_Space(request, slug):
                 instance = DNform.save(commit=False)
                 instance.username = request.user
                 instance.save(update_fields=['displayName'])
-        #else :
-            #messages.info(request, "Display Name cannot be blank.")
+
+                return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user})
+        # else :
+        #     messages.info(request, "Display Name cannot be blank.")
 
         BIOform = BioForm(request.POST)
         if BIOform.is_valid() :

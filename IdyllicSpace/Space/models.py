@@ -18,6 +18,7 @@ class UserManage(models.Model) :
     avatar =  models.CharField(max_length=30, null=True, blank=False)
     bio = models.CharField(max_length=50, null=True, blank=True)
     mood = models.CharField(max_length=30, null=True, blank=False)
+    currentSpaceRoom = models.CharField(max_length=400, null=True)
 
 class Message(models.Model):
     room = models.ForeignKey(SpaceRoom, related_name='messages', on_delete=models.CASCADE)

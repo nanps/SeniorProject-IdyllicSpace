@@ -11,15 +11,20 @@
     </head>
 
     <body>
+        {% block contentConfirm %}
+        {% endblock contentConfirm %}
+        
         <span class="edge"></span>
 
         {% comment %}------------------------------ POPUP ------------------------------{% endcomment %}
         <div class="popUp" id="popUp">
+            
             <div class="popUp_Header">
                 <span id="close">
                     <img class="closeBtn" src="{% static 'icon/Cross - white.png' %}"/>
                 </span>
             </div>
+
             <div class="popUp_Body">
                 {% comment %}----- POPUP CONTENT -----{% endcomment %}
                 <div class="text">Please select to join a space</div>
@@ -33,7 +38,12 @@
                                 <div class="roomDescription">{{ room.description }}</div>
 
                                 <input class="slugInput" id="slugInput" value="{{ room.slug }}" name="roomSlug"></input>
-                                <button class="joinBtn" id="joinBtn">JOIN</button>
+                                
+                                <form method="POST" name="CurrentSpaceRoomForm">
+                                    {% csrf_token %}
+                                    <input class="pathInput" id="pathInput" name="currentSpaceRoom"></input>
+                                    <button class="joinBtn" id="joinBtn" type="submit">JOIN</button>
+                                </form>
 
                             </div>
                         {% endif %}
@@ -43,7 +53,6 @@
             </div>
         </div>
         {% comment %}------------------------------ POPUP ------------------------------{% endcomment %}
-
     </body>
 
     <script>
@@ -67,6 +76,7 @@
         
             var path_url = "Space/Beach/" + slugInputArray[i].value;
             pathArray[index] = path_url;
+            document.querySelectorAll('#pathInput')[index].value = pathArray[index];
         }
 
         for (let i = 0; i < joinButtonArray.length; i++) {
@@ -74,6 +84,7 @@
                 window.location.pathname = pathArray[i];
             });
         }
+
     </script>
 
 </html>
@@ -232,6 +243,9 @@
     }
 
     .slugInput {
+        display: none;
+    }
+    .pathInput {
         display: none;
     }
 </style>
