@@ -325,7 +325,7 @@ def Classroom_Rooms(request):
                 instance = CSRform.save(commit=False)
                 instance.username = request.user
                 instance.save(update_fields=['currentSpaceRoom'])
-            return redirect('classrommConfirm')
+            return redirect('classroomConfirm')
 
     return render(request, 'classroom_rooms.html', {'rooms':rooms, 'userData':userData,})
 

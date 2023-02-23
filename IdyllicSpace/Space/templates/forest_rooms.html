@@ -11,6 +11,9 @@
     </head>
 
     <body>
+        {% block contentConfirm %}
+        {% endblock contentConfirm %}
+        
         <span class="edge"></span>
 
         {% comment %}------------------------------ POPUP ------------------------------{% endcomment %}
@@ -33,7 +36,12 @@
                                 <div class="roomDescription">{{ room.description }}</div>
 
                                 <input class="slugInput" id="slugInput" value="{{ room.slug }}" name="roomSlug"></input>
-                                <button class="joinBtn" id="joinBtn">JOIN</button>
+                                
+                                <form method="POST" name="CurrentSpaceRoomForm">
+                                    {% csrf_token %}
+                                    <input class="pathInput" id="pathInput" name="currentSpaceRoom"></input>
+                                    <button class="joinBtn" id="joinBtn" type="submit">JOIN</button>
+                                </form>
 
                             </div>
                         {% endif %}
@@ -67,6 +75,7 @@
         
             var path_url = "Space/Forest/" + slugInputArray[i].value;
             pathArray[index] = path_url;
+            document.querySelectorAll('#pathInput')[index].value = pathArray[index];
         }
 
         for (let i = 0; i < joinButtonArray.length; i++) {
@@ -232,6 +241,9 @@
     }
 
     .slugInput {
+        display: none;
+    }
+    .pathInput {
         display: none;
     }
 </style>
