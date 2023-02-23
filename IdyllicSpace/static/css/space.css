@@ -165,6 +165,10 @@ body {
     background: #FAF4F0;
 }
 
+.BurgerDefaultContent {
+    display: block;
+}
+
 .soundBtn {
     position: absolute;
     width: 30px;

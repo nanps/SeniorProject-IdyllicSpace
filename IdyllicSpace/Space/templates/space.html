@@ -31,13 +31,17 @@
     <div class="burgerContent" id="BurgerContent">
 
         <!-- default -->
+        <div class="burgerDefaultContent" id="BurgerDefaultContent">
             {% block burgerDefaultContent %}
             {% endblock burgerDefaultContent %}
+        </div>
         <!-- default -->
 
         <!-- sound content -->
+        <div class="soundContent" id="soundContent">
             {% block soundContent %}
             {% endblock soundContent %}
+        </div>
         <!-- sound content -->
 
         <img class="soundBtn" id="soundBtn" src="{% static 'icon/Music.png' %}" onclick="soundFunction()"/>
@@ -539,17 +543,20 @@
         var soundBtn = document.getElementById("soundBtn");
         var spaceBtn = document.getElementById("spaceBtn");
         var soundContainer = document.getElementById("soundContainer");
+        var BurgerDefaultContent = document.getElementById("BurgerDefaultContent")
         var soundTxt = document.getElementById("soundTxt");
 
         function soundFunction() {
             if(soundContainer.style.display == "none") {
                 soundContainer.style.display = "block";
+                BurgerDefaultContent.style.display = "none";
                 soundTxt.innerHTML = "space";
                 soundBtn.style.display = "none";
                 spaceBtn.style.display = "block";
             }
             else {
                 soundContainer.style.display = "none";
+                BurgerDefaultContent.style.display = "block";
                 soundTxt.innerHTML = "sound";
                 soundBtn.style.display = "block";
                 spaceBtn.style.display = "none";
