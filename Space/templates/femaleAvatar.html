@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+{% extends 'baseCreateAvatar.html' %}
+{% load static %}
+{% block femaleAvatar %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/createAvatar.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="genderIconBorder"></div>
+
+    <button class="ENTJ_button" onclick="ENTJ()"></button>
+    <img class="ENTJ_AvatarPosition" src="{% static 'avatar/ENTJ_female.png' %}"/>
+    <div class="ENTJ">ENTJ</div>
+    <div class="ENTJ_description">Bold, imaginative and strong-willed leaders, always finding a way – or making one.</div>
+
+    <button class="ENTP_button" onclick="ENTP()"></button>
+    <img class="ENTP_AvatarPosition" src="{% static 'avatar/ENTP_female.png' %}"/>
+    <div class="ENTP">ENTP</div>
+    <div class="ENTP_description">Smart and curious thinkers who cannot resist an intellectual challenge.</div>
+
+    <button class="ENFJ_button" onclick="ENFJ()"></button>
+    <img class="ENFJ_AvatarPosition" src="{% static 'avatar/ENFJ_female.png' %}"/>
+    <div class="ENFJ">ENFJ</div>
+    <div class="ENFJ_description">Charismatic and inspiring leaders, able to mesmerize their listeners.</div>
+
+    <button class="ENFP_button" onclick="ENFP()"></button>
+    <img class="ENFP_AvatarPosition" src="{% static 'avatar/ENFP_female.png' %}"/>
+    <div class="ENFP">ENFP</div>
+    <div class="ENFP_description">Enthusiastic, creative and sociable free spirits, who can always find a reason to smile.</div>
+
+    <button class="ESTJ_button" onclick="ESTJ()"></button>
+    <img class="ESTJ_AvatarPosition" src="{% static 'avatar/ESTJ_female.png' %}"/>
+    <div class="ESTJ">ESTJ</div>
+    <div class="ESTJ_description">Excellent administrators, unsurpassed at managing things or people.</div>
+
+    <button class="ESFJ_button" onclick="ESFJ()"></button>
+    <img class="ESFJ_AvatarPosition" src="{% static 'avatar/ESFJ_female.png' %}"/>
+    <div class="ESFJ">ESFJ</div>
+    <div class="ESFJ_description">Extraordinarily caring, social and popular people, always eager to help.</div>
+
+    <button class="ESTP_button" onclick="ESTP()"></button>
+    <img class="ESTP_AvatarPosition" src="{% static 'avatar/ESTP_female.png' %}"/>
+    <div class="ESTP">ESTP</div>
+    <div class="ESTP_description">Smart, energetic and very perceptive people, who truly enjoy living on the edge.</div>
+
+    <button class="ESFP_button" onclick="ESFP()"></button>
+    <img class="ESFP_AvatarPosition" src="{% static 'avatar/ESFP_female.png' %}"/>
+    <div class="ESFP">ESFP</div>
+    <div class="ESFP_description">Spontaneous, energetic and enthusiastic. People-life is never boring around them.</div>
+
+    <button class="INTJ_button" onclick="INTJ()"></button>
+    <img class="INTJ_AvatarPosition" src="{% static 'avatar/INTJ_female.png' %}"/>
+    <div class="INTJ">INTJ</div>
+    <div class="INTJ_description">Imaginative and strategic thinkers, with a plan for everything.</div>
+
+    <button class="INTP_button" onclick="INTP()"></button>
+    <img class="INTP_AvatarPosition" src="{% static 'avatar/INTP_female.png' %}"/>
+    <div class="INTP">INTP</div>
+    <div class="INTP_description">Innovative inventors with an unquenchable thirst for knowledge.</div>
+
+    <button class="INFJ_button" onclick="INFJ()"></button>
+    <img class="INFJ_AvatarPosition" src="{% static 'avatar/INFJ_female.png' %}"/>
+    <div class="INFJ">INFJ</div>
+    <div class="INFJ_description">Quiet and mystical, yet very inspiring and tireless idealists.</div>
+
+    <button class="INFP_button" onclick="INFP()"></button>
+    <img class="INFP_AvatarPosition" src="{% static 'avatar/INFP_female.png' %}"/>
+    <div class="INFP">INFP</div>
+    <div class="INFP_description">Poetic, kind and altruistic people, always eager to help a good cause.</div>
+
+    <button class="ISTJ_button" onclick="ISTJ()"></button>
+    <img class="ISTJ_AvatarPosition" src="{% static 'avatar/ISTJ_female.png' %}"/>
+    <div class="ISTJ">ISTJ</div>
+    <div class="ISTJ_description">Practical and fact-minded individuals, whose reliability cannot be doubted.</div>
+
+    <button class="ISFJ_button" onclick="ISFJ()"></button>
+    <img class="ISFJ_AvatarPosition" src="{% static 'avatar/ISFJ_female.png' %}"/>
+    <div class="ISFJ">ISFJ</div>
+    <div class="ISFJ_description">Very dedicated and warm protectors, always ready to defend their loved ones.</div>
+
+    <button class="ISTP_button" onclick="ISTP()"></button>
+    <img class="ISTP_AvatarPosition" src="{% static 'avatar/ISTP_female.png' %}"/>
+    <div class="ISTP">ISTP</div>
+    <div class="ISTP_description">Bold and practical experimenters, masters of all kinds of tools.</div>
+
+    <button class="ISFP_button" onclick="ISFP()"></button>
+    <img class="ISFP_AvatarPosition" src="{% static 'avatar/ISFP_female.png' %}"/>
+    <div class="ISFP">ISFP</div>
+    <div class="ISFP_description">Flexible and charming artists, always ready to explore and experience something new.</div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input class="avatarInput" type="text" id="avatar" name="avatar"></input>
+        <button class="selectButton" type="submit">Select</button>
+    </form>
+
+    <div class="breakLine"></div>
+
+    <!------------------------alert-box----------------------------->
+    {% if messages %}
+    <div class="msg">
+        {% for message in messages %}
+            <div {% if message.tags %} class="alert" id="AB" {% endif %}>{{ message }}
+                 
+                <span class="close-btn" id="closeAlert">
+                    <i class="fa fa-close"></i>
+                </span>
+            </div>
+        {% endfor %}
+     </div>
+    {% endif %}
+     
+    <script>
+        var span = document.getElementById("closeAlert");
+        var alertBox = document.getElementById("AB");
+
+        span.onclick = function() {
+            AB.style.display = "none";
+        }
+    </script>
+    <!-------------------------------------------------------------->
+
+    <script>
+        var avatarInput = document.getElementById("avatar");
+
+        function ENTJ() { avatarInput.value = "ENTJ_female"; }
+        function ENTP() { avatarInput.value = "ENTP_female"; }
+        function ENFJ() { avatarInput.value = "ENFJ_female"; }
+        function ENFP() { avatarInput.value = "ENFP_female"; }
+        function ESTJ() { avatarInput.value = "ESTJ_female"; }
+        function ESFJ() { avatarInput.value = "ESFJ_female"; }
+        function ESTP() { avatarInput.value = "ESTP_female"; }
+        function ESFP() { avatarInput.value = "ESFP_female"; }
+        function INTJ() { avatarInput.value = "INTJ_female"; }
+        function INTP() { avatarInput.value = "INTP_female"; }
+        function INFJ() { avatarInput.value = "INFJ_female"; }
+        function INFP() { avatarInput.value = "INFP_female"; }
+        function ISTJ() { avatarInput.value = "ISTJ_female"; }
+        function ISFJ() { avatarInput.value = "ISFJ_female"; }
+        function ISTP() { avatarInput.value = "ISTP_female"; }
+        function ISFP() { avatarInput.value = "ISFP_female"; }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+        
+        .avatarInput {
+            display: none;
+            
+            position: absolute;
+            width: 323px;
+            height: 20px;
+            left: 1100px;
+            top: 79px;
+        }
+
+        .genderIconBorder {
+            box-sizing: border-box;
+            pointer-events: none;
+            
+            position: absolute;
+            width: 85px;
+            height: 85px;
+            left: 592px;
+            top: 129px;
+
+            border: 5px solid #C7DCF1;
+            border-radius: 15px;
+        }
+
+        /* alert box */
+    .alert {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        box-sizing: border-box;
+
+        background: #ffc6c6;
+        padding: 20px 40px;
+        width: 100%;
+        position: relative;
+
+        align-items: center;
+        overflow: hidden;
+        border-radius: 4px;
+        border-left: 5px solid #ff8987;
+    }
+    .msg {
+        color: #ce0000;
+        font-family: 'Patrick Hand';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+    }
+    .alert .close-btn {
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #ff8987;
+        padding: 20px 18px;
+        cursor: pointer;
+    }
+    .close-btn:hover {
+        background: #ff9897;
+    }
+    .close-btn .fa-times {
+        color: #d38282;
+        font-size: 22px;
+        line-height: 40px;
+    }
+    </style>
+
+{% endblock femaleAvatar %}
