@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import SpaceRoom, UserManage, Message
+from .models import LikesCount, SpaceRoom, UserManage, Message
 from django.contrib.auth.models import User
 from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm
 from django.contrib import messages
@@ -518,3 +518,33 @@ def Beach_Space(request, slug):
             #messages.info(request, "Display Name cannot be blank.")
 
     return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user})
+
+# --------------- LIKE ---------------
+def index(request):
+     current_user = request.GET.get('user')
+     logged_in_user = request.user.username
+     user_liker = len (LikesCount.objects.filter(User=current_user))
+     user_liker0 = LikesCount.objects.filter(user=current_user)
+     user_liker1 = []
+     for i in user_liker0:
+          user_liker0 = i.Liker
+          user_liker1.append(user_liker0)
+     if logged_in_user in user_liker1:
+         liker_button_value = 'unlike'
+     else: 
+         liker_button_value = 'like'
+     print (user_liker)
+     return render(request, 'space.html',{'current_user':current_user})
+
+def like_count(request):
+     if request.method == 'POST':
+         value = request.POST['value']
+         user = request.POST['user']
+         liker = request.POST['liker']
+         if value =='like' :
+             liker_cnt = LikesCount.objects.create(liker=liker,user=user)
+             liker_cnt.save()
+         else: 
+             liker_count = LikesCount.objects.get(liker=liker, user=user)
+             liker_cnt.delete()
+         return redirect('/?user='+user)

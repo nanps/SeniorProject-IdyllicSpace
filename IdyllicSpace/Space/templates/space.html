@@ -309,6 +309,22 @@
 
         <div class="nameTxt">name</div>
         <div class="displayNameValue" id="profileDisplayNameValue">{{ userData.displayName }}</div>
+      
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="user" value="{{ current_user }}" readonly></input>
+            <input type="hidden" name="liker" value="{{ user.username }}" readonly></input>
+            
+            {% if like_button_value == 'like' %}
+                <form type="submit" class="Liker_count"> 
+                    <img class="likeother" src="{% static 'icon/love red.png' %}"/>
+                </form>
+            {% else %}
+                <form type="submit" class="Liker_count">
+                    <img class="likeother" src="{% static 'icon/love.png' %}"/>
+                </form>
+            {% endif %}
+        </form>
 
         <div class="bioTxt">bio</div>
         <div class="profileBioValue" id="profileBioValue">{{ userData.bio }}</div>

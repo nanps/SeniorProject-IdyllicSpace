@@ -29,3 +29,10 @@ class Message(models.Model):
     class Meta:
         ordering = ('date_added',)
 
+class LikesCount(models.Model):
+    Liker = models.CharField(max_length=1000)
+    User = models.CharField(max_length=1000)
+
+    def __str__(self) -> str:
+        return self.User
+
