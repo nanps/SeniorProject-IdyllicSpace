@@ -75,8 +75,6 @@
 
         <div class="aboutUsTxt" id="aboutUsBtn">ABOUT US</div>
 
-        <div class="contactUsTxt" id="contactUsBtn">CONTACT US</div>
-
         <img class="logOutIcon" src="{% static 'icon/logout.png' %}"/>
         <div class="logOutTxt" id="logOutBtn">LOG OUT</div>
     </div>
@@ -531,6 +529,29 @@
     <!-- end of stopwatch -->
 
     <!-- end of Timer and Stopwatch -->
+
+
+
+    <!-- ABOUT US -->
+    <div class="aboutUsBox" id="aboutUsBox">
+        <div class="aboutUsHeader">
+            <img class="aboutUsCloseBtn" id="aboutUsCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+        </div>
+
+        <div class="text-1">We are naïve web developers that like to relax and work<br>
+            in co - working space. We will never try to get rid of the<br>
+            ambience created by individuals conversing calmly,<br>
+            the beauty of nature, and the music playing.
+            <br><br>
+            Hope you had fun!</div>
+
+        <div class="text-2">DEVELOPED & DESIGNED BY nanps - bearwearsdress</div>
+
+        <div class="text-3">in case you need to contact us</div>
+
+        <div class="text-4">idyllicspace.official@gmail.com</div>
+    </div>
+    <!-- end of ABOUT US -->
 
     </body>
 
@@ -1103,6 +1124,22 @@
             document.getElementById("timesUpAudio").pause();
         }
 
+        // ----------- about us -----------
+        var aboutUsCloseBtn = document.getElementById("aboutUsCloseBtn");
+        var aboutUsBox = document.getElementById("aboutUsBox");
+        var aboutUsBtn = document.getElementById("aboutUsBtn");
+
+        function openAboutUsFunction() {
+            aboutUsBox.style.display = "block";
+            MenuContent.style.display = "none";
+        }
+
+        function closeAboutUsFunction() {
+            aboutUsBox.style.display = "none";
+        }
+
+        aboutUsBtn.addEventListener('click', openAboutUsFunction)
+        aboutUsCloseBtn.addEventListener('click', closeAboutUsFunction)
     </script>
 
 </html>
