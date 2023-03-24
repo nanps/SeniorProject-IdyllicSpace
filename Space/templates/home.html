@@ -1,64 +1,60 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    </head>
 
-    <div class="text">This is home page. <br></br>
-        click to continue </div>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
 
-    <form method="POST">
-        {% csrf_token %}
-
-        <button class="continueBtn" type="submit">continue</button>
-    </form>
+            <button class="startBtn" type="submit">start</button>
+        </form>
+    </body>
 
     <script>
-
+        
     </script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+</html>
 
-    .text {
-        position: absolute;
-        width: 714px;
-        height: 98px;
-        left: 397px;
-        top: 244px;
-        
-        font-family: 'Patrick Hand SC';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 36px;
-        line-height: 49px;
-        text-align: center;
-        
-        color: #B8A195;
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
+    body{
+        background-image: url('/static/homepage/FINAL FINAL.gif');
+        background-size: cover;
+        height: 100vh;
+        padding:0;
+        margin:0;
     }
     
-    .continueBtn {
+    .startBtn {
         position: absolute;
-        width: 270px;
-        height: 60px;
-        left: 619px;
-        top: 500px;
-
-        background: #a23333;
-        border-radius: 10px;
-        border: 0;
+        width: 300px;
+        height: 100px;
+        left: 800px;
+        top: 595px;
         
-        font-family: 'Patrick Hand SC';
+        background: #203864;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50px;
+        border: 0;
+        cursor: pointer;
+        
+        font-family: 'Arial';
         font-style: normal;
+        font-weight: 700;
+        font-size: 60px;
+        line-height: 69px;
+        text-transform: uppercase;
         color: #FFFFFF;
-        font-weight: 400;
-        font-size: 36px;
-        line-height: 49px;
         text-align: center;
     }
     .continueBtn:hover {
         background-color: #d19999;
     }
-    
-    </style>
-{% endblock content %}
+</style>

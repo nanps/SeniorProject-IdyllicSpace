@@ -20,20 +20,15 @@ class UserManage(models.Model) :
     mood = models.CharField(max_length=30, null=True, blank=False)
     currentSpaceRoom = models.CharField(max_length=400, null=True)
 
-class Message(models.Model):
-    room = models.ForeignKey(SpaceRoom, related_name='messages', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='messages', on_delete=models.CASCADE)
-    content = models.TextField()
-    date_added = models.DateTimeField(auto_now_add=True)
+    def __str__(self) :
+        return self.displayName
 
-    class Meta:
-        ordering = ('date_added',)
+class ChatMessage(models.Model) :
+    slug = models.CharField(max_length=30, blank=False, null=False)
+    displayName = models.ForeignKey(UserManage, on_delete=models.CASCADE, null=True)
+    content = models.TextField(blank=False, primary_key=True)
 
-class LikesCount(models.Model):
-    Liker = models.CharField(max_length=1000)
-    User = models.CharField(max_length=1000)
-
-    def __str__(self) -> str:
-        return self.User
+    def __str__(self) :
+        return self.content
 
 

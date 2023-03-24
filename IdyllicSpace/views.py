@@ -29,6 +29,7 @@ def createAcc(request) :
 
         form = SignUpForm(request.POST)
         if form.is_valid():
+            form.save()
             return render(request, 'signUpSuccess.html')
         else:
             if User.objects.filter(email=emailNEW).exists():

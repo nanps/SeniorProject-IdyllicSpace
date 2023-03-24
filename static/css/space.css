@@ -33,7 +33,7 @@ body {
 }
  /* ------------- chat content ------------- */
 .chatContentBox {
-    display: none;
+    display: block;
     position: absolute;
     margin-top: 47vh;
     margin-left: 72.5vw;
@@ -82,6 +82,38 @@ body {
 
     overflow-y: scroll;
     overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+}
+.chatContent > div {
+    margin: 5px;
+    padding: 10px;
+}
+
+.chatMessages {
+    width: 383px;
+    height: 80px;
+     
+    background: rgba(229, 198, 169, 0.3);
+    border-radius: 8px;
+}
+.senderName {
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 26px;
+    color: #454545;
+
+    margin-left: 10px;
+}
+.message {
+    font-family: 'Patrick Hand';
+    font-style: normal;
+    font-size: 26px;
+    color: #B8A195;
+
+    margin-left: 10px;
 }
 
 .inputChat {

@@ -135,7 +135,13 @@
         </div>
 
         <div class="bioTxt">bio</div>
-        <div class="bioValue" id="bioValue">{{ userData.bio }}</div>
+
+        {% if userData.bio == none %}
+            <div class="bioValue" id="bioValue"></div>
+        {% else %}
+            <div class="bioValue" id="bioValue">{{ userData.bio }}</div>
+        {% endif %}
+
         <div class="editBioBtnBG">
             <img class="editBioBtn" id="editBioBtn" src="{% static 'icon/Edit.png' %}"/>
         </div>
@@ -167,7 +173,7 @@
             <img class="editCloseBtn" id="editDisplayNameCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
         </div>
 
-        <input class="slugInput" id="slugInput" value="{{ room.slug }}" name="roomSlug"></input>
+        <input class="slugInput" id="slugInput_editname" value="{{ room.slug }}" name="slug"></input>
 
         <div class="editTxt">Change your display name</div>
 
@@ -187,7 +193,7 @@
             <img class="editCloseBtn" id="editBioCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
         </div>
 
-        <input class="slugInput" id="slugInput" value="{{ room.slug }}" name="roomSlug"></input>
+        <input class="slugInput" id="slugInput_editbio" value="{{ room.slug }}" name="roomSlug"></input>
 
         <div class="editTxt">Change your bio</div>
 
@@ -325,8 +331,11 @@
         </form>
         
         <div class="bioTxt">bio</div>
-        <div class="profileBioValue" id="profileBioValue">{{ userData.bio }}</div>
-
+        {% if userData.bio == none %}
+            <div class="profileBioValue" id="profileBioValue"></div>
+        {% else %}
+            <div class="profileBioValue" id="profileBioValue">{{ userData.bio }}</div>
+        {% endif %}
     </div>
     <!-- end of other's profile box -->
 
@@ -340,10 +349,19 @@
             <img class="chatCloseBtn" id="chatCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
         </div>
 
-        <div class="chatContent"></div>
+        <div class="chatContent">
+            {% block ChatMessageShow %}
+            {% endblock ChatMessageShow %}
+        </div>
 
-        <input class="inputChat"></input>
-        <button class="chatSendBtn">send</button>
+        <form name="MessageForm" method="POST">
+            {% csrf_token %}
+
+            <input value="{{ room.slug }}" name="slug" style="display:none;"></input>
+            <input class="inputChat" type="text" name="content"></input>
+
+            <button class="chatSendBtn" type="submit">send</button>
+        </form>
     </div>
     <!-- end of chat icon & content -->
 
@@ -545,7 +563,7 @@
             <br><br>
             Hope you had fun!</div>
 
-        <div class="text-2">DEVELOPED & DESIGNED BY nanps - bearwearsdress</div>
+        <div class="text-2">DEVELOPED & DESIGNED BY beforedecember - bearwearsdress</div>
 
         <div class="text-3">in case you need to contact us</div>
 
@@ -618,6 +636,7 @@
             }
         }
 
+        
         // ----------- undeafen -----------
         var deafenBtn = document.getElementById("deafenBtn");
         var undeafenBtn = document.getElementById("undeafenBtn");
@@ -1141,5 +1160,4 @@
         aboutUsBtn.addEventListener('click', openAboutUsFunction)
         aboutUsCloseBtn.addEventListener('click', closeAboutUsFunction)
     </script>
-
 </html>
