@@ -32,15 +32,19 @@
 
         <!-- default -->
         <div class="burgerDefaultContent" id="BurgerDefaultContent">
+            
             {% block burgerDefaultContent %}
             {% endblock burgerDefaultContent %}
+
         </div>
         <!-- default -->
 
         <!-- sound content -->
         <div class="soundContent" id="soundContent">
+            
             {% block soundContent %}
             {% endblock soundContent %}
+
         </div>
         <!-- sound content -->
 
@@ -50,7 +54,7 @@
 
         <img class="muteBtn" id="muteBtn" src="{% static 'icon/microphone-mute.png' %}" onclick="muteFunction()"/>
         <img class="unmuteBtn" id="unmuteBtn" src="{% static 'icon/microphone.png' %}" onclick="muteFunction()"/>
-        <div class="muteTxt" id="muteTxt">unmute</div>
+        <div class="muteTxt" id="muteTxt">mute</div>
 
         <img class="deafenBtn" id="deafenBtn" src="{% static 'icon/headphone-mute.png' %}" onclick="deafenFunction()"/>
         <img class="undeafenBtn" id="undeafenBtn" src="{% static 'icon/headphone.png' %}" onclick="deafenFunction()"/>
@@ -148,21 +152,59 @@
 
         <div class="moodTxt">mood</div>
 
-        <button class="normalBtnBG">
-            <img class="normalBtn" id="normalBtn" src="{% static 'icon/Mood-normal.png' %}"/>
-        </button >
+        {% if userData.mood == 'normal' %}
+            <div class="normalFOCUS"></div>
 
-        <button class="happyBtnBG">
-            <img class="happyBtn" id="happyBtn" src="{% static 'icon/Mood-happy.png' %}"/>
-        </button >
+        {% elif userData.mood == 'happy' %}
+            <div class="happyFOCUS"></div>
 
-        <button class="sadBtnBG">
-            <img class="sadBtn" id="sadBtn" src="{% static 'icon/Mood-cry.png' %}"/>
-        </button>
+        {% elif userData.mood == 'sad' %}
+            <div class="sadFOCUS"></div>
+
+        {% elif userData.mood == 'nerd' %}
+            <div class="nerdFOCUS"></div>
+
+        {% endif %}
+
+        <form name="MoodForm" method="POST">
+            {% csrf_token %}
+
+            <input value="normal" name="mood" style="display:none;"></input>
+
+            <button class="normalBtnBG" type="submit">
+                <img class="normalBtn" id="normalBtn" src="{% static 'icon/Mood-normal.png' %}"/>
+            </button >
+        </form>
+
+        <form name="MoodForm" method="POST">
+            {% csrf_token %}
+
+            <input value="happy" name="mood" style="display:none;"></input>
+
+            <button class="happyBtnBG" type="submit">
+                <img class="happyBtn" id="happyBtn" src="{% static 'icon/Mood-happy.png' %}"/>
+            </button >
+        </form>
+
+        <form name="MoodForm" method="POST">
+            {% csrf_token %}
+
+            <input value="sad" name="mood" style="display:none;"></input>
+
+            <button class="sadBtnBG" type="submit">
+                <img class="sadBtn" id="sadBtn" src="{% static 'icon/Mood-cry.png' %}"/>
+            </button>
+        </form>
   
-        <button class="nerdBtnBG">
-            <img class="nerdBtn" id="nerdBtn" src="{% static 'icon/Mood-nerd.png' %}"/>
-        </button>
+        <form name="MoodForm" method="POST">
+            {% csrf_token %}
+
+            <input value="nerd" name="mood" style="display:none;"></input>
+
+            <button class="nerdBtnBG" type="submit">
+                <img class="nerdBtn" id="nerdBtn" src="{% static 'icon/Mood-nerd.png' %}"/>
+            </button>
+        </form>
 
     </div>
     <!-- end of my profile content -->
@@ -274,6 +316,20 @@
             <img class="profileCloseBtn" id="profileCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
         </div>
 
+        {% if userData.mood == 'normal' %}
+            <img class="MoodShow" src="{% static 'icon/Mood-normal.png' %}"/>
+
+        {% elif userData.mood == 'happy' %}
+            <img class="MoodShow" src="{% static 'icon/Mood-happy.png' %}"/>
+
+        {% elif userData.mood == 'sad' %}
+            <img class="MoodShow" src="{% static 'icon/Mood-cry.png' %}"/>
+
+        {% elif userData.mood == 'nerd' %}
+            <img class="MoodShow" src="{% static 'icon/Mood-nerd.png' %}"/>
+
+        {% endif %}
+
         <div class="avatarValue" id="profileAvatarValue">{{ userData.avatar }}</div>
         
         <!-- avatar -->
@@ -313,22 +369,6 @@
 
         <div class="nameTxt">name</div>
         <div class="displayNameValue" id="profileDisplayNameValue">{{ userData.displayName }}</div>
-        
-        <form method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="user" value="{{ current_user }}" readonly></input>
-            <input type="hidden" name="liker" value="{{ user.username }}" readonly></input>
-            
-            {% if like_button_value == 'like' %}
-                <form type="submit" class="Liker_count"> 
-                    <img class="likeother" src="{% static 'icon/love red.png' %}"/>
-                </form>
-            {% else %}
-                <form type="submit" class="Liker_count">
-                    <img class="likeother" src="{% static 'icon/love.png' %}"/>
-                </form>
-            {% endif %}
-        </form>
         
         <div class="bioTxt">bio</div>
         {% if userData.bio == none %}
@@ -623,16 +663,25 @@
         var unmuteBtn = document.getElementById("unmuteBtn");
         var muteTxt = document.getElementById("muteTxt");
 
+        var muteStatus = document.getElementById("muteStatus");
+        var unmuteStatus = document.getElementById("unmuteStatus");
+
         function muteFunction() {
             if(muteBtn.style.display == "block") {
                 muteBtn.style.display = "none";
                 unmuteBtn.style.display = "block";
-                muteTxt.innerHTML = "mute";
+                muteTxt.innerHTML = "unmute";
+
+                muteStatus.style.display = "none";
+                unmuteStatus.style.display = "block";
             }
             else {
                 muteBtn.style.display = "block";
                 unmuteBtn.style.display = "none";
-                muteTxt.innerHTML = "unmute";
+                muteTxt.innerHTML = "mute";
+
+                muteStatus.style.display = "block";
+                unmuteStatus.style.display = "none";
             }
         }
 
@@ -642,16 +691,25 @@
         var undeafenBtn = document.getElementById("undeafenBtn");
         var deafenTxt = document.getElementById("deafenTxt");
 
+        var deafenStatus = document.getElementById("deafenStatus");
+        var undeafenStatus = document.getElementById("undeafenStatus");
+
         function deafenFunction() {
             if(deafenBtn.style.display == "block") {
                 deafenBtn.style.display = "none";
                 undeafenBtn.style.display = "block";
-                deafenTxt.innerHTML = "deafen";
+                deafenTxt.innerHTML = "undeafen";
+
+                deafenStatus.style.display = "none";
+                undeafenStatus.style.display = "block";
             }
             else {
                 deafenBtn.style.display = "block";
                 undeafenBtn.style.display = "none";
-                deafenTxt.innerHTML = "undeafen";
+                deafenTxt.innerHTML = "deafen";
+
+                deafenStatus.style.display = "block";
+                undeafenStatus.style.display = "none";
             }
         }
 

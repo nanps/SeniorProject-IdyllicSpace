@@ -27,6 +27,11 @@ class BioForm(ModelForm) :
         model = UserManage
         fields = ('bio',)
 
+class MoodForm(ModelForm) :
+    class Meta:
+        model = UserManage
+        fields = ('mood',)
+
 class CurrentSpaceRoomForm(ModelForm) :
     class Meta:
         model = UserManage

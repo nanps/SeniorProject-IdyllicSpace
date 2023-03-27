@@ -325,6 +325,15 @@
     left: 10px;
     top: 10px;
 }
+.normalFOCUS {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 306px;
+    top: 200px;
+    border-radius: 10px;
+    border: 3px solid #C7DCF1;
+}
 
 .happyBtnBG {
     position: absolute;
@@ -346,6 +355,15 @@
     height: 30px;
     left: 10px;
     top: 10px;
+}
+.happyFOCUS {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 371px;
+    top: 200px;
+    border-radius: 10px;
+    border: 3px solid #C7DCF1;
 }
 
 .sadBtnBG {
@@ -369,6 +387,15 @@
     left: 10px;
     top: 10px;
 }
+.sadFOCUS {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 436px;
+    top: 200px;
+    border-radius: 10px;
+    border: 3px solid #C7DCF1;
+}
 
 .nerdBtnBG {
     position: absolute;
@@ -390,6 +417,23 @@
     height: 30px;
     left: 10px;
     top: 10px;
+}
+.nerdFOCUS {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 501px;
+    top: 200px;
+    border-radius: 10px;
+    border: 3px solid #C7DCF1;
+}
+
+.MoodShow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 35px;
+    top: 66px;
 }
 
 /* edit display name & bio content */

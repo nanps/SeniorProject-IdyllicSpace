@@ -17,18 +17,23 @@ class UserManage(models.Model) :
     displayName = models.CharField(max_length=20, blank=False, null=True)
     avatar =  models.CharField(max_length=30, null=True, blank=False)
     bio = models.CharField(max_length=50, null=True, blank=True)
-    mood = models.CharField(max_length=30, null=True, blank=False)
+    mood = models.CharField(max_length=6, null=True, blank=False)
     currentSpaceRoom = models.CharField(max_length=400, null=True)
 
     def __str__(self) :
         return self.displayName
 
 class ChatMessage(models.Model) :
-    slug = models.CharField(max_length=30, blank=False, null=False)
+    slug = models.CharField(max_length=50, blank=False, null=False)
     displayName = models.ForeignKey(UserManage, on_delete=models.CASCADE, null=True)
     content = models.TextField(blank=False, primary_key=True)
 
     def __str__(self) :
         return self.content
+    
+# class SpaceRoomManage(models.Model) :
+#     slug = models.CharField(max_length=30, blank=False, null=False)
+#     capacity = models.ForeignKey(SpaceRoom, on_delete=models.CASCADE, null=True)
+#     inRoom = models.IntegerField(null=True)
 
 

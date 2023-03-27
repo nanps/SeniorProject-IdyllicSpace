@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import SpaceRoom, UserManage, ChatMessage
 from django.contrib.auth.models import User
-from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm, MessageForm
+from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm, MessageForm, MoodForm
 from django.contrib import messages
 
 
@@ -492,6 +492,9 @@ def Beach_Space(request, slug):
     userData = UserManage.objects.get(username=usernameInput)
     user = User.objects.get(username=usernameInput)
 
+    currSpaceValue = "Space/Beach/" + slug
+    members = UserManage.objects.filter(currentSpaceRoom=currSpaceValue)
+
     if request.method == 'POST':
         DNform = DisplayNameForm(request.POST)
         if DNform.is_valid() :
@@ -510,12 +513,23 @@ def Beach_Space(request, slug):
                 instanceBio = BIOform.save(commit=False)
                 instanceBio.username = request.user
                 instanceBio.save(update_fields=['bio'])
-        #else :
-            #messages.info(request, "Display Name cannot be blank.")
+
+                return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+
+        moodForm = MoodForm(request.POST)
+        if moodForm.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceMood = moodForm.save(commit=False)
+                instanceMood.username = request.user
+                instanceMood.save(update_fields=['mood'])
+
+                return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
 
         chatForm = MessageForm(request.POST)
         if chatForm.is_valid() :
             chatForm.instance.displayName = userData
             chatForm.save()
 
-    return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, })
+            #ทำให้ทุกเครื่องที่เข้าเว็บอยู่รีโหลดทั้งหมด
+
+    return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })

@@ -268,7 +268,7 @@ body {
 }
 
 .deafenBtn {
-    display: block;
+    display: none;
 
     position: absolute;
     width: 30px;
@@ -278,7 +278,7 @@ body {
     cursor: pointer;
 }
 .undeafenBtn {
-    display: none;
+    display: block;
 
     position: absolute;
     width: 30px;
@@ -411,12 +411,4 @@ body {
     font-size: 24px;
     color: #B8A195;
     text-align: center;
-}
-
-.likeother {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 487px;
-    top: 260px;
 }
