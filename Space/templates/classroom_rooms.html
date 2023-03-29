@@ -31,17 +31,21 @@
                     {% for room in rooms %}
                         {% if room.location == "Classroom" %}
                             <div class="roomBox">
-                                <div class="userAmount">0/{{ room.capacity }}</div>
+                                <div class="userAmount">{{ room.inRoom }}/{{ room.capacity }}</div>
                                 <div class="roomName">{{ room.roomName }}</div>
                                 <div class="roomDescription">{{ room.description }}</div>
 
                                 <input class="slugInput" id="slugInput" value="{{ room.slug }}" name="roomSlug"></input>
                                 
-                                <form method="POST" name="CurrentSpaceRoomForm">
-                                    {% csrf_token %}
-                                    <input class="pathInput" id="pathInput" name="currentSpaceRoom"></input>
-                                    <button class="joinBtn" id="joinBtn" type="submit">JOIN</button>
-                                </form>
+                                {% if room.roomStatus == "full" %}
+                                    <div class="full">FULL</div>
+                                {% else %}
+                                    <form method="POST" name="CurrentSpaceRoomForm">
+                                        {% csrf_token %}
+                                        <input class="pathInput" id="pathInput" name="currentSpaceRoom"></input>
+                                        <button class="joinBtn" id="joinBtn" type="submit">JOIN</button>
+                                    </form>
+                                {% endif %}
 
                             </div>
                         {% endif %}
@@ -245,6 +249,26 @@
     }
     .pathInput {
         display: none;
+    }
+
+    .full {
+        width: 160px;
+        height: 45px;
+        margin-top: 45px;
+        margin-bottom: 20px;
+        margin-left: 55px;
+
+        background: #E42402;
+        border-radius: 10px;
+        border: 0;
+
+        font-family: 'Patrick Hand SC';
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 38px;
+        text-align: center;
+
+        color: #FFFFFF;
     }
 </style>
 {% endblock contentRooms %}

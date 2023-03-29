@@ -239,7 +239,7 @@ def Forest_Create(request) :
 
         form = SpaceRoomForm(request.POST)
         if form.is_valid():
-
+            
             form.save()
             return redirect('forest_rooms')
 
@@ -291,6 +291,14 @@ def Beach_Create(request) :
         form = SpaceRoomForm(request.POST)
         if form.is_valid():
 
+            # slugNEW = request.POST['slug']
+            # capacityNEW = request.POST['capacity']
+            # inRoomNEW = 0
+            # roomStatusNEW = "open"
+
+            # newRoom = Models.objects.create(slug=slugNEW, capacity=capacityNEW, inRoom=inRoomNEW, roomStatus=roomStatusNEW)
+            # newRoom.save()
+
             form.save()
             return redirect('beach_rooms')
 
@@ -325,10 +333,14 @@ def Classroom_Rooms(request):
     return render(request, 'classroom_rooms.html', {'rooms':rooms, 'userData':userData,})
 
 def Classroom_Confirm(request):
-    rooms = SpaceRoom.objects.all()
-
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
+
+    rooms = SpaceRoom.objects.all()
+    for room in rooms :
+        if room.slug in userData.currentSpaceRoom :
+            room.inRoom += 1
+            room.save()
 
     return render(request, 'classroom_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -359,10 +371,14 @@ def Forest_Rooms(request):
     return render(request, 'forest_rooms.html', {'rooms':rooms, 'userData':userData,})
 
 def Forest_Confirm(request):
-    rooms = SpaceRoom.objects.all()
-
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
+
+    rooms = SpaceRoom.objects.all()
+    for room in rooms :
+        if room.slug in userData.currentSpaceRoom :
+            room.inRoom += 1
+            room.save()
 
     return render(request, 'forest_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -387,10 +403,14 @@ def Cafe_Rooms(request):
     return render(request, 'cafe_rooms.html', {'rooms':rooms, 'userData':userData, })
 
 def Cafe_Confirm(request):
-    rooms = SpaceRoom.objects.all()
-
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
+
+    rooms = SpaceRoom.objects.all()
+    for room in rooms :
+        if room.slug in userData.currentSpaceRoom :
+            room.inRoom += 1
+            room.save()
 
     return render(request, 'cafe_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -415,10 +435,14 @@ def Library_Rooms(request):
     return render(request, 'library_rooms.html', {'rooms':rooms, 'userData':userData, })
 
 def Library_Confirm(request):
-    rooms = SpaceRoom.objects.all()
-
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
+
+    rooms = SpaceRoom.objects.all()
+    for room in rooms :
+        if room.slug in userData.currentSpaceRoom :
+            room.inRoom += 1
+            room.save()
 
     return render(request, 'library_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -443,10 +467,14 @@ def Beach_Rooms(request):
     return render(request, 'beach_rooms.html', {'rooms':rooms, 'userData':userData, })
 
 def Beach_Confirm(request):
-    rooms = SpaceRoom.objects.all()
-
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
+
+    rooms = SpaceRoom.objects.all()
+    for room in rooms :
+        if room.slug in userData.currentSpaceRoom :
+            room.inRoom += 1
+            room.save()
 
     return render(request, 'beach_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -485,6 +513,7 @@ def Library_Space(request, slug):
 # @login_required
 def Beach_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
+    
     ChatMessages = ChatMessage.objects.all
 
     usernameInput = request.user

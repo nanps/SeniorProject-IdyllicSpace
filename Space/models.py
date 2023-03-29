@@ -8,6 +8,8 @@ class SpaceRoom(models.Model) :
     capacity = models.IntegerField(null=True)
     description = models.CharField(max_length=160, null=True, blank=True)
     location = models.CharField(max_length=50, null=True)
+    inRoom = models.IntegerField(null=True)
+    roomStatus = models.CharField(max_length=5, null=True)  #open, close, full
 
     def __str__(self) :
         return self.roomName
@@ -30,10 +32,3 @@ class ChatMessage(models.Model) :
 
     def __str__(self) :
         return self.content
-    
-# class SpaceRoomManage(models.Model) :
-#     slug = models.CharField(max_length=30, blank=False, null=False)
-#     capacity = models.ForeignKey(SpaceRoom, on_delete=models.CASCADE, null=True)
-#     inRoom = models.IntegerField(null=True)
-
-
