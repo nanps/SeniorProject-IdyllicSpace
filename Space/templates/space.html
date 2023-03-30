@@ -60,8 +60,23 @@
         <img class="undeafenBtn" id="undeafenBtn" src="{% static 'icon/headphone.png' %}" onclick="deafenFunction()"/>
         <div class="deafenTxt" id="deafenTxt">undeafen</div>
 
-        <img class="leaveBtn" id="leaveBtn" onclick="leaveRoom()" src="{% static 'icon/back.png' %}"/>
-        <div class="leaveTxt">leave</div>
+        <form method="POST" name="LeaveRoomForm">
+            {% csrf_token %}
+
+            <input style="display:none;" name="inRoom" id="inRoom"></input>
+            <script>
+                window.onload = function() {
+                    var inRoomValue = {{ room.inRoom }};
+                    var minusone = inRoomValue - 1;
+                    document.getElementById("inRoom").value = minusone;
+                }
+            </script>
+
+            <button class="leaveBtn" id="leaveBtn" onclick="leaveRoom()" type="submit">
+                <img src="{% static 'icon/back.png' %}" style="width:30px; height:30px; pointer-events:none;"/>
+            </button>
+            <div class="leaveTxt">leave</div>
+        </form>
     </div>
     <!-- end of burgerbar -->
 

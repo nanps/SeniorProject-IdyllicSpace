@@ -36,3 +36,8 @@ class CurrentSpaceRoomForm(ModelForm) :
     class Meta:
         model = UserManage
         fields = ('currentSpaceRoom',)
+
+class LeaveRoomForm(ModelForm) :
+    class Meta:
+        model = SpaceRoom
+        fields = ('inRoom',)

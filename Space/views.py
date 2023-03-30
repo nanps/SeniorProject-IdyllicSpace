@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import SpaceRoom, UserManage, ChatMessage
 from django.contrib.auth.models import User
-from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm, MessageForm, MoodForm
+from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm, MessageForm, MoodForm, LeaveRoomForm
 from django.contrib import messages
 
 
@@ -559,6 +559,26 @@ def Beach_Space(request, slug):
             chatForm.instance.displayName = userData
             chatForm.save()
 
-            #ทำให้ทุกเครื่องที่เข้าเว็บอยู่รีโหลดทั้งหมด
+            return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+
+        leaveForm = LeaveRoomForm(request.POST)
+        if leaveForm.is_valid() :
+            # inRoomINPUT = request.POST['inRoom']
+
+            # if (inRoomINPUT == 1) :
+            #     # room.roomStatus = "close"
+            #     room.inRoom = 0
+            #     room.save()
+                
+            #     return redirect('enterSpace')
+            # else :
+            
+            if SpaceRoom.objects.filter(slug=slug).exists():
+                instanceinRoom = leaveForm.save(commit=False)
+                instanceinRoom.slug = slug
+                instanceinRoom.save(update_fields=['inRoom'])
+
+                return redirect('enterSpace')
+            #ยังกด leave ไม่ได้
 
     return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })

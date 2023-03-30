@@ -305,9 +305,11 @@ body {
     position: absolute;
     width: 30px;
     height: 30px;
-    left: 210px;
+    left: 207px;
     margin-top: 85vh;
+    border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 .leaveTxt {
     position: absolute;
