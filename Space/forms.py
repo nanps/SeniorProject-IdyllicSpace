@@ -40,4 +40,4 @@ class CurrentSpaceRoomForm(ModelForm) :
 class LeaveRoomForm(ModelForm) :
     class Meta:
         model = SpaceRoom
-        fields = ('inRoom',)
+        fields = ('inRoom', 'roomStatus',)

@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-%o3@iazm#%mhom!he7-ndqkxc!tco@fo=0-y*jm&^bx@e4_t*u
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# CSRF_TRUSTED_ORIGINS = ["https://*.ngrok.io"]
 
 LOGOUT_REDIRECT_URL = '/statusLogIn/'
 LOGIN_REDIRECT_URL = '/home/home/'

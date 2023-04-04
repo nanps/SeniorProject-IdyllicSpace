@@ -57,6 +57,18 @@ body {
     background: #E5C6A9;
     border-radius: 10px 10px 0px 0px;
 }
+.chatHeaderTxt {
+    position: absolute;
+    width: 48px;
+    height: 39px;
+    left: 20px;
+    top: 5px;
+    
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 28px;
+    color: #FFFFFF;
+}
 
 .chatCloseBtn {
     position: absolute;

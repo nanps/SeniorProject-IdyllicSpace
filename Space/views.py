@@ -4,7 +4,7 @@ from .models import SpaceRoom, UserManage, ChatMessage
 from django.contrib.auth.models import User
 from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm, MessageForm, MoodForm, LeaveRoomForm
 from django.contrib import messages
-
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def home(request) :   
@@ -473,8 +473,13 @@ def Beach_Confirm(request):
     rooms = SpaceRoom.objects.all()
     for room in rooms :
         if room.slug in userData.currentSpaceRoom :
+            slug = room.slug
+
             room.inRoom += 1
             room.save()
+
+            if (room.inRoom == room.capacity) :
+                SpaceRoom.objects.filter(slug=slug).update(roomStatus = "full")
 
     return render(request, 'beach_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -525,6 +530,34 @@ def Beach_Space(request, slug):
     members = UserManage.objects.filter(currentSpaceRoom=currSpaceValue)
 
     if request.method == 'POST':
+
+        leaveForm = LeaveRoomForm(request.POST)
+        if leaveForm.is_valid() :
+            if SpaceRoom.objects.filter(slug=slug).exists():
+                UserManage.objects.filter(username=usernameInput).update(currentSpaceRoom="None")
+                
+                instanceinRoom = leaveForm.save(commit=False)
+                instanceinRoom.slug = slug
+                instanceinRoom.save(update_fields=['inRoom', 'roomStatus'])
+
+                return redirect('enterSpace')
+            
+        chatForm = MessageForm(request.POST)
+        if chatForm.is_valid() :
+            chatForm.instance.displayName = userData
+            chatForm.save()
+
+            return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+    
+        moodForm = MoodForm(request.POST)
+        if moodForm.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceMood = moodForm.save(commit=False)
+                instanceMood.username = request.user
+                instanceMood.save(update_fields=['mood'])
+
+                return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+            
         DNform = DisplayNameForm(request.POST)
         if DNform.is_valid() :
             if UserManage.objects.filter(username=usernameInput).exists():
@@ -544,41 +577,5 @@ def Beach_Space(request, slug):
                 instanceBio.save(update_fields=['bio'])
 
                 return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
-
-        moodForm = MoodForm(request.POST)
-        if moodForm.is_valid() :
-            if UserManage.objects.filter(username=usernameInput).exists():
-                instanceMood = moodForm.save(commit=False)
-                instanceMood.username = request.user
-                instanceMood.save(update_fields=['mood'])
-
-                return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
-
-        chatForm = MessageForm(request.POST)
-        if chatForm.is_valid() :
-            chatForm.instance.displayName = userData
-            chatForm.save()
-
-            return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
-
-        leaveForm = LeaveRoomForm(request.POST)
-        if leaveForm.is_valid() :
-            # inRoomINPUT = request.POST['inRoom']
-
-            # if (inRoomINPUT == 1) :
-            #     # room.roomStatus = "close"
-            #     room.inRoom = 0
-            #     room.save()
-                
-            #     return redirect('enterSpace')
-            # else :
-            
-            if SpaceRoom.objects.filter(slug=slug).exists():
-                instanceinRoom = leaveForm.save(commit=False)
-                instanceinRoom.slug = slug
-                instanceinRoom.save(update_fields=['inRoom'])
-
-                return redirect('enterSpace')
-            #ยังกด leave ไม่ได้
 
     return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })

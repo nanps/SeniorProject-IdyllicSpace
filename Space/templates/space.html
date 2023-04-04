@@ -64,11 +64,19 @@
             {% csrf_token %}
 
             <input style="display:none;" name="inRoom" id="inRoom"></input>
+            <input style="display:none;" name="roomStatus" id="roomStatus"></input>
             <script>
                 window.onload = function() {
                     var inRoomValue = {{ room.inRoom }};
                     var minusone = inRoomValue - 1;
                     document.getElementById("inRoom").value = minusone;
+
+                    if (inRoomValue == 1) {
+                        document.getElementById("roomStatus").value = "close";
+                    }
+                    else {
+                        document.getElementById("roomStatus").value = "open";
+                    }
                 }
             </script>
 
@@ -401,10 +409,11 @@
 
     <div class="chatContentBox" id="chatContentBox">
         <div class="chatHeader">
+            <div class="chatHeaderTxt">chat</div>
             <img class="chatCloseBtn" id="chatCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
         </div>
 
-        <div class="chatContent">
+        <div class="chatContent" id="chatContent">
             {% block ChatMessageShow %}
             {% endblock ChatMessageShow %}
         </div>
@@ -960,6 +969,11 @@
 
         chatIcon.addEventListener('click', openChatFunction)
         chatCloseBtn.addEventListener('click', closeChatFunction)
+
+        window.setInterval(function() {
+            var elem = document.getElementById('chatContent');
+            elem.scrollTop = elem.scrollHeight;
+        }, 500);
 
 
 
