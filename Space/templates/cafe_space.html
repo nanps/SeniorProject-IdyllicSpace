@@ -5,6 +5,24 @@
 {% block burgerDefaultContent %}
     <div class="roomName">{{ room.roomName }}</div>
 
+    <div class="memberContent">
+
+        {% for member in members %}
+                <div class="memberName">{{ member.displayName }}
+
+
+                    {% comment %} microphone status {% endcomment %}
+                    <img class="muteStatus" style="display:block;" id="muteStatus" src="{% static 'icon/microphone-mute.png' %}"/>
+                    <img class="muteStatus" style="display:none;" id="unmuteStatus" src="{% static 'icon/microphone.png' %}"/>
+
+                    {% comment %} deafen status {% endcomment %}
+                    <img class="deafenStatus" style="display:none;" id="deafenStatus" src="{% static 'icon/headphone-mute.png' %}"/>
+                    <img class="deafenStatus" style="display:block;" id="undeafenStatus" src="{% static 'icon/headphone.png' %}"/>
+                </div>
+        {% endfor %}
+
+    </div>
+
     <style>
         .roomName {
             position: absolute;
@@ -23,6 +41,9 @@
 {% block spaceContent %}
     {% comment %} <body background="{% static 'wallpaper/Beach.png' %}"> {% endcomment %}
     <body>
+        <div class="bg">
+            <img src="{% static 'wallpaper/Cafe.png' %}" style="position:fixed; width:1920px; height:1079px; left:0px; top:0px;">
+        </div>
         
     </body>
     
@@ -926,3 +947,23 @@
         }
     </script>
 {% endblock soundContent %}
+
+{% block ChatMessageShow %}
+        {% for text in ChatMessages %}
+
+            <script>
+                var room_slug = room.slug;
+                var text_slug = text.slug;
+            </script>
+
+            {% if text_slug == room_slug %}
+            <div class="chatMessages" id="chatMessages">
+
+                <div class="senderName">{{ text.displayName }}</div> 
+                <div class="message">{{ text.content }}</div>
+                
+            </div>
+            {% endif %}
+
+        {% endfor %}
+{% endblock ChatMessageShow %}
