@@ -5,7 +5,6 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
 
-
 def logIn(request) :    
     if request.method == 'POST':
         usernameNEW = request.POST['username']

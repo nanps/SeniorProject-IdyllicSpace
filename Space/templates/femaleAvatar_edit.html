@@ -112,7 +112,9 @@
         <button class="selectButton" type="submit">Select</button>
     </form>
 
-    <div class="breakLine"></div>
+    <input style="display:none;" id="pathName" value="{{ userData.currentSpaceRoom }}"></input>
+    <div class="backBtn" onclick="backToSpace()">back</div>
+    <div class="break"></div>
 
     <!------------------------alert-box----------------------------->
     {% if messages %}
@@ -158,6 +160,11 @@
         function ISTP() { avatarInput.value = "ISTP_female"; }
         function ISFP() { avatarInput.value = "ISFP_female"; }
 
+        function backToSpace() {
+            var path_url = document.getElementById("pathName").value;
+            window.location.pathname = path_url;
+        }
+
         /* ----- MBTI box ---- */
         var mbtiLinkCloseBtn = document.getElementById("mbtiLinkCloseBtn");
         var mbtiLinkBox = document.getElementById("mbtiLinkBox");
@@ -201,6 +208,16 @@
 
             border: 5px solid #C7DCF1;
             border-radius: 15px;
+        }
+
+        .break {
+            position: absolute;
+            width: 518px;
+            height: 60px;
+            left: 702px;
+            top: 2771px;
+            pointer-events: none;
+            overflow: hidden;
         }
 
         /* alert box */
@@ -313,6 +330,8 @@
         font-size: 28px;
         line-height: 38px;
         color: #FFFFFF;
+    }.mbti_btn:hover {
+        background-color: #b0c4de;
     }
     </style>
 

@@ -11,8 +11,8 @@ body {
     position: absolute;
     width: 450px;
     height: 60px;
-    left: 531px;
-    top: 2693px;
+    left: 735px;
+    top: 2621px;
 
     background: #52779C;
     border-radius: 10px;
@@ -33,15 +33,12 @@ body {
 
 .breakLine {
     pointer-events: none;
-    
     overflow: hidden;
     position: absolute;
-    width: 222px;
-    height: 69px;
-    left: 646px;
-    top: 2760px;
-
-    background-color: #FAF4F0;
+    width: 649px;
+    height: 70px;
+    left: 629px;
+    top: 2689px;
 }
 
 /* ENTJ */
@@ -50,9 +47,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 107px;
-        top: 280px;
+        height: 500px;
+        left: 276px;
+        top: 323px;
 
         background: #FFFFFF;
         border: 0;
@@ -63,25 +60,25 @@ body {
     }
     .ENTJ_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 96px;
-        top: 300px;
+        width: 260px;
+        height: 260px;
+        left: 286px;
+        top: 363px;
 
         pointer-events: none;
     }
     .ENTJ{
         position: absolute;
-        width: 58px;
-        height: 43px;
-        left: 218px;
-        top: 608px;
+        width: 51px;
+        height: 38px;
+        left: 391px;
+        top: 651px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -92,14 +89,14 @@ body {
         position: absolute;
         width: 221px;
         height: 132px;
-        left: 137px;
-        top: 659px;
+        left: 306px;
+        top: 702px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -111,9 +108,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 443px;
-        top: 280px;
+        height: 500px;
+        left: 637px;
+        top: 323px;
 
         background: #FFFFFF;
         border: 0;
@@ -124,25 +121,25 @@ body {
     }
     .ENTP_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 441px;
-        top: 300px;
+        width: 260px;
+        height: 260px;
+        left: 647px;
+        top: 363px;
 
         pointer-events: none;
     }
     .ENTP{
         position: absolute;
-        width: 62px;
-        height: 43px;
-        left: 552px;
-        top: 608px;
+        width: 54px;
+        height: 38px;
+        left: 746px;
+        top: 651px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -153,14 +150,14 @@ body {
         position: absolute;
         width: 221px;
         height: 132px;
-        left: 471px;
-        top: 659px;
+        left: 665px;
+        top: 702px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -172,9 +169,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 783px;
-        top: 280px;
+        height: 500px;
+        left: 998px;
+        top: 323px;
 
         background: #FFFFFF;
         border: 0;
@@ -185,25 +182,25 @@ body {
     }
     .ENFJ_AvatarPosition {
         position: absolute;
-        width: 300px;
-        height: 300px;
-        left: 773px;
-        top: 300px;
+        width: 260px;
+        height: 260px;
+        left: 1008px;
+        top: 363px;
 
         pointer-events: none;
     }
     .ENFJ{
         position: absolute;
-        width: 56px;
-        height: 43px;
-        left: 902px;
-        top: 608px;
+        width: 49px;
+        height: 38px;
+        left: 1113px;
+        top: 651px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -214,14 +211,14 @@ body {
         position: absolute;
         width: 221px;
         height: 104px;
-        left: 810px;
-        top: 659px;
+        left: 1027px;
+        top: 702px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -233,9 +230,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 1136px;
-        top: 280px;
+        height: 500px;
+        left: 1359px;
+        top: 323px;
 
         background: #FFFFFF;
         border: 0;
@@ -246,25 +243,25 @@ body {
     }
     .ENFP_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 1126px;
-        top: 300px;
+        width: 260px;
+        height: 260px;
+        left: 1369px;
+        top: 363px;
 
         pointer-events: none;
     }
     .ENFP{
         position: absolute;
-        width: 59px;
-        height: 43px;
-        left: 1246px;
-        top: 608px;
+        width: 52px;
+        height: 38px;
+        left: 1473px;
+        top: 651px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -275,14 +272,14 @@ body {
         position: absolute;
         width: 221px;
         height: 132px;
-        left: 1163px;
-        top: 659px;
+        left: 1388px;
+        top: 702px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -294,9 +291,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 107px;
-        top: 877px;
+        height: 500px;
+        left: 276px;
+        top: 893px;
 
         background: #FFFFFF;
         border: 0;
@@ -307,25 +304,25 @@ body {
     }
     .ESTJ_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 99px;
-        top: 895px;
+        width: 260px;
+        height: 260px;
+        left: 286px;
+        top: 933px;
 
         pointer-events: none;
     }
     .ESTJ{
         position: absolute;
-        width: 56px;
-        height: 43px;
-        left: 219px;
-        top: 1213px;
+        width: 49px;
+        height: 38px;
+        left: 388px;
+        top: 1221px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -336,14 +333,14 @@ body {
         position: absolute;
         width: 222px;
         height: 133px;
-        left: 136px;
-        top: 1264px;
+        left: 305px;
+        top: 1272px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -355,9 +352,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 443px;
-        top: 877px;
+        height: 500px;
+        left: 637px;
+        top: 893px;
 
         background: #FFFFFF;
         border: 0;
@@ -368,25 +365,25 @@ body {
     }
     .ESFJ_AvatarPosition {
         position: absolute;
-        width: 300px;
-        height: 300px;
-        left: 441px;
-        top: 895px;
+        width: 260px;
+        height: 260px;
+        left: 647px;
+        top: 933px;
 
         pointer-events: none;
     }
     .ESFJ{
         position: absolute;
-        width: 53px;
-        height: 43px;
-        left: 557px;
-        top: 1213px;
+        width: 47px;
+        height: 38px;
+        left: 753px;
+        top: 1221px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -397,14 +394,14 @@ body {
         position: absolute;
         width: 221px;
         height: 133px;
-        left: 473px;
-        top: 1264px;
+        left: 666px;
+        top: 1272px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -416,9 +413,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 783px;
-        top: 877px;
+        height: 500px;
+        left: 998px;
+        top: 893px;
 
         background: #FFFFFF;
         border: 0;
@@ -429,25 +426,25 @@ body {
     }
     .ESTP_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 773px;
-        top: 895px;
+        width: 260px;
+        height: 260px;
+        left: 1008px;
+        top: 933px;
 
         pointer-events: none;
     }
     .ESTP{
         position: absolute;
-        width: 60px;
-        height: 43px;
-        left: 893px;
-        top: 1213px;
+        width: 52px;
+        height: 38px;
+        left: 1112px;
+        top: 1221px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -458,14 +455,14 @@ body {
         position: absolute;
         width: 221px;
         height: 133px;
-        left: 813px;
-        top: 1264px;
+        left: 1027px;
+        top: 1272px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -477,9 +474,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 1136px;
-        top: 877px;
+        height: 500px;
+        left: 1359px;
+        top: 893px;
 
         background: #FFFFFF;
         border: 0;
@@ -490,25 +487,25 @@ body {
     }
     .ESFP_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 1126px;
-        top: 895px;
+        width: 260px;
+        height: 260px;
+        left: 1369px;
+        top: 933px;
 
         pointer-events: none;
     }
     .ESFP{
         position: absolute;
-        width: 57px;
-        height: 43px;
-        left: 1247px;
-        top: 1213px;
+        width: 50px;
+        height: 38px;
+        left: 1474px;
+        top: 1221px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -519,14 +516,14 @@ body {
         position: absolute;
         width: 221px;
         height: 133px;
-        left: 1166px;
-        top: 1264px;
+        left: 1388px;
+        top: 1272px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -538,9 +535,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 107px;
-        top: 1474px;
+        height: 500px;
+        left: 276px;
+        top: 1463px;
 
         background: #FFFFFF;
         border: 0;
@@ -551,25 +548,25 @@ body {
     }
     .INTJ_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 101px;
-        top: 1489px;
+        width: 260px;
+        height: 260px;
+        left: 286px;
+        top: 1503px;
 
         pointer-events: none;
     }
     .INTJ{
         position: absolute;
-        width: 52px;
-        height: 43px;
-        left: 221px;
-        top: 1802px;
+        width: 45px;
+        height: 38px;
+        left: 386px;
+        top: 1791px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -580,14 +577,14 @@ body {
         position: absolute;
         width: 221px;
         height: 104px;
-        left: 137px;
-        top: 1853px;
+        left: 298px;
+        top: 1850px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -599,9 +596,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 443px;
-        top: 1474px;
+        height: 500px;
+        left: 637px;
+        top: 1463px;
 
         background: #FFFFFF;
         border: 0;
@@ -612,25 +609,25 @@ body {
     }
     .INTP_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 433px;
-        top: 1489px;
+        width: 260px;
+        height: 260px;
+        left: 648px;
+        top: 1503px;
 
         pointer-events: none;
     }
     .INTP{
         position: absolute;
-        width: 55px;
-        height: 43px;
-        left: 557px;
-        top: 1802px;
+        width: 49px;
+        height: 38px;
+        left: 752px;
+        top: 1791px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -641,14 +638,14 @@ body {
         position: absolute;
         width: 221px;
         height: 104px;
-        left: 472px;
-        top: 1853px;
+        left: 667px;
+        top: 1842px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -660,9 +657,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 783px;
-        top: 1474px;
+        height: 500px;
+        left: 998px;
+        top: 1463px;
 
         background: #FFFFFF;
         border: 0;
@@ -673,25 +670,25 @@ body {
     }
     .INFJ_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 765px;
-        top: 1489px;
+        width: 260px;
+        height: 260px;
+        left: 1008px;
+        top: 1503px;
 
         pointer-events: none;
     }
     .INFJ{
         position: absolute;
-        width: 49px;
-        height: 43px;
-        left: 898px;
-        top: 1802px;
+        width: 43px;
+        height: 38px;
+        left: 1116px;
+        top: 1791px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -702,14 +699,14 @@ body {
         position: absolute;
         width: 221px;
         height: 104px;
-        left: 815px;
-        top: 1861px;
+        left: 1027px;
+        top: 1842px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -721,9 +718,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 1136px;
-        top: 1474px;
+        height: 500px;
+        left: 1359px;
+        top: 1463px;
 
         background: #FFFFFF;
         border: 0;
@@ -734,25 +731,25 @@ body {
     }
     .INFP_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 1124px;
-        top: 1489px;
+        width: 260px;
+        height: 260px;
+        left: 1370px;
+        top: 1503px;
 
         pointer-events: none;
     }
     .INFP{
         position: absolute;
-        width: 52px;
-        height: 43px;
-        left: 1250px;
-        top: 1802px;
+        width: 46px;
+        height: 38px;
+        left: 1477px;
+        top: 1791px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -763,14 +760,14 @@ body {
         position: absolute;
         width: 221px;
         height: 135px;
-        left: 1163px;
-        top: 1853px;
+        left: 1386px;
+        top: 1842px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -782,9 +779,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 107px;
-        top: 2071px;
+        height: 500px;
+        left: 276px;
+        top: 2033px;
 
         background: #FFFFFF;
         border: 0;
@@ -795,25 +792,25 @@ body {
     }
     .ISTJ_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 96px;
-        top: 2086px;
+        width: 260px;
+        height: 260px;
+        left: 286px;
+        top: 2073px;
 
         pointer-events: none;
     }
     .ISTJ{
         position: absolute;
-        width: 50px;
-        height: 43px;
-        left: 223px;
-        top: 2407px;
+        width: 43px;
+        height: 38px;
+        left: 386px;
+        top: 2361px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -824,14 +821,14 @@ body {
         position: absolute;
         width: 221px;
         height: 131px;
-        left: 136px;
-        top: 2458px;        
+        left: 303px;
+        top: 2420px;       
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -843,9 +840,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 443px;
-        top: 2071px;
+        height: 500px;
+        left: 638px;
+        top: 2033px;
         
         background: #FFFFFF;
         border: 0;
@@ -856,25 +853,25 @@ body {
     }
     .ISFJ_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 438px;
-        top: 2086px;
+        width: 260px;
+        height: 260px;
+        left: 648px;
+        top: 2073px;
 
         pointer-events: none;
     }
     .ISFJ{
         position: absolute;
-        width: 47px;
-        height: 43px;
-        left: 559px;
-        top: 2407px;
+        width: 41px;
+        height: 38px;
+        left: 756px;
+        top: 2361px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -885,14 +882,14 @@ body {
         position: absolute;
         width: 221px;
         height: 131px;
-        left: 473px;
-        top: 2458px;
+        left: 666px;
+        top: 2420px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -904,9 +901,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 783px;
-        top: 2071px;
+        height: 500px;
+        left: 998px;
+        top: 2033px;
         
         background: #FFFFFF;
         border: 0;
@@ -917,25 +914,25 @@ body {
     }
     .ISTP_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 773px;
-        top: 2086px;
+        width: 260px;
+        height: 260px;
+        left: 1009px;
+        top: 2073px;
 
         pointer-events: none;
     }
     .ISTP{
         position: absolute;
-        width: 53px;
-        height: 43px;
-        left: 896px;
-        top: 2407px;
+        width: 47px;
+        height: 38px;
+        left: 1115px;
+        top: 2370px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -946,14 +943,14 @@ body {
         position: absolute;
         width: 221px;
         height: 104px;
-        left: 813px;
-        top: 2458px;
+        left: 1027px;
+        top: 2420px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
         color: #B8A195;
@@ -965,9 +962,9 @@ body {
 
         position: absolute;
         width: 280px;
-        height: 540px;
-        left: 1136px;
-        top: 2071px;
+        height: 500px;
+        left: 1359px;
+        top: 2033px;
         
         background: #FFFFFF;
         border: 0;
@@ -978,25 +975,25 @@ body {
     }
     .ISFP_AvatarPosition {
         position:absolute;
-        width: 300px;
-        height: 300px;
-        left: 1124px;
-        top: 2086px;
+        width: 260px;
+        height: 260px;
+        left: 1370px;
+        top: 2073px;
 
         pointer-events: none;
     }
     .ISFP{
         position: absolute;
-        width: 50px;
-        height: 43px;
-        left: 1250px;
-        top: 2407px;
+        width: 44px;
+        height: 38px;
+        left: 1478px;
+        top: 2370px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 43px;
+        font-size: 28px;
+        line-height: 38px;
 
         color: #B8A195;
         pointer-events: none;
@@ -1007,15 +1004,32 @@ body {
         position: absolute;
         width: 221px;
         height: 131px;
-        left: 1166px;
-        top: 2458px;
+        left: 1389px;
+        top: 2420px;
 
         font-family: 'Patrick Hand SC';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 27px;
         text-align: center;
 
+        color: #B8A195;
+    }
+
+    .backBtn {
+        position: absolute;
+        width: 63px;
+        height: 49px;
+        left: 928px;
+        top: 2710px;
+        cursor: pointer;
+
+        font-family: 'Patrick Hand SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 49px;
+        text-decoration-line: underline;
         color: #B8A195;
     }

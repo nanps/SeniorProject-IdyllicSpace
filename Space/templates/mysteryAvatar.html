@@ -35,12 +35,9 @@
     <div class="CAMIS">CAMIS</div>
     <div class="CAMIS_description">Bookworm, Devoting free time to working and reading</div>
 
-{% comment %}
-    <button class="ENFJ_button" onclick="ENFJ()"></button>
-    <img class="ENFJ_AvatarPosition" src="{% static 'avatar/ENFJ_male.png' %}"/>
-    <div class="ENFJ">ENFJ</div>
-    <div class="ENFJ_description">Charismatic and inspiring leaders, able to mesmerize their listeners.</div>
-{% endcomment %}
+    <div class="comingSoon">
+        <div class="CStxt">COMING SOON</div>
+    </div>
 
     <form method="POST">
         {% csrf_token %}
@@ -77,7 +74,6 @@
 
         function FELIS() { avatarInput.value = "FELIS"; }
         function CAMIS() { avatarInput.value = "CAMIS"; }
-        function ENFJ() { avatarInput.value = "ENFJ_male"; }
 
         /* ----- MBTI box ---- */
         var mbtiLinkCloseBtn = document.getElementById("mbtiLinkCloseBtn");
@@ -155,9 +151,9 @@
 
                 position: absolute;
                 width: 280px;
-                height: 540px;
-                left: 107px;
-                top: 280px;
+                height: 500px;
+                left: 278px;
+                top: 323px;
 
                 background: #FFFFFF;
                 border: 0;
@@ -168,27 +164,27 @@
             }
             .FELIS_AvatarPosition {
                 position:absolute;
-                width: 300px;
-                height: 300px;
-                left: 96px;
-                top: 300px;
+                width: 260px;
+                height: 260px;
+                left: 288px;
+                top: 363px;
 
                 pointer-events: none;
             }
             .FELIS{
                 position: absolute;
-                width: 58px;
-                height: 43px;
-                left: 218px;
-                top: 608px;
-
+                width: 53px;
+                height: 38px;
+                left: 388px;
+                top: 646px;
+                
                 font-family: 'Patrick Hand SC';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 32px;
-                line-height: 43px;
-
+                font-size: 28px;
+                line-height: 38px;
                 color: #B8A195;
+
                 pointer-events: none;
             }
             .FELIS_description{
@@ -197,14 +193,14 @@
                 position: absolute;
                 width: 221px;
                 height: 132px;
-                left: 137px;
-                top: 659px;
+                left: 308px;
+                top: 702px;
 
                 font-family: 'Patrick Hand SC';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 24px;
-                line-height: 32px;
+                font-size: 20px;
+                line-height: 27px;
                 text-align: center;
 
                 color: #B8A195;
@@ -216,32 +212,32 @@
 
                 position: absolute;
                 width: 280px;
-                height: 540px;
-                left: 443px;
-                top: 280px;
+                height: 500px;
+                left: 639px;
+                top: 323px;
 
                 background: #FFFFFF;
                 border: 0;
                 border-radius: 15px;
                 cursor: pointer;
-            }.CAMIS_button:hover, .ENTP_button:focus{
+            }.CAMIS_button:hover, .CAMIS_button:focus{
                 border: 10px solid #C7DCF1;
             }
             .CAMIS_AvatarPosition {
                 position:absolute;
-                width: 300px;
-                height: 300px;
-                left: 441px;
-                top: 300px;
+                width: 260px;
+                height: 260px;
+                left: 649px;
+                top: 363px;
 
                 pointer-events: none;
             }
             .CAMIS{
                 position: absolute;
-                width: 62px;
-                height: 43px;
-                left: 552px;
-                top: 608px;
+                width: 66px;
+                height: 38px;
+                left: 746px;
+                top: 646px;
 
                 font-family: 'Patrick Hand SC';
                 font-style: normal;
@@ -258,81 +254,41 @@
                 position: absolute;
                 width: 221px;
                 height: 132px;
-                left: 471px;
-                top: 659px;
-
+                left: 667px;
+                top: 702px;
+                
                 font-family: 'Patrick Hand SC';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 24px;
-                line-height: 32px;
+                font-size: 20px;
+                line-height: 27px;
                 text-align: center;
 
                 color: #B8A195;
             }
 
-{% comment %}
-        /* ENFJ */
-            .ENFJ_button {
-                box-sizing: border-box;
-
+            .comingSoon {
                 position: absolute;
                 width: 280px;
-                height: 540px;
-                left: 783px;
-                top: 280px;
+                height: 500px;
+                left: 1000px;
+                top: 323px;
 
-                background: #FFFFFF;
-                border: 0;
+                background: #D9D9D9;
                 border-radius: 15px;
-                cursor: pointer;
-            }.ENFJ_button:hover, .ENFJ_button:focus{
-                border: 10px solid #C7DCF1;
             }
-            .ENFJ_AvatarPosition {
+            .CStxt {
                 position: absolute;
-                width: 300px;
-                height: 300px;
-                left: 773px;
-                top: 300px;
-
-                pointer-events: none;
-            }
-            .ENFJ{
-                position: absolute;
-                width: 56px;
-                height: 43px;
-                left: 902px;
-                top: 608px;
+                width: 148px;
+                height: 38px;
+                left: 66px;
+                top: 231px;
 
                 font-family: 'Patrick Hand SC';
                 font-style: normal;
-                font-weight: 400;
-                font-size: 32px;
-                line-height: 43px;
-
-                color: #B8A195;
-                pointer-events: none;
+                font-size: 28px;
+                color: #FFFFFF;
             }
-            .ENFJ_description{
-                pointer-events: none;
-
-                position: absolute;
-                width: 221px;
-                height: 104px;
-                left: 810px;
-                top: 659px;
-
-                font-family: 'Patrick Hand SC';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 24px;
-                line-height: 32px;
-                text-align: center;
-
-                color: #B8A195;
-            }
-{% endcomment %}
 
         /* alert box */
     .alert {
@@ -444,6 +400,8 @@
         font-size: 28px;
         line-height: 38px;
         color: #FFFFFF;
+    }.mbti_btn:hover {
+        background-color: #b0c4de;
     }
     </style>
 

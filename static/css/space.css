@@ -363,20 +363,7 @@ body {
     border: 0;
     border-radius: 10px;
 }
-.profileBox {
-    display: none;
 
-    position: absolute;
-    width: 580px;
-    height: 318px;
-    left: 35%;
-    top: 33%;
-    
-    background: #FAF4F0;
-    border: 3px solid #B8A195;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-}
 .profileBoxHeader {
     position: absolute;
     width: 580px;

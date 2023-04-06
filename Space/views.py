@@ -145,6 +145,8 @@ def mysteryAvatar(request) :
 #Edit Avatar
 def maleAvatarEdit(request) :
     usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
     if request.method == 'POST':
         form = AvatarForm(request.POST)
         if form.is_valid() :
@@ -159,11 +161,13 @@ def maleAvatarEdit(request) :
     else:
         form = AvatarForm()
 
-    return render(request, 'maleAvatar_edit.html')
+    return render(request, 'maleAvatar_edit.html', {'userData':userData})
 
 
 def femaleAvatarEdit(request) :
     usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
     if request.method == 'POST':
         form = AvatarForm(request.POST)
         if form.is_valid() :
@@ -178,11 +182,13 @@ def femaleAvatarEdit(request) :
     else:
         form = AvatarForm()
 
-    return render(request, 'femaleAvatar_edit.html')
+    return render(request, 'femaleAvatar_edit.html', {'userData':userData})
 
 
 def mysteryAvatarEdit(request) :
     usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
     if request.method == 'POST':
         form = AvatarForm(request.POST)
         if form.is_valid() :
@@ -198,7 +204,7 @@ def mysteryAvatarEdit(request) :
     else:
         form = AvatarForm()
 
-    return render(request, 'mysteryAvatar_edit.html')
+    return render(request, 'mysteryAvatar_edit.html', {'userData':userData})
 
 def editAvatarSuccess(request) :
     usernameInput = request.user

@@ -89,10 +89,156 @@
             <img src="{% static 'wallpaper/Forest.png' %}" style="position:fixed; width:1920px; height:1080px; left:0px; top:44px;">
         </div>
 
+        <!-- avatar in space -->
+        {% for member in members %}
+            <div onclick="openProfileFunction()" class="{% cycle 'avatar-position1' 'avatar-position2' 'avatar-position3' 'avatar-position4' 'avatar-position5' 'avatar-position6' 'avatar-position7' 'avatar-position8' 'avatar-position9' 'avatar-position10' %}">
+                
+                {% if member.avatar == 'ENTJ_male' %}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENTJ_male.png' %}"/>
+                {% elif member.avatar == 'ENTJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENTJ_female.png' %}"/>
+                {% elif member.avatar == 'ENTP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENTP_male.png' %}"/>
+                {% elif member.avatar == 'ENTP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENTP_female.png' %}"/>
+                {% elif member.avatar == 'ENFJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENFJ_male.png' %}"/>
+                {% elif member.avatar == 'ENFJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENFJ_female.png' %}"/>
+                {% elif member.avatar == 'ENFP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENFP_male.png' %}"/>
+                {% elif member.avatar == 'ENFP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENFP_female.png' %}"/>
+                {% elif member.avatar == 'ESTJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESTJ_male.png' %}"/>
+                {% elif member.avatar == 'ESTJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESTJ_female.png' %}"/>
+                {% elif member.avatar == 'ESFJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESFJ_male.png' %}"/>
+                {% elif member.avatar == 'ESFJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESFJ_female.png' %}"/>
+                {% elif member.avatar == 'ESTP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESTP_male.png' %}"/>
+                {% elif member.avatar == 'ESTP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESTP_female.png' %}"/>
+                {% elif member.avatar == 'ESFP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESFP_male.png' %}"/>
+                {% elif member.avatar == 'ESFP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESFP_female.png' %}"/>
+                {% elif member.avatar == 'INTJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INTJ_male.png' %}"/>
+                {% elif member.avatar == 'INTJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INTJ_female.png' %}"/>
+                {% elif member.avatar == 'INTP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INTP_male.png' %}"/>
+                {% elif member.avatar == 'INTP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INTP_female.png' %}"/>
+                {% elif member.avatar == 'INFJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INFJ_male.png' %}"/>
+                {% elif member.avatar == 'INFJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INFJ_female.png' %}"/>
+                {% elif member.avatar == 'INFP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INFP_male.png' %}"/>
+                {% elif member.avatar == 'INFP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INFP_female.png' %}"/>
+                {% elif member.avatar == 'ISTJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISTJ_male.png' %}"/>
+                {% elif member.avatar == 'ISTJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISTJ_female.png' %}"/>
+                {% elif member.avatar == 'ISFJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISFJ_male.png' %}"/>
+                {% elif member.avatar == 'ISFJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISFJ_female.png' %}"/>
+                {% elif member.avatar == 'ISTP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISTP_male.png' %}"/>
+                {% elif member.avatar == 'ISTP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISTP_female.png' %}"/>
+                {% elif member.avatar == 'ISFP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISFP_male.png' %}"/>
+                {% elif member.avatar == 'ISFP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISFP_female.png' %}"/>
+                {% elif member.avatar == 'FELIS'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/FELIS.png' %}"/>
+                {% elif member.avatar == 'CAMIS'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/CAMIS.png' %}"/>
+                {% endif %}
+                
+            </div>
+        {% endfor %}
+        <!-- avatar in space -->
+
+
+
+                {% comment %}---------- table ----------{% endcomment %}
+                <img class="table" src="{% static 'wallpaper/round-table.png' %}" style="left:212px; top:720px;"/>
+
+                <img class="table" src="{% static 'wallpaper/round-table.png' %}" style="left:836px; top:624px;"/>
     </body>
     
     <style>
+        .table {
+            position: fixed;
+            width: 320px;
+            height: 320px;
+            pointer-events: none;
+        }
 
+        .avatar-position1 {
+            position:absolute;
+            left: 990px;
+            top: 524px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position2 {
+            position:absolute;
+            left: 990px;
+            top: 524px;
+            cursor: pointer;
+        }
+        .avatar-position3 {
+            left: 1380px;
+            top: 713px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position4 {
+            left: 700px;
+            top: 764px;
+            cursor: pointer;
+        }
+        .avatar-position5 {
+            left: 415px;
+            top: 564px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position6 {
+            left: 368px;
+            top: 564px;
+            cursor: pointer;
+        }
+        .avatar-position7 {
+            left: 288px;
+            top: 694px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position8 {
+            left: 461px;
+            top: 694px;
+            cursor: pointer;
+        }
+        .avatar-position9 {
+            left: 1315px;
+            top: 488px;
+            cursor: pointer;
+        }
+        .avatar-position10 {
+            left: 1660px;
+            top: 564px;
+            cursor: pointer;            
+        }
     </style>
 
     <script>

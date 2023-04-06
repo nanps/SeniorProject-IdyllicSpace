@@ -151,6 +151,8 @@
             <img class="avatarIcon" id="ISTP_female_Icon" src="{% static 'avatar/ISTP_female.png' %}"/>
             <img class="avatarIcon" id="ISFP_male_Icon" src="{% static 'avatar/ISFP_male.png' %}"/>
             <img class="avatarIcon" id="ISFP_female_Icon" src="{% static 'avatar/ISFP_female.png' %}"/>
+            <img class="avatarIcon" id="felis_Icon" src="{% static 'avatar/FELIS.png' %}"/>
+            <img class="avatarIcon" id="camis_Icon" src="{% static 'avatar/CAMIS.png' %}"/>
         <!-- avatar -->
 
         <button class="editAvatarBtn" id="editAvatarBtn">edit avatar</button>
@@ -327,81 +329,6 @@
         <button class="cancelBtn" id="cancelBtn">Cancel</button>
     </div>
     <!-- end of log out box -->
-
-
-
-    <!-- other's profile box -->
-    <button class="profileBtn" id="profileBtn">other's profile</button> <!-- must edit !! -->
-
-    <div class="profileBox" id="profileBox">
-        <div class="profileBoxHeader">
-            <div class="profileBoxHeaderTxt">PROFILE</div>
-            <img class="profileCloseBtn" id="profileCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
-        </div>
-
-        {% if userData.mood == 'normal' %}
-            <img class="MoodShow" src="{% static 'icon/Mood-normal.png' %}"/>
-
-        {% elif userData.mood == 'happy' %}
-            <img class="MoodShow" src="{% static 'icon/Mood-happy.png' %}"/>
-
-        {% elif userData.mood == 'sad' %}
-            <img class="MoodShow" src="{% static 'icon/Mood-cry.png' %}"/>
-
-        {% elif userData.mood == 'nerd' %}
-            <img class="MoodShow" src="{% static 'icon/Mood-nerd.png' %}"/>
-
-        {% endif %}
-
-        <div class="avatarValue" id="profileAvatarValue">{{ userData.avatar }}</div>
-        
-        <!-- avatar -->
-            <img class="avatarIcon" id="ENTJ_male_Icon" src="{% static 'avatar/ENTJ_male.png' %}"/>
-            <img class="avatarIcon" id="ENTJ_female_Icon" src="{% static 'avatar/ENTJ_female.png' %}"/>
-            <img class="avatarIcon" id="ENTP_male_Icon" src="{% static 'avatar/ENTP_male.png' %}"/>
-            <img class="avatarIcon" id="ENTP_female_Icon" src="{% static 'avatar/ENTP_female.png' %}"/>
-            <img class="avatarIcon" id="ENFJ_male_Icon" src="{% static 'avatar/ENFJ_male.png' %}"/>
-            <img class="avatarIcon" id="ENFJ_female_Icon" src="{% static 'avatar/ENFJ_female.png' %}"/>
-            <img class="avatarIcon" id="ENFP_male_Icon" src="{% static 'avatar/ENFP_male.png' %}"/>
-            <img class="avatarIcon" id="ENFP_female_Icon" src="{% static 'avatar/ENFP_female.png' %}"/>
-            <img class="avatarIcon" id="ESTJ_male_Icon" src="{% static 'avatar/ESTJ_male.png' %}"/>
-            <img class="avatarIcon" id="ESTJ_female_Icon" src="{% static 'avatar/ESTJ_female.png' %}"/>
-            <img class="avatarIcon" id="ESFJ_male_Icon" src="{% static 'avatar/ESFJ_male.png' %}"/>
-            <img class="avatarIcon" id="ESFJ_female_Icon" src="{% static 'avatar/ESFJ_female.png' %}"/>
-            <img class="avatarIcon" id="ESTP_male_Icon" src="{% static 'avatar/ESTP_male.png' %}"/>
-            <img class="avatarIcon" id="ESTP_female_Icon" src="{% static 'avatar/ESTP_female.png' %}"/>
-            <img class="avatarIcon" id="ESFP_male_Icon" src="{% static 'avatar/ESFP_male.png' %}"/>
-            <img class="avatarIcon" id="ESFP_female_Icon" src="{% static 'avatar/ESFP_female.png' %}"/>
-            <img class="avatarIcon" id="INTJ_male_Icon" src="{% static 'avatar/INTJ_male.png' %}"/>
-            <img class="avatarIcon" id="INTJ_female_Icon" src="{% static 'avatar/INTJ_female.png' %}"/>
-            <img class="avatarIcon" id="INTP_male_Icon" src="{% static 'avatar/INTP_male.png' %}"/>
-            <img class="avatarIcon" id="INTP_female_Icon" src="{% static 'avatar/INTP_female.png' %}"/>
-            <img class="avatarIcon" id="INFJ_male_Icon" src="{% static 'avatar/INFJ_male.png' %}"/>
-            <img class="avatarIcon" id="INFJ_female_Icon" src="{% static 'avatar/INFJ_female.png' %}"/>
-            <img class="avatarIcon" id="INFP_male_Icon" src="{% static 'avatar/INFP_male.png' %}"/>
-            <img class="avatarIcon" id="INFP_female_Icon" src="{% static 'avatar/INFP_female.png' %}"/>
-            <img class="avatarIcon" id="ISTJ_male_Icon" src="{% static 'avatar/ISTJ_male.png' %}"/>
-            <img class="avatarIcon" id="ISTJ_female_Icon" src="{% static 'avatar/ISTJ_female.png' %}"/>
-            <img class="avatarIcon" id="ISFJ_male_Icon" src="{% static 'avatar/ISFJ_male.png' %}"/>
-            <img class="avatarIcon" id="ISFJ_female_Icon" src="{% static 'avatar/ISFJ_female.png' %}"/>
-            <img class="avatarIcon" id="ISTP_male_Icon" src="{% static 'avatar/ISTP_male.png' %}"/>
-            <img class="avatarIcon" id="ISTP_female_Icon" src="{% static 'avatar/ISTP_female.png' %}"/>
-            <img class="avatarIcon" id="ISFP_male_Icon" src="{% static 'avatar/ISFP_male.png' %}"/>
-            <img class="avatarIcon" id="ISFP_female_Icon" src="{% static 'avatar/ISFP_female.png' %}"/>
-        <!-- avatar -->
-
-        <div class="nameTxt">name</div>
-        <div class="displayNameValue" id="profileDisplayNameValue">{{ userData.displayName }}</div>
-        
-        <div class="bioTxt">bio</div>
-        {% if userData.bio == none %}
-            <div class="profileBioValue" id="profileBioValue"></div>
-        {% else %}
-            <div class="profileBioValue" id="profileBioValue">{{ userData.bio }}</div>
-        {% endif %}
-    </div>
-    <!-- end of other's profile box -->
-
 
 
     <!-- chat icon & content -->
@@ -814,6 +741,8 @@
         if (avatarValue == "ISTP_female") { document.getElementById("ISTP_female_Icon").style.display = "block"; }
         if (avatarValue == "ISFP_male") { document.getElementById("ISFP_male_Icon").style.display = "block"; }
         if (avatarValue == "ISFP_female") { document.getElementById("ISFP_female_Icon").style.display = "block"; }
+        if (avatarValue == "FELIS") { document.getElementById("felis_Icon").style.display = "block"; }
+        if (avatarValue == "CAMIS") { document.getElementById("camis_Icon").style.display = "block"; }
         // avatar
 
 
@@ -912,21 +841,6 @@
         changePwCloseBtn.addEventListener('click', closeChangePwFunction)
         {% comment %} ----------------------------- {% endcomment %}
 
-        // ----------------------- other's profile --------------------
-        var profileCloseBtn = document.getElementById("profileCloseBtn");
-        var profileBox = document.getElementById("profileBox");
-        var profileBtn = document.getElementById("profileBtn"); //must edit !!!!!
-
-        function openProfileFunction() {
-            profileBox.style.display = "block";
-        }
-
-        function closeProfileFunction() {
-            profileBox.style.display = "none";
-        }
-
-        profileBtn.addEventListener('click', openProfileFunction)
-        profileCloseBtn.addEventListener('click', closeProfileFunction)
 
         // ----------------------- stopwatch and timer -----------------------
         var Stopwatch = document.getElementById("Stopwatch");
