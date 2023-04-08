@@ -44,6 +44,9 @@ urlpatterns = [
 
         # /Space/userProfilePage
         # /Space/settingPage
+        # /Space/maleAvatar_profile
+        # /Space/femaleAvatar_profile
+        # /Space/mysteryAvatar_profile
 
         # /Space/Classroom/<slug:slug>/      url for open Space Room
         # /Space/Forest/<slug:slug>/ 

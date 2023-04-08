@@ -11,6 +11,9 @@ urlpatterns = [
 
     path('userProfilePage/', views.userProfilePage, name='userProfilePage'),
     path('settingPage/', views.settingPage, name='settingPage'),
+    path('maleAvatar_profile/', views.maleAvatar_profile, name='maleAvatar_profile'),
+    path('femaleAvatar_profile/', views.femaleAvatar_profile, name='femaleAvatar_profile'),
+    path('mysteryAvatar_profile/', views.mysteryAvatar_profile, name='mysteryAvatar_profile'),
 
     path('maleAvatar/', views.maleAvatar, name='maleAvatar'),
     path('femaleAvatar/', views.femaleAvatar, name='femaleAvatar'),

@@ -250,6 +250,70 @@ def editAvatarSuccess(request) :
 
     return render(request, 'editAvatarSuccess.html', {'userData':userData})
 
+#Edit Avatar Profile
+def maleAvatar_profile(request) :
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    if request.method == 'POST':
+        form = AvatarForm(request.POST)
+        if form.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = form.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['avatar'])
+
+                return redirect('userProfilePage')
+        else :
+            messages.info(request, "You must choose one Avatar.")
+    else:
+        form = AvatarForm()
+
+    return render(request, 'maleAvatar_profile.html', {'userData':userData})
+
+
+def femaleAvatar_profile(request) :
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    if request.method == 'POST':
+        form = AvatarForm(request.POST)
+        if form.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = form.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['avatar'])
+
+                return redirect('userProfilePage')
+        else :
+            messages.info(request, "You must choose one Avatar.")
+    else:
+        form = AvatarForm()
+
+    return render(request, 'femaleAvatar_profile.html', {'userData':userData})
+
+
+def mysteryAvatar_profile(request) :
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
+
+    if request.method == 'POST':
+        form = AvatarForm(request.POST)
+        if form.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+
+                instance = form.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['avatar'])
+
+                return redirect('userProfilePage')
+        else :
+            messages.info(request, "You must choose one Avatar.")
+    else:
+        form = AvatarForm()
+
+    return render(request, 'mysteryAvatar_profile.html', {'userData':userData})
+
 # map
 # @login_required
 def mapCreate(request) :

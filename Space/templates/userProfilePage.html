@@ -203,6 +203,7 @@
             window.location.pathname = "enterSpace"
         }
         document.getElementById("myProfileBoxCloseBtn").addEventListener('click', close)
+        document.getElementById("dotMenuBtn").addEventListener('click', close)
 
         function aboutUs() {
             window.location.pathname = "aboutUsPage"
@@ -260,7 +261,7 @@
 
         var editAvatarBtn = document.getElementById("editAvatarBtn")
         function editAvatarFunction() {
-            window.location.pathname = "Space/maleAvatar"
+            window.location.pathname = "Space/maleAvatar_profile"
         }
         editAvatarBtn.addEventListener('click', editAvatarFunction)
         {% comment %} ----------------------------- {% endcomment %}
