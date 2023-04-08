@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+        <link rel="icon" type="image/png" href="{% static 'icon/logo.png' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/space.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/RightTopMenu.css' %}">
+
+    <body style="background-color:#FAF4F0;">
+        <!-- navbar -->
+            <div class="navbar">
+                <img class="dotMenuBtn" id="dotMenuBtn" src="{% static 'icon/Dot menu.png' %}"/>
+            </div>
+        <!-- end of navbar -->
+
+        <!-- right top Menu -->
+        <div class="rightTopMenu" style="display:block;" id="rightTopMenu">
+
+            <img class="myprofileIcon" src="{% static 'icon/profile.png' %}"/>
+            <div class="myprofileTxt" id="myprofileBtn">MY PROFILE</div>
+
+            <img class="settingIcon" src="{% static 'icon/setting(1).png' %}"/>
+            <div class="settingTxt" id="settingBtn">SETTING</div>
+
+            <img class="aboutUsIcon" src="{% static 'icon/Logo-brown.png' %}"/>
+            <div class="aboutUsTxt" id="aboutUsBtn" onclick="aboutUs()">ABOUT US</div>
+
+            <img class="logOutIcon" src="{% static 'icon/logout.png' %}"/>
+            <div class="logOutTxt" id="logOutBtn">LOG OUT</div>
+        </div>
+        <!-- end of right top Menu -->
+
+
+        <!-- my profile content -->
+            <div class="myProfileBox-Page" id="myProfileBox">
+                <div class="myProfileHeader">
+                    <img class="myProfileBoxCloseBtn" id="myProfileBoxCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                    <div class="myProfileHeaderTxt">MY PROFILE</div>
+                </div>
+
+                <div class="avatarValue" id="avatarValue">{{ userData.avatar }}</div>
+                
+                <!-- avatar -->
+                    <img class="avatarIcon" id="ENTJ_male_Icon" src="{% static 'avatar/ENTJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ENTJ_female_Icon" src="{% static 'avatar/ENTJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ENTP_male_Icon" src="{% static 'avatar/ENTP_male.png' %}"/>
+                    <img class="avatarIcon" id="ENTP_female_Icon" src="{% static 'avatar/ENTP_female.png' %}"/>
+                    <img class="avatarIcon" id="ENFJ_male_Icon" src="{% static 'avatar/ENFJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ENFJ_female_Icon" src="{% static 'avatar/ENFJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ENFP_male_Icon" src="{% static 'avatar/ENFP_male.png' %}"/>
+                    <img class="avatarIcon" id="ENFP_female_Icon" src="{% static 'avatar/ENFP_female.png' %}"/>
+                    <img class="avatarIcon" id="ESTJ_male_Icon" src="{% static 'avatar/ESTJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ESTJ_female_Icon" src="{% static 'avatar/ESTJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ESFJ_male_Icon" src="{% static 'avatar/ESFJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ESFJ_female_Icon" src="{% static 'avatar/ESFJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ESTP_male_Icon" src="{% static 'avatar/ESTP_male.png' %}"/>
+                    <img class="avatarIcon" id="ESTP_female_Icon" src="{% static 'avatar/ESTP_female.png' %}"/>
+                    <img class="avatarIcon" id="ESFP_male_Icon" src="{% static 'avatar/ESFP_male.png' %}"/>
+                    <img class="avatarIcon" id="ESFP_female_Icon" src="{% static 'avatar/ESFP_female.png' %}"/>
+                    <img class="avatarIcon" id="INTJ_male_Icon" src="{% static 'avatar/INTJ_male.png' %}"/>
+                    <img class="avatarIcon" id="INTJ_female_Icon" src="{% static 'avatar/INTJ_female.png' %}"/>
+                    <img class="avatarIcon" id="INTP_male_Icon" src="{% static 'avatar/INTP_male.png' %}"/>
+                    <img class="avatarIcon" id="INTP_female_Icon" src="{% static 'avatar/INTP_female.png' %}"/>
+                    <img class="avatarIcon" id="INFJ_male_Icon" src="{% static 'avatar/INFJ_male.png' %}"/>
+                    <img class="avatarIcon" id="INFJ_female_Icon" src="{% static 'avatar/INFJ_female.png' %}"/>
+                    <img class="avatarIcon" id="INFP_male_Icon" src="{% static 'avatar/INFP_male.png' %}"/>
+                    <img class="avatarIcon" id="INFP_female_Icon" src="{% static 'avatar/INFP_female.png' %}"/>
+                    <img class="avatarIcon" id="ISTJ_male_Icon" src="{% static 'avatar/ISTJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ISTJ_female_Icon" src="{% static 'avatar/ISTJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ISFJ_male_Icon" src="{% static 'avatar/ISFJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ISFJ_female_Icon" src="{% static 'avatar/ISFJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ISTP_male_Icon" src="{% static 'avatar/ISTP_male.png' %}"/>
+                    <img class="avatarIcon" id="ISTP_female_Icon" src="{% static 'avatar/ISTP_female.png' %}"/>
+                    <img class="avatarIcon" id="ISFP_male_Icon" src="{% static 'avatar/ISFP_male.png' %}"/>
+                    <img class="avatarIcon" id="ISFP_female_Icon" src="{% static 'avatar/ISFP_female.png' %}"/>
+                    <img class="avatarIcon" id="felis_Icon" src="{% static 'avatar/FELIS.png' %}"/>
+                    <img class="avatarIcon" id="camis_Icon" src="{% static 'avatar/CAMIS.png' %}"/>
+                <!-- avatar -->
+
+                <button class="editAvatarBtn" id="editAvatarBtn">edit avatar</button>
+
+                <div class="nameTxt">name</div>
+                <div class="displayNameValue" id="displayNameValue">{{ userData.displayName }}</div>
+                <div class="editNameBtnBG">
+                    <img class="editNameBtn" id="editNameBtn" src="{% static 'icon/Edit.png' %}"/>
+                </div>
+
+                <div class="bioTxt">bio</div>
+
+                {% if userData.bio == none %}
+                    <div class="bioValue" id="bioValue"></div>
+                {% else %}
+                    <div class="bioValue" id="bioValue">{{ userData.bio }}</div>
+                {% endif %}
+
+                <div class="editBioBtnBG">
+                    <img class="editBioBtn" id="editBioBtn" src="{% static 'icon/Edit.png' %}"/>
+                </div>
+
+                <div class="moodTxt">mood</div>
+
+                {% if userData.mood == 'normal' %}
+                    <div class="normalFOCUS"></div>
+
+                {% elif userData.mood == 'happy' %}
+                    <div class="happyFOCUS"></div>
+
+                {% elif userData.mood == 'sad' %}
+                    <div class="sadFOCUS"></div>
+
+                {% elif userData.mood == 'nerd' %}
+                    <div class="nerdFOCUS"></div>
+
+                {% endif %}
+
+                <form name="MoodForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="normal" name="mood" style="display:none;"></input>
+
+                    <button class="normalBtnBG" type="submit">
+                        <img class="normalBtn" id="normalBtn" src="{% static 'icon/Mood-normal.png' %}"/>
+                    </button >
+                </form>
+
+                <form name="MoodForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="happy" name="mood" style="display:none;"></input>
+
+                    <button class="happyBtnBG" type="submit">
+                        <img class="happyBtn" id="happyBtn" src="{% static 'icon/Mood-happy.png' %}"/>
+                    </button >
+                </form>
+
+                <form name="MoodForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="sad" name="mood" style="display:none;"></input>
+
+                    <button class="sadBtnBG" type="submit">
+                        <img class="sadBtn" id="sadBtn" src="{% static 'icon/Mood-cry.png' %}"/>
+                    </button>
+                </form>
+        
+                <form name="MoodForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="nerd" name="mood" style="display:none;"></input>
+
+                    <button class="nerdBtnBG" type="submit">
+                        <img class="nerdBtn" id="nerdBtn" src="{% static 'icon/Mood-nerd.png' %}"/>
+                    </button>
+                </form>
+
+            </div>
+            <!-- end of my profile content -->
+
+            <!-- edit display name content -->
+            <div class="editBox" id="editDisplayNameBox">
+                <div class="editHeader">
+                    <img class="editCloseBtn" id="editDisplayNameCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                </div>
+
+                <input class="slugInput" id="slugInput_editname" value="{{ room.slug }}" name="slug"></input>
+
+                <div class="editTxt">Change your display name</div>
+
+                <div class="labelTxt">name</div>
+
+                <form name="DisplayNameForm" method="POST">
+                    {% csrf_token %}
+                    <input class="inputNewInfo" type="text" id="newName" name="displayName"></input>
+                    <button class="saveNewInfoBtn" type="submit" id="saveNameBtn" onclick="window.location.reload();">save</button>
+                </form>
+            </div>
+            <!-- end of edit display name content -->
+
+            <!-- edit bio content -->
+            <div class="editBox" id="editBioBox">
+                <div class="editHeader">
+                    <img class="editCloseBtn" id="editBioCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                </div>
+
+                <input class="slugInput" id="slugInput_editbio" value="{{ room.slug }}" name="roomSlug"></input>
+
+                <div class="editTxt">Change your bio</div>
+
+                <div class="labelTxt">bio</div>
+
+                <form name="BioForm" method="POST">
+                    {% csrf_token %}
+                    <input class="inputNewInfo" type="text" id="newBio" name="bio"></input>
+                    <button class="saveNewInfoBtn" type="submit" id="saveBioBtn">save</button>
+                </form>
+            </div>
+        <!-- end of edit bio content -->
+
+    </body>
+
+    <script>
+        function close() {
+            window.location.pathname = "enterSpace"
+        }
+        document.getElementById("myProfileBoxCloseBtn").addEventListener('click', close)
+
+        function aboutUs() {
+            window.location.pathname = "aboutUsPage"
+        }
+        document.getElementById("aboutUsBtn").addEventListener('click', aboutUs)
+
+        function setting() {
+            window.location.pathname = "Space/settingPage"
+        }
+        document.getElementById("settingBtn").addEventListener('click', setting)
+
+        function goLogOut() {
+            window.location.pathname = "logOutPage"
+        }
+        document.getElementById("logOutBtn").addEventListener('click', goLogOut)
+
+        // avatar 
+        avatarValue = document.getElementById("avatarValue").innerText;
+        if (avatarValue == "ENTJ_male") { document.getElementById("ENTJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ENTJ_female") { document.getElementById("ENTJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ENTP_male") { document.getElementById("ENTP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ENTP_female") { document.getElementById("ENTP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ENFJ_male") { document.getElementById("ENFJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ENFJ_female") { document.getElementById("ENFJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ENFP_male") { document.getElementById("ENFP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ENFP_female") { document.getElementById("ENFP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ESTJ_male") { document.getElementById("ESTJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ESTJ_female") { document.getElementById("ESTJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ESFJ_male") { document.getElementById("ESFJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ESFJ_female") { document.getElementById("ESFJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ESTP_male") { document.getElementById("ESTP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ESTP_female") { document.getElementById("ESTP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ESFP_male") { document.getElementById("ESFP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ESFP_female") { document.getElementById("ESFP_female_Icon").style.display = "block"; }
+        if (avatarValue == "INTJ_male") { document.getElementById("INTJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "INTJ_female") { document.getElementById("INTJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "INTP_male") { document.getElementById("INTP_male_Icon").style.display = "block"; }
+        if (avatarValue == "INTP_female") { document.getElementById("INTP_female_Icon").style.display = "block"; }
+        if (avatarValue == "INFJ_male") { document.getElementById("INFJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "INFJ_female") { document.getElementById("INFJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "INFP_male") { document.getElementById("INFP_male_Icon").style.display = "block"; }
+        if (avatarValue == "INFP_female") { document.getElementById("INFP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ISTJ_male") { document.getElementById("ISTJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ISTJ_female") { document.getElementById("ISTJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ISFJ_male") { document.getElementById("ISFJ_male_Icon").style.display = "block"; }
+        if (avatarValue == "ISFJ_female") { document.getElementById("ISFJ_female_Icon").style.display = "block"; }
+        if (avatarValue == "ISTP_male") { document.getElementById("ISTP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ISTP_female") { document.getElementById("ISTP_female_Icon").style.display = "block"; }
+        if (avatarValue == "ISFP_male") { document.getElementById("ISFP_male_Icon").style.display = "block"; }
+        if (avatarValue == "ISFP_female") { document.getElementById("ISFP_female_Icon").style.display = "block"; }
+        if (avatarValue == "FELIS") { document.getElementById("felis_Icon").style.display = "block"; }
+        if (avatarValue == "CAMIS") { document.getElementById("camis_Icon").style.display = "block"; }
+        // avatar
+
+
+        var editAvatarBtn = document.getElementById("editAvatarBtn")
+        function editAvatarFunction() {
+            window.location.pathname = "Space/maleAvatar"
+        }
+        editAvatarBtn.addEventListener('click', editAvatarFunction)
+        {% comment %} ----------------------------- {% endcomment %}
+
+        var editNameBtn = document.getElementById("editNameBtn");
+        var editDisplayNameBox = document.getElementById("editDisplayNameBox");
+        var editDisplayNameCloseBtn = document.getElementById("editDisplayNameCloseBtn");
+
+        function openEditNameFunction() {
+            editDisplayNameBox.style.display = "block";
+            editBioBox.style.display = "none";
+        }
+
+        function closeEditNameFunction() {
+            editDisplayNameBox.style.display = "none";
+        }
+
+        editNameBtn.addEventListener('click', openEditNameFunction)
+        editDisplayNameCloseBtn.addEventListener('click', closeEditNameFunction)
+
+        var newName = document.getElementById("newName");
+        newName.value = document.getElementById("displayNameValue").innerHTML;
+
+        document.getElementById('saveNameBtn').addEventListener("click", function() {
+            setTimeout(function() {
+                window.location.href = window.location;
+             }, 10);
+        });
+
+        {% comment %} ----------------------------- {% endcomment %}
+
+        var editBioBtn = document.getElementById("editBioBtn");
+        var editBioBox = document.getElementById("editBioBox");
+        var editBioCloseBtn = document.getElementById("editBioCloseBtn");
+
+        function openEditBioFunction() {
+            editBioBox.style.display = "block";
+            editDisplayNameBox.style.display = "none";
+        }
+
+        function closeEditBioFunction() {
+            editBioBox.style.display = "none";
+        }
+
+        editBioBtn.addEventListener('click', openEditBioFunction)
+        editBioCloseBtn.addEventListener('click', closeEditBioFunction)
+
+        var newBio = document.getElementById("newBio");
+        newBio.value = document.getElementById("bioValue").innerHTML;
+
+        document.getElementById('saveBioBtn').addEventListener("click", function() {
+            setTimeout(function() {
+                window.location.href = window.location;
+            }, 10);
+        });
+    </script>
+
+</html>
+
+    <style>
+        .myProfileBox-Page {
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+    </style>

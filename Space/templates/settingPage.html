@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+        <link rel="icon" type="image/png" href="{% static 'icon/logo.png' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/space.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/RightTopMenu.css' %}">
+
+    <body style="background-color:#FAF4F0;">
+        <!-- navbar -->
+            <div class="navbar">
+                <img class="dotMenuBtn" id="dotMenuBtn" src="{% static 'icon/Dot menu.png' %}"/>
+            </div>
+        <!-- end of navbar -->
+
+        <!-- right top Menu -->
+        <div class="rightTopMenu" style="display:block;" id="rightTopMenu">
+
+            <img class="myprofileIcon" src="{% static 'icon/profile.png' %}"/>
+            <div class="myprofileTxt" id="myprofileBtn">MY PROFILE</div>
+
+            <img class="settingIcon" src="{% static 'icon/setting(1).png' %}"/>
+            <div class="settingTxt" id="settingBtn">SETTING</div>
+
+            <img class="aboutUsIcon" src="{% static 'icon/Logo-brown.png' %}"/>
+            <div class="aboutUsTxt" id="aboutUsBtn">ABOUT US</div>
+
+            <img class="logOutIcon" src="{% static 'icon/logout.png' %}"/>
+            <div class="logOutTxt" id="logOutBtn">LOG OUT</div>
+        </div>
+        <!-- end of right top Menu -->
+
+        <!-- setting content -->
+        <div class="settingBox" id="settingBox" style="display:block;">
+            <div class="settingHeader">
+                <img class="settingCloseBtn" id="settingCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                <div class="settingHeaderTxt">SETTING</div>
+            </div>
+
+            <div class="accountTxt">Account</div>
+            <div class="emailTxt">e-mail</div>
+            <div class="emailValue">{{ user.email }}</div>
+
+            <div class="usernameTxt">username</div>
+            <div class="usernameValue">{{ user.username }}</div>
+
+            <div class="pwTxt">password</div>
+            <div class="pwShow">**************</div>
+
+            <button class="changePwBtn" id="changePwBtn">change</button>
+        </div>
+        <!-- setting content -->
+
+        <!-- change password content -->
+        <div class="changePwBox" id="changePwBox">
+            <div class="changePwHeader">
+                <img class="changePwCloseBtn" id="changePwCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+            </div>
+
+            <div class="changePwTitleTxt">Change your password</div>
+
+            <div class="oldPwTxt">old password</div>
+            <input class="oldPwInput" type="password" id="oldPw"></input>
+
+            <div class="newPwTxt">new password</div>
+            <input class="newPwInput" type="password" id="newPw"></input>
+
+            <div class="confirmPwTxt">confirm password</div>
+            <input class="confirmPwInput" type="password" id="confirmPw"></input>
+
+            <button class="saveNewPwBtn" id="saveNewPwBtn">save</button>
+        </div>
+        <!-- end of change password content -->
+
+    </body>
+
+    <script>
+        function close() {
+            window.location.pathname = "enterSpace"
+        }
+        document.getElementById("settingCloseBtn").addEventListener('click', close)
+
+        function myProfile() {
+            window.location.pathname = "Space/userProfilePage"
+        }
+        document.getElementById("myprofileBtn").addEventListener('click', myProfile)
+
+        function aboutUs() {
+            window.location.pathname = "aboutUsPage"
+        }
+        document.getElementById("aboutUsBtn").addEventListener('click', aboutUs)
+
+        function goLogOut() {
+            window.location.pathname = "logOutPage"
+        }
+        document.getElementById("logOutBtn").addEventListener('click', goLogOut)
+
+
+        var changePwBtn = document.getElementById("changePwBtn");
+        var changePwBox = document.getElementById("changePwBox");
+        var changePwCloseBtn = document.getElementById("changePwCloseBtn");
+        function openChangePwFunction() {
+            changePwBox.style.display = "block";
+        }
+        function closeChangePwFunction() {
+            changePwBox.style.display = "none";
+        }
+        changePwBtn.addEventListener('click', openChangePwFunction)
+        changePwCloseBtn.addEventListener('click', closeChangePwFunction)
+        
+    </script>
+
+</html>
+
+    <style>
+
+    </style>

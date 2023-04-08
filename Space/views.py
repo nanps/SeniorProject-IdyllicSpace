@@ -49,6 +49,44 @@ def enterDisplayName(request) :
 
     return render(request, 'enterDisplayName.html')
 
+def userProfilePage(request) :
+    usernameInput = request.user
+
+    userData = UserManage.objects.get(username=usernameInput)
+
+    if request.method == 'POST':
+
+        moodForm = MoodForm(request.POST)
+        if moodForm.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceMood = moodForm.save(commit=False)
+                instanceMood.username = request.user
+                instanceMood.save(update_fields=['mood'])
+
+                return render(request, 'userProfilePage.html', {'userData':userData})
+                
+        DNform = DisplayNameForm(request.POST)
+        if DNform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = DNform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['displayName'])
+
+                return render(request, 'userProfilePage.html', {'userData':userData})
+
+        BIOform = BioForm(request.POST)
+        if BIOform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceBio = BIOform.save(commit=False)
+                instanceBio.username = request.user
+                instanceBio.save(update_fields=['bio'])
+
+                return render(request, 'userProfilePage.html', {'userData':userData})
+
+    return render(request, 'userProfilePage.html', {'userData':userData})
+
+def settingPage(request) :
+    return render(request, 'settingPage.html')
 
 def maleAvatar(request) :
 

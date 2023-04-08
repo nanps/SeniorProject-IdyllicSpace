@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+<html lang="en">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/space.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/RightTopMenu.css' %}">
+
+        <link rel="icon" type="image/png" href="{% static 'icon/logo.png' %}">
     <img class="preloader" id="preloader" src="{% static 'logo/IMG_2159.gif' %}"/>
 
-    <div class="pageContainer" id="pageContainer">
-        <div class="Head">start or join a space</div>
-        <div class="line"></div>
 
-        <button class="createButton" onclick="goToCreate()">Create New Space</button>
+    <body style="background-color:#FAF4F0;">
+        <!-- navbar -->
+            <div class="navbar">
+                <img class="dotMenuBtn" id="dotMenuBtn" src="{% static 'icon/Dot menu.png' %}"/>
+            </div>
+        <!-- end of navbar -->
 
-        <button class="joinButton" onclick="goToJoin()">Join a Space</button>
-    </div>
-    
-        {% block contentJoin %}
-        {% endblock contentJoin %}
+        <!-- right top Menu -->
+        <div class="rightTopMenu" id="rightTopMenu">
 
-        {% block contentCreate %}
-        {% endblock contentCreate %}
-    
+            <img class="myprofileIcon" src="{% static 'icon/profile.png' %}"/>
+            <div class="myprofileTxt" id="myprofileBtn" onclick="myProfile()">MY PROFILE</div>
+
+            <img class="settingIcon" src="{% static 'icon/setting(1).png' %}"/>
+            <div class="settingTxt" id="settingBtn" onclick="setting()">SETTING</div>
+
+            <img class="aboutUsIcon" src="{% static 'icon/Logo-brown.png' %}"/>
+            <div class="aboutUsTxt" id="aboutUsBtn" onclick="aboutUs()">ABOUT US</div>
+
+            <img class="logOutIcon" src="{% static 'icon/logout.png' %}"/>
+            <div class="logOutTxt" id="logOutBtn" onclick="goLogOut()">LOG OUT</div>
+        </div>
+        <!-- end of right top Menu -->
+
+        <div class="pageContainer" id="pageContainer">
+            <div class="Head">start or join a space</div>
+            <div class="line"></div>
+
+            <button class="createButton" onclick="goToCreate()">Create New Space</button>
+
+            <button class="joinButton" onclick="goToJoin()">Join a Space</button>
+        </div>
+        
+            {% block contentJoin %}
+            {% endblock contentJoin %}
+
+            {% block contentCreate %}
+            {% endblock contentCreate %}
+    </body>
 
     <script>
         function goToCreate() {
@@ -28,6 +56,22 @@
         
         function goToJoin() {
             window.location.pathname = "mapJoin"
+        }
+
+        function myProfile() {
+            window.location.pathname = "Space/userProfilePage"
+        }
+
+        function aboutUs() {
+            window.location.pathname = "aboutUsPage"
+        }
+
+        function setting() {
+            window.location.pathname = "Space/settingPage"
+        }
+
+        function goLogOut() {
+            window.location.pathname = "logOutPage"
         }
 
         /*----------- loading -----------*/
@@ -39,7 +83,25 @@
             document.getElementById("preloader").style.display = "none";
             document.getElementById("pageContainer").style.display = "block";
         }
+
+
+        // ----------- right top menu -----------
+        var MenuBtn = document.getElementById("dotMenuBtn");
+        var MenuContent = document.getElementById("rightTopMenu");
+
+        function MenuFunction() {
+            if(MenuContent.style.display == "none") {
+                MenuContent.style.display = "block";
+                chatContentBox.style.display = "none";
+            }
+            else {
+                MenuContent.style.display = "none";
+            }
+        }
+        MenuBtn.addEventListener('click', MenuFunction)
     </script>
+
+</html>
 
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
@@ -130,4 +192,3 @@
         background-color: #b0c4de;
     }
     </style>
-{% endblock content %}

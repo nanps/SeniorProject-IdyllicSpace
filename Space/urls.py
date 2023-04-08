@@ -9,6 +9,9 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('enterDisplayName/', views.enterDisplayName, name='enterDisplayName'),
 
+    path('userProfilePage/', views.userProfilePage, name='userProfilePage'),
+    path('settingPage/', views.settingPage, name='settingPage'),
+
     path('maleAvatar/', views.maleAvatar, name='maleAvatar'),
     path('femaleAvatar/', views.femaleAvatar, name='femaleAvatar'),
     path('mysteryAvatar/', views.mysteryAvatar, name='mysteryAvatar'),

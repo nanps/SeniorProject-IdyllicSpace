@@ -42,6 +42,9 @@ urlpatterns = [
         # /Space/mysteryAvatar
         # /Space/space
 
+        # /Space/userProfilePage
+        # /Space/settingPage
+
         # /Space/Classroom/<slug:slug>/      url for open Space Room
         # /Space/Forest/<slug:slug>/ 
         # /Space/Cafe/<slug:slug>/ 
@@ -51,6 +54,9 @@ urlpatterns = [
     path('enterCode/', views.enterCode, name='enterCode'),
     path('enterSpace/', views.enterSpace, name='enterSpace'),
     path('statusLogIn/', views.statusLogIn, name='statusLogIn'),
+
+    path('aboutUsPage/', views.aboutUsPage, name='aboutUsPage'),
+    path('logOutPage/', views.logOutPage, name='logOutPage'),
 
     path('mapJoin/', views.mapJoin, name='mapJoin'),
     path('mapCreate/', include('Space.urls')), # /mapCreate/create

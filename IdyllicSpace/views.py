@@ -80,3 +80,9 @@ def mapJoin(request) :
 
 def statusLogIn(request) :
     return render(request, 'statusLogIn.html')
+
+def aboutUsPage(request) :
+    return render(request, 'aboutUsPage.html')
+
+def logOutPage(request) :
+    return render(request, 'logOutPage.html')
