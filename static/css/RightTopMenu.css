@@ -16,6 +16,14 @@
     border-radius: 10px;
 }
 
+.aboutUsIcon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 30px;
+    top: 163px;
+}
+
 .myprofileIcon {
     position: absolute;
     width: 20px;
@@ -1009,9 +1017,9 @@
 }
 .text-2 {
     position: absolute;
-    width: 530px;
+    width: 630px;
     height: 38px;
-    left: 104px;
+    left: 54px;
     top: 366px;
 
     font-family: 'Patrick Hand SC';

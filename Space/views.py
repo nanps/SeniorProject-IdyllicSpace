@@ -503,8 +503,9 @@ def Classroom_Space(request, slug):
 # @login_required
 def Forest_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
-    
-    ChatMessages = ChatMessage.objects.all
+    slugValue = room.slug
+
+    ChatMessages = ChatMessage.objects.filter(slug=slugValue) 
 
     usernameInput = request.user
 
@@ -524,6 +525,10 @@ def Forest_Space(request, slug):
                 instanceinRoom = leaveForm.save(commit=False)
                 instanceinRoom.slug = slug
                 instanceinRoom.save(update_fields=['inRoom', 'roomStatus'])
+
+                if request.POST['roomStatus'] == "close" :
+                    SpaceRoom.objects.get(slug=slug).delete()
+                    ChatMessages.delete()
 
                 return redirect('enterSpace')
             
@@ -569,8 +574,9 @@ def Forest_Space(request, slug):
 # @login_required
 def Cafe_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
-    
-    ChatMessages = ChatMessage.objects.all
+    slugValue = room.slug
+
+    ChatMessages = ChatMessage.objects.filter(slug=slugValue) 
 
     usernameInput = request.user
 
@@ -590,6 +596,10 @@ def Cafe_Space(request, slug):
                 instanceinRoom = leaveForm.save(commit=False)
                 instanceinRoom.slug = slug
                 instanceinRoom.save(update_fields=['inRoom', 'roomStatus'])
+
+                if request.POST['roomStatus'] == "close" :
+                    SpaceRoom.objects.get(slug=slug).delete()
+                    ChatMessages.delete()
 
                 return redirect('enterSpace')
             
@@ -642,8 +652,9 @@ def Library_Space(request, slug):
 # @login_required
 def Beach_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
-    
-    ChatMessages = ChatMessage.objects.all
+    slugValue = room.slug
+
+    ChatMessages = ChatMessage.objects.filter(slug=slugValue) 
 
     usernameInput = request.user
 
@@ -663,6 +674,10 @@ def Beach_Space(request, slug):
                 instanceinRoom = leaveForm.save(commit=False)
                 instanceinRoom.slug = slug
                 instanceinRoom.save(update_fields=['inRoom', 'roomStatus'])
+
+                if request.POST['roomStatus'] == "close" :
+                    SpaceRoom.objects.get(slug=slug).delete()
+                    ChatMessages.delete()
 
                 return redirect('enterSpace')
             

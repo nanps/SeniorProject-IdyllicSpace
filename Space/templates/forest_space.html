@@ -197,12 +197,14 @@
             cursor: pointer;
         }
         .avatar-position3 {
+            position:absolute;
             left: 1380px;
             top: 713px;
             transform: matrix(-1, 0, 0, 1, 0, 0);
             cursor: pointer;
         }
         .avatar-position4 {
+            position:absolute;
             left: 700px;
             top: 764px;
             cursor: pointer;
@@ -1109,19 +1111,12 @@
 {% block ChatMessageShow %}
         {% for text in ChatMessages %}
 
-            <script>
-                var room_slug = room.slug;
-                var text_slug = text.slug;
-            </script>
-
-            {% if text_slug == room_slug %}
             <div class="chatMessages" id="chatMessages">
 
                 <div class="senderName">{{ text.displayName }}</div> 
                 <div class="message">{{ text.content }}</div>
                 
             </div>
-            {% endif %}
 
         {% endfor %}
 {% endblock ChatMessageShow %}

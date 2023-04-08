@@ -1146,20 +1146,13 @@
 
 {% block ChatMessageShow %}
         {% for text in ChatMessages %}
-
-            <script>
-                var room_slug = room.slug;
-                var text_slug = text.slug;
-            </script>
-
-            {% if text_slug == room_slug %}
+        
             <div class="chatMessages" id="chatMessages">
 
                 <div class="senderName">{{ text.displayName }}</div> 
                 <div class="message">{{ text.content }}</div>
                 
             </div>
-            {% endif %}
 
         {% endfor %}
 {% endblock ChatMessageShow %}

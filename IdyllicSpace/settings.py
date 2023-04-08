@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 # CSRF_TRUSTED_ORIGINS = ["https://*.ngrok.io"]
 
-LOGOUT_REDIRECT_URL = '/statusLogIn/'
+LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/home/home/'
 LOGIN_URL = '/'
 

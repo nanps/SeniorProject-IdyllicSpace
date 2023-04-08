@@ -28,8 +28,14 @@
             <div class="id">Username</div>
             <input class="inputID" type="text" id="id" name="username"></input>
     
+            <img class="infoIcon" id="infoIcon" src="{% static 'icon/information.png' %}"/>
             <div class="password">Password</div>
             <input class="inputPW" type="password" id="password" name="password1"></input>
+            <div class="pwBox" id="pwBox">
+                <div class="pwText">• password must contain at least 8 characters.<br>
+                    • password must not be entirely numeric.<br>
+                    • password must not contain your username.</div>
+            </div>
     
             <div class="confPassword">Confirm Password</div>
             <input class="inputcfPW" type="password" id="confpassword" name="password2"></input>
@@ -57,6 +63,17 @@
     </body>
 
     <script>
+        var pwBox = document.getElementById("pwBox");
+        var infoIcon = document.getElementById("infoIcon");
+        function pwBoxFunction() {
+            pwBox.style.display = "block";
+            setTimeout(() => {
+                pwBox.style.display = "none";
+            }, 10000);
+        }
+        infoIcon.addEventListener('mouseover', pwBoxFunction)
+
+
         var span = document.getElementById("closeAlert");
         var alertBox = document.getElementById("AB");
  
@@ -72,7 +89,6 @@
             window.location.pathname = ""
         }
     </script>
-
 </html>
 
 <style>
@@ -349,6 +365,39 @@
         background-color: #b0c4de;
     }
 
+    .infoIcon {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        left: 862px;
+        top: 587px;
+    }
+    .pwBox {
+        display: none;
+        position: absolute;
+        width: 367px;
+        height: 100px;
+        left: 1197px;
+        top: 565px;
+        
+        background: rgba(184, 161, 149, 0.22);
+        border-radius: 10px;
+        border: 0;
+    }
+    .pwText {
+        position: absolute;
+        width: 325px;
+        height: 66px;
+        left: 22px;
+        top: 15px;
+        
+        font-family: 'Patrick Hand SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #B8A195;
+    }
     
     /* alert box */
     .alert {
