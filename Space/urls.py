@@ -9,6 +9,11 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('enterDisplayName/', views.enterDisplayName, name='enterDisplayName'),
 
+    path('get_token/', views.getToken),
+    path('create_member/', views.createMember),
+    path('get_member/', views.getMember),
+    path('delete_member/', views.deleteMember),
+
     path('userProfilePage/', views.userProfilePage, name='userProfilePage'),
     path('settingPage/', views.settingPage, name='settingPage'),
     path('maleAvatar_profile/', views.maleAvatar_profile, name='maleAvatar_profile'),

@@ -86,7 +86,7 @@
     {% comment %} <body background="{% static 'wallpaper/Beach.png' %}"> {% endcomment %}
     <body>
         <div class="bg">
-            <img src="{% static 'wallpaper/Forest.png' %}" style="position:fixed; width:1920px; height:1080px; left:0px; top:44px;">
+            <img src="{% static 'wallpaper/Forest.png' %}" style="position:absolute; width:1920px; height:1080px; left:0px; top:44px;">
         </div>
 
         <!-- avatar in space -->
@@ -170,14 +170,18 @@
 
 
                 {% comment %}---------- table ----------{% endcomment %}
-                <img class="table" src="{% static 'wallpaper/round-table.png' %}" style="left:212px; top:720px;"/>
+                <div>
+                    <img class="table" src="{% static 'wallpaper/round-table.png' %}" style="left:212px; top:720px;"/>
+                </div>
 
-                <img class="table" src="{% static 'wallpaper/round-table.png' %}" style="left:836px; top:624px;"/>
+                <div>
+                    <img class="table" src="{% static 'wallpaper/round-table.png' %}" style="left:836px; top:624px;"/>
+                </div>
     </body>
     
     <style>
         .table {
-            position: fixed;
+            position: absolute;
             width: 320px;
             height: 320px;
             pointer-events: none;

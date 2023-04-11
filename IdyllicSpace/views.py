@@ -5,6 +5,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
 
+
 def logIn(request) :    
     if request.method == 'POST':
         usernameNEW = request.POST['username']
@@ -72,15 +73,18 @@ def enterCode(request) :
 def enterSpace(request) :
     return render(request, 'enterSpace.html')
 
+@login_required
 def mapCreate(request) :
     return render(request, 'mapCreate.html')
 
+@login_required
 def mapJoin(request) :
     return render(request, 'mapJoin.html')
 
 def statusLogIn(request) :
     return render(request, 'statusLogIn.html')
 
+@login_required
 def aboutUsPage(request) :
     return render(request, 'aboutUsPage.html')
 

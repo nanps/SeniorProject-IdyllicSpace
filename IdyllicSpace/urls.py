@@ -26,6 +26,11 @@ urlpatterns = [
     path('', auth_views.LoginView.as_view(template_name='logIn.html'), name='logIn'),
 
     path('home/', include('Space.urls')), # /home/home
+    
+    # path('get_token/', views.getToken),
+    # path('create_member/', views.createMember),
+    # path('get_member/', views.getMember),
+    # path('delete_member/', views.deleteMember),
 
     path('createAcc/', views.createAcc, name='createAcc'),
     path('signUpSuccess/', views.signUpSuccess, name='signUpSuccess'),

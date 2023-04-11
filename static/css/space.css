@@ -24,17 +24,21 @@ body {
 }
 
 .chatIcon {
-    position: absolute;
+    position: fixed;
     width: 50px;
     height: 50px;
     left: 96.041%;
     margin-top: 89.5vh;
+    /* left: 1844px;
+    top: 1001px;     */
     cursor: pointer;
 }
  /* ------------- chat content ------------- */
 .chatContentBox {
-    display: block;
-    position: absolute;
+    display: none;
+    position: fixed;
+    /* left: 1413px;
+    top: 560px; */
     margin-top: 47vh;
     margin-left: 72.5vw;
 

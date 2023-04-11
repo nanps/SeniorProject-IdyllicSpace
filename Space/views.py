@@ -1,12 +1,67 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import SpaceRoom, UserManage, ChatMessage
+from .models import SpaceRoom, UserManage, ChatMessage, RoomMember
 from django.contrib.auth.models import User
 from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm, MessageForm, MoodForm, LeaveRoomForm
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+
+from django.http import JsonResponse
+import random
+import time
+from agora_token_builder import RtcTokenBuilder
+import json
+from django.views.decorators.csrf import csrf_exempt
+
+def getToken(request):
+    appId = "d176f6cd28f04644afa6d6093551c6d4"
+    appCertificate = "fd2591d725e44459a51d6a4b3bded8e0"
+    channelName = request.GET.get('channel')
+    uid = random.randint(1, 230)
+    expirationTimeInSeconds = 3600
+    currentTimeStamp = int(time.time())
+    privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
+    role = 1
+
+    token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
+
+    return JsonResponse({'token': token, 'uid': uid}, safe=False)
+
+@csrf_exempt
+def createMember(request):
+    data = json.loads(request.body)
+    member, created = RoomMember.objects.get_or_create(
+        name=data['name'],
+        uid=data['UID'],
+        room_name=data['room_name']
+    )
+
+    return JsonResponse({'name':data['name']}, safe=False)
+
+def getMember(request):
+    uid = request.GET.get('UID')
+    room_name = request.GET.get('room_name')
+
+    member = RoomMember.objects.get(
+        uid=uid,
+        room_name=room_name,
+    )
+    name = member.name
+    return JsonResponse({'name':member.name}, safe=False)
+
+@csrf_exempt
+def deleteMember(request):
+    data = json.loads(request.body)
+    member = RoomMember.objects.get(
+        name=data['name'],
+        uid=data['UID'],
+        room_name=data['room_name']
+    )
+    member.delete()
+    return JsonResponse('Member deleted', safe=False)
+
 
 # Create your views here.
+@login_required
 def home(request) :   
 
     usernameInput = request.user 
@@ -20,7 +75,7 @@ def home(request) :
 
     return render(request, 'home.html')
 
-
+@login_required
 def enterDisplayName(request) :
 
     usernameInput = request.user
@@ -49,6 +104,7 @@ def enterDisplayName(request) :
 
     return render(request, 'enterDisplayName.html')
 
+@login_required
 def userProfilePage(request) :
     usernameInput = request.user
 
@@ -85,9 +141,11 @@ def userProfilePage(request) :
 
     return render(request, 'userProfilePage.html', {'userData':userData})
 
+@login_required
 def settingPage(request) :
     return render(request, 'settingPage.html')
 
+@login_required
 def maleAvatar(request) :
 
     usernameInput = request.user
@@ -118,7 +176,7 @@ def maleAvatar(request) :
 
     return render(request, 'maleAvatar.html')
 
-
+@login_required
 def femaleAvatar(request) :
     
     usernameInput = request.user
@@ -149,7 +207,7 @@ def femaleAvatar(request) :
 
     return render(request, 'femaleAvatar.html')
 
-
+@login_required
 def mysteryAvatar(request) :
         
     usernameInput = request.user
@@ -181,6 +239,7 @@ def mysteryAvatar(request) :
     return render(request, 'mysteryAvatar.html')
 
 #Edit Avatar
+@login_required
 def maleAvatarEdit(request) :
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -201,7 +260,7 @@ def maleAvatarEdit(request) :
 
     return render(request, 'maleAvatar_edit.html', {'userData':userData})
 
-
+@login_required
 def femaleAvatarEdit(request) :
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -222,7 +281,7 @@ def femaleAvatarEdit(request) :
 
     return render(request, 'femaleAvatar_edit.html', {'userData':userData})
 
-
+@login_required
 def mysteryAvatarEdit(request) :
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -244,6 +303,7 @@ def mysteryAvatarEdit(request) :
 
     return render(request, 'mysteryAvatar_edit.html', {'userData':userData})
 
+@login_required
 def editAvatarSuccess(request) :
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -251,6 +311,7 @@ def editAvatarSuccess(request) :
     return render(request, 'editAvatarSuccess.html', {'userData':userData})
 
 #Edit Avatar Profile
+@login_required
 def maleAvatar_profile(request) :
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -271,7 +332,7 @@ def maleAvatar_profile(request) :
 
     return render(request, 'maleAvatar_profile.html', {'userData':userData})
 
-
+@login_required
 def femaleAvatar_profile(request) :
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -292,7 +353,7 @@ def femaleAvatar_profile(request) :
 
     return render(request, 'femaleAvatar_profile.html', {'userData':userData})
 
-
+@login_required
 def mysteryAvatar_profile(request) :
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -315,7 +376,7 @@ def mysteryAvatar_profile(request) :
     return render(request, 'mysteryAvatar_profile.html', {'userData':userData})
 
 # map
-# @login_required
+@login_required
 def mapCreate(request) :
     return render(request, 'mapCreate.html')
 
@@ -324,7 +385,7 @@ def mapCreate(request) :
 
 
 # --------------- CLASSROOM (CREATE) ---------------
-# @login_required
+@login_required
 def Classroom_Create(request) :
     if request.method == 'POST':
 
@@ -341,7 +402,7 @@ def Classroom_Create(request) :
     return render(request, 'classroom_create.html', Classrooms)
 
 # --------------- FOREST (CREATE) ---------------
-# @login_required
+@login_required
 def Forest_Create(request) :
     if request.method == 'POST':
 
@@ -358,7 +419,7 @@ def Forest_Create(request) :
     return render(request, 'forest_create.html', Classrooms)
 
 # --------------- CAFE (CREATE) ---------------
-# @login_required
+@login_required
 def Cafe_Create(request) :
     if request.method == 'POST':
 
@@ -375,7 +436,7 @@ def Cafe_Create(request) :
     return render(request, 'cafe_create.html', Classrooms)
 
 # --------------- LIBRARY (CREATE) ---------------
-# @login_required
+@login_required
 def Library_Create(request) :
     if request.method == 'POST':
 
@@ -392,7 +453,7 @@ def Library_Create(request) :
     return render(request, 'library_create.html', Classrooms)
 
 # --------------- BEACH (CREATE) ---------------
-# @login_required
+@login_required
 def Beach_Create(request) :
     if request.method == 'POST':
 
@@ -421,7 +482,7 @@ def Beach_Create(request) :
 
 
 # --------------- CLASSROOM (JOIN) ---------------
-# @login_required
+@login_required
 def Classroom_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
@@ -440,6 +501,7 @@ def Classroom_Rooms(request):
 
     return render(request, 'classroom_rooms.html', {'rooms':rooms, 'userData':userData,})
 
+@login_required
 def Classroom_Confirm(request):
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -452,14 +514,14 @@ def Classroom_Confirm(request):
 
     return render(request, 'classroom_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
-# @login_required
+@login_required
 def Room(request, roomName):
     room = SpaceRoom.objects.get(roomName=roomName)
 
     return render(request, 'room.html', {'room':room})
 
 # --------------- FOREST (JOIN) ---------------
-# @login_required
+@login_required
 def Forest_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
@@ -478,6 +540,7 @@ def Forest_Rooms(request):
 
     return render(request, 'forest_rooms.html', {'rooms':rooms, 'userData':userData,})
 
+@login_required
 def Forest_Confirm(request):
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -491,7 +554,7 @@ def Forest_Confirm(request):
     return render(request, 'forest_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
 # --------------- CAFE (JOIN) ---------------
-# @login_required
+@login_required
 def Cafe_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
@@ -510,6 +573,7 @@ def Cafe_Rooms(request):
 
     return render(request, 'cafe_rooms.html', {'rooms':rooms, 'userData':userData, })
 
+@login_required
 def Cafe_Confirm(request):
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -523,7 +587,7 @@ def Cafe_Confirm(request):
     return render(request, 'cafe_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
 # --------------- LIBRARY (JOIN) ---------------
-# @login_required
+@login_required
 def Library_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
@@ -542,6 +606,7 @@ def Library_Rooms(request):
 
     return render(request, 'library_rooms.html', {'rooms':rooms, 'userData':userData, })
 
+@login_required
 def Library_Confirm(request):
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -555,7 +620,7 @@ def Library_Confirm(request):
     return render(request, 'library_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
 # --------------- BEACH (JOIN) ---------------
-# @login_required
+@login_required
 def Beach_Rooms(request):
     rooms = SpaceRoom.objects.all()
 
@@ -564,6 +629,12 @@ def Beach_Rooms(request):
 
     usernameInput = request.user
     if request.method == 'POST':
+        nameNEW = userData.displayName
+        room_nameNEW = request.POST['currentSpaceRoom']
+        newRoomMember = RoomMember.objects.create(name=nameNEW, room_name=room_nameNEW)
+        newRoomMember.save()
+
+
         CSRform = CurrentSpaceRoomForm(request.POST)
         if CSRform.is_valid() :
             if UserManage.objects.filter(username=usernameInput).exists():
@@ -574,6 +645,7 @@ def Beach_Rooms(request):
 
     return render(request, 'beach_rooms.html', {'rooms':rooms, 'userData':userData, })
 
+@login_required
 def Beach_Confirm(request):
     usernameInput = request.user
     userData = UserManage.objects.get(username=usernameInput)
@@ -595,14 +667,14 @@ def Beach_Confirm(request):
 
 
 # --------------- CLASSROOM (SPACE) ---------------
-# @login_required
+@login_required
 def Classroom_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
 
     return render(request, 'classroom_space.html', {'room': room})
 
 # --------------- FOREST (SPACE) ---------------
-# @login_required
+@login_required
 def Forest_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
     slugValue = room.slug
@@ -673,7 +745,7 @@ def Forest_Space(request, slug):
     return render(request, 'forest_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
 
 # --------------- CAFE (SPACE) ---------------
-# @login_required
+@login_required
 def Cafe_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
     slugValue = room.slug
@@ -744,14 +816,14 @@ def Cafe_Space(request, slug):
     return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
 
 # --------------- LIBRARY (SPACE) ---------------
-# @login_required
+@login_required
 def Library_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
 
     return render(request, 'library_space.html', {'room': room})
 
 # --------------- BEACH (SPACE) ---------------
-# @login_required
+@login_required
 def Beach_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
     slugValue = room.slug

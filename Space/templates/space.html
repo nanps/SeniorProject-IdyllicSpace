@@ -12,6 +12,7 @@
         <link rel="icon" type="image/png" href="{% static 'icon/logo.png' %}">
     </head>
 
+    <input style="display:none;" value="{{ room.slug }}" id="roomID"></input>
     {% block spaceContent %}
     {% endblock spaceContent %}
 
@@ -35,8 +36,80 @@
         <!-- default -->
         <div class="burgerDefaultContent" id="BurgerDefaultContent">
             
-            {% block burgerDefaultContent %}
-            {% endblock burgerDefaultContent %}
+            <div class="roomName" id="roomNameShow">{{ room.roomName }}</div>
+
+            <div class="memberContent">
+                {% for member in members %}
+                        <div class="memberName">{{ member.displayName }}
+        
+                            {% comment %} microphone status {% endcomment %}
+                            <img class="muteStatus" style="display:block;" id="muteStatus" src="{% static 'icon/microphone-mute.png' %}"/>
+                            <img class="muteStatus" style="display:none;" id="unmuteStatus" src="{% static 'icon/microphone.png' %}"/>
+        
+                            {% comment %} deafen status {% endcomment %}
+                            <img class="deafenStatus" style="display:none;" id="deafenStatus" src="{% static 'icon/headphone-mute.png' %}"/>
+                            <img class="deafenStatus" style="display:block;" id="undeafenStatus" src="{% static 'icon/headphone.png' %}"/>
+                        </div>
+                {% endfor %}
+            </div>
+        
+            <style>
+                .roomName {
+                    position: absolute;
+                    height: 35px;
+                    left: 40px;
+                    top: 30px;
+        
+                    font-family: 'Patrick Hand SC';
+                    font-style: normal;
+                    font-size: 26px;
+                    color: #B8A195;
+                }
+        
+                .memberContent {
+                    position: absolute;
+                    width: 190px;
+                    height: 772px;
+                    left: 55px;
+                    top: 75px;
+                    /* background: #D9D9D9; */
+        
+                    display: flex;
+                    flex-direction: column;
+                }
+                .memberContent > div {
+                    padding: 5px;
+                }
+        
+                .memberName {
+                    width: 100px;
+                    height: 35px;
+        
+                    font-family: 'Patrick Hand SC';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 26px;
+                    line-height: 35px;
+                    color: #B8A195;
+        
+                    display: flex;
+                }
+                
+                .muteStatus {
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    left: 120px;
+                    margin-top: 12px;
+                }
+                .deafenStatus {
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    left: 145px;
+                    margin-top: 12px;
+                }
+            </style>
 
         </div>
         <!-- default -->
@@ -56,6 +129,8 @@
 
         <img class="muteBtn" id="muteBtn" src="{% static 'icon/microphone-mute.png' %}" onclick="muteFunction()"/>
         <img class="unmuteBtn" id="unmuteBtn" src="{% static 'icon/microphone.png' %}" onclick="muteFunction()"/>
+        {% comment %} <img class="muteBtn" id="muteBtn" src="{% static 'icon/microphone-mute.png' %}"/> {% endcomment %}
+        {% comment %} <img class="unmuteBtn" id="unmuteBtn" src="{% static 'icon/microphone.png' %}"/> {% endcomment %}
         <div class="muteTxt" id="muteTxt">mute</div>
 
         <img class="deafenBtn" id="deafenBtn" src="{% static 'icon/headphone-mute.png' %}" onclick="deafenFunction()"/>
@@ -626,19 +701,18 @@
                 unmuteBtn.style.display = "block";
                 muteTxt.innerHTML = "unmute";
 
-                muteStatus.style.display = "none";
-                unmuteStatus.style.display = "block";
+                /* muteStatus.style.display = "none";
+                unmuteStatus.style.display = "block"; */
             }
             else {
                 muteBtn.style.display = "block";
                 unmuteBtn.style.display = "none";
                 muteTxt.innerHTML = "mute";
 
-                muteStatus.style.display = "block";
-                unmuteStatus.style.display = "none";
+                /* muteStatus.style.display = "block";
+                unmuteStatus.style.display = "none"; */
             }
         }
-
         
         // ----------- undeafen -----------
         var deafenBtn = document.getElementById("deafenBtn");
@@ -1164,4 +1238,8 @@
         aboutUsBtn.addEventListener('click', openAboutUsFunction)
         aboutUsCloseBtn.addEventListener('click', closeAboutUsFunction)
     </script>
+
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+    <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.17.0.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/streams.js' %}"></script>
 </html>
