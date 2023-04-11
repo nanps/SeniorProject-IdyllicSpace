@@ -491,6 +491,11 @@ def Classroom_Rooms(request):
 
     usernameInput = request.user
     if request.method == 'POST':
+        nameNEW = userData.displayName
+        room_nameNEW = request.POST['currentSpaceRoom']
+        newRoomMember = RoomMember.objects.create(name=nameNEW, room_name=room_nameNEW)
+        newRoomMember.save()
+
         CSRform = CurrentSpaceRoomForm(request.POST)
         if CSRform.is_valid() :
             if UserManage.objects.filter(username=usernameInput).exists():
@@ -509,8 +514,13 @@ def Classroom_Confirm(request):
     rooms = SpaceRoom.objects.all()
     for room in rooms :
         if room.slug in userData.currentSpaceRoom :
+            slug = room.slug
+
             room.inRoom += 1
             room.save()
+
+            if (room.inRoom == room.capacity) :
+                SpaceRoom.objects.filter(slug=slug).update(roomStatus = "full")
 
     return render(request, 'classroom_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -530,6 +540,11 @@ def Forest_Rooms(request):
 
     usernameInput = request.user
     if request.method == 'POST':
+        nameNEW = userData.displayName
+        room_nameNEW = request.POST['currentSpaceRoom']
+        newRoomMember = RoomMember.objects.create(name=nameNEW, room_name=room_nameNEW)
+        newRoomMember.save()
+
         CSRform = CurrentSpaceRoomForm(request.POST)
         if CSRform.is_valid() :
             if UserManage.objects.filter(username=usernameInput).exists():
@@ -548,8 +563,13 @@ def Forest_Confirm(request):
     rooms = SpaceRoom.objects.all()
     for room in rooms :
         if room.slug in userData.currentSpaceRoom :
+            slug = room.slug
+
             room.inRoom += 1
             room.save()
+
+            if (room.inRoom == room.capacity) :
+                SpaceRoom.objects.filter(slug=slug).update(roomStatus = "full")
 
     return render(request, 'forest_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -563,6 +583,11 @@ def Cafe_Rooms(request):
 
     usernameInput = request.user
     if request.method == 'POST':
+        nameNEW = userData.displayName
+        room_nameNEW = request.POST['currentSpaceRoom']
+        newRoomMember = RoomMember.objects.create(name=nameNEW, room_name=room_nameNEW)
+        newRoomMember.save()
+    
         CSRform = CurrentSpaceRoomForm(request.POST)
         if CSRform.is_valid() :
             if UserManage.objects.filter(username=usernameInput).exists():
@@ -581,8 +606,13 @@ def Cafe_Confirm(request):
     rooms = SpaceRoom.objects.all()
     for room in rooms :
         if room.slug in userData.currentSpaceRoom :
+            slug = room.slug
+            
             room.inRoom += 1
             room.save()
+
+            if (room.inRoom == room.capacity) :
+                SpaceRoom.objects.filter(slug=slug).update(roomStatus = "full")
 
     return render(request, 'cafe_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -596,6 +626,11 @@ def Library_Rooms(request):
 
     usernameInput = request.user
     if request.method == 'POST':
+        nameNEW = userData.displayName
+        room_nameNEW = request.POST['currentSpaceRoom']
+        newRoomMember = RoomMember.objects.create(name=nameNEW, room_name=room_nameNEW)
+        newRoomMember.save()
+    
         CSRform = CurrentSpaceRoomForm(request.POST)
         if CSRform.is_valid() :
             if UserManage.objects.filter(username=usernameInput).exists():
@@ -614,8 +649,13 @@ def Library_Confirm(request):
     rooms = SpaceRoom.objects.all()
     for room in rooms :
         if room.slug in userData.currentSpaceRoom :
+            slug = room.slug
+
             room.inRoom += 1
             room.save()
+
+            if (room.inRoom == room.capacity) :
+                SpaceRoom.objects.filter(slug=slug).update(roomStatus = "full")
 
     return render(request, 'library_rooms_confirm.html', {'rooms':rooms, 'userData':userData, })
 
@@ -633,7 +673,6 @@ def Beach_Rooms(request):
         room_nameNEW = request.POST['currentSpaceRoom']
         newRoomMember = RoomMember.objects.create(name=nameNEW, room_name=room_nameNEW)
         newRoomMember.save()
-
 
         CSRform = CurrentSpaceRoomForm(request.POST)
         if CSRform.is_valid() :

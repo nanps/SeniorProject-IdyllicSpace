@@ -18,8 +18,9 @@
 
                 <div class="confirmContentTxt">Please click to confirm joining space room</div>
                 
+                <input style="display:none;" id="dName" value="{{ userData.displayName }}"></input>
                 <input class="pathName" id="pathName" value="{{ userData.currentSpaceRoom }}"></input>
-                <button class="confirmBtn" id="confirmBtn" onclick="joinRoom()">CONFIRM</button>
+                <button class="confirmBtn" id="confirmBtn">CONFIRM</button> <!-- onclick="joinRoom()" -->
             </div>
             <!-- end of confirm box -->
         </div>
@@ -31,6 +32,30 @@
             window.location.pathname = path_url;
         }
 
+        curr_space = document.getElementById("pathName").value;
+        room_name = curr_space.slice(16, 100);
+
+        /*---------- response ----------*/
+        let handleSubmit = async (e) => {
+            e.preventDefault()
+            let room = room_name
+            let name = document.getElementById("dName").value
+        
+            let response = await fetch('/Space/get_token/?channel='+`${room}`)
+            let data = await response.json()
+        
+            let UID = data.uid
+            let token = data.token
+        
+            sessionStorage.setItem('UID',UID)
+            sessionStorage.setItem('token',token)
+            sessionStorage.setItem('room',room)
+            sessionStorage.setItem('name',name)
+
+            var path_url = document.getElementById("pathName").value;
+            window.location.pathname = path_url;
+        }
+        document.getElementById('confirmBtn').addEventListener('click', handleSubmit)
     </script>
 
 </html>
