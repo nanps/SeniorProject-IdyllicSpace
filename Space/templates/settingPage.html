@@ -60,16 +60,19 @@
 
             <div class="changePwTitleTxt">Change your password</div>
 
-            <div class="oldPwTxt">old password</div>
-            <input class="oldPwInput" type="password" id="oldPw"></input>
-
-            <div class="newPwTxt">new password</div>
-            <input class="newPwInput" type="password" id="newPw"></input>
-
-            <div class="confirmPwTxt">confirm password</div>
-            <input class="confirmPwInput" type="password" id="confirmPw"></input>
-
-            <button class="saveNewPwBtn" id="saveNewPwBtn">save</button>
+            <form method="POST" name="PasswordChangingForm">
+                {% csrf_token %}
+                <div class="oldPwTxt">old password</div>
+                <input class="oldPwInput" type="password" name="old_password" id="oldPw"></input>
+    
+                <div class="newPwTxt">new password</div>
+                <input class="newPwInput" type="password" name="new_password1" id="newPw"></input>
+    
+                <div class="confirmPwTxt">confirm password</div>
+                <input class="confirmPwInput" type="password" name="new_password2" id="confirmPw"></input>
+    
+                <button class="saveNewPwBtn" type="submit" id="saveNewPwBtn">save</button>
+            </form>
         </div>
         <!-- end of change password content -->
 
@@ -77,7 +80,8 @@
 
     <script>
         function close() {
-            window.location.pathname = "enterSpace"
+            //window.location.pathname = "enterSpace"
+            window.history.back();
         }
         document.getElementById("settingCloseBtn").addEventListener('click', close)
         document.getElementById("dotMenuBtn").addEventListener('click', close)

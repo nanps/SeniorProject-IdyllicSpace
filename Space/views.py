@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import SpaceRoom, UserManage, ChatMessage, RoomMember
 from django.contrib.auth.models import User
-from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm, MessageForm, MoodForm, LeaveRoomForm
+from .forms import SpaceRoomForm, DisplayNameForm, AvatarForm, BioForm, CurrentSpaceRoomForm, MessageForm, MoodForm, LeaveRoomForm, PasswordChangingForm
 from django.contrib import messages
+from django.contrib.auth import login, authenticate
 
 from django.http import JsonResponse
 import random
@@ -60,24 +61,35 @@ def deleteMember(request):
     return JsonResponse('Member deleted', safe=False)
 
 
+
 # Create your views here.
 @login_required
 def home(request) :   
-
-    usernameInput = request.user 
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
 
     if request.method == 'POST':
 
         if (UserManage.objects.filter(username=usernameInput).exists()) :
-            return redirect('enterSpace')
+            if (userData.currentSpaceRoom != "None") :
+                return redirect('backToSpace')
+            else :
+                return redirect('enterSpace')
         else :
             return redirect('maleAvatar')
 
     return render(request, 'home.html')
 
 @login_required
-def enterDisplayName(request) :
+def backToSpace(request) :
+    usernameInput = request.user
+    userData = UserManage.objects.get(username=usernameInput)
 
+    return render(request, 'backToSpace.html', {'userData':userData})
+
+@login_required
+def enterDisplayName(request) :
+    
     usernameInput = request.user
 
     if request.method == 'POST':
@@ -143,7 +155,17 @@ def userProfilePage(request) :
 
 @login_required
 def settingPage(request) :
+    if request.method == 'POST':
+        ChangePasswordForm = PasswordChangingForm(request.POST)
+        if ChangePasswordForm.is_valid() :
+            return redirect('password_change_done')                
+        else :
+            messages.info(request, 'Please try again.')
+                
     return render(request, 'settingPage.html')
+
+def password_change_done(request) :
+    return render(request, 'password_change_done.html')
 
 @login_required
 def maleAvatar(request) :

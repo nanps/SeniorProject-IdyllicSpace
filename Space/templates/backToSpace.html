@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    
+        <link rel="icon" type="image/png" href="{% static 'icon/logo.png' %}">
+    </head>
+
+    <body style="background-color:#FAF4F0;">
+        <div class="box">
+            <img class="sheep" src="{% static 'icon/logo.png' %}"/>
+
+            <input style="display:none;" id="dName" value="{{ userData.displayName }}"></input>
+            <input class="pathName" id="pathName" value="{{ userData.currentSpaceRoom }}"></input>
+
+            <div class="text">Welcome back to Idyllic Space!</div>
+            <button class="button" id="button" type="button">back to space</button>
+        </div>
+    </body>
+
+    <script>
+        function backToSpace() {
+            var path_url = document.getElementById("pathName").value;
+            window.location.pathname = path_url;
+        }
+
+        var room_name
+        var curr_space = document.getElementById("pathName").value;
+        if (curr_space.slice(7,12) == 'Beach') {
+            room_name = curr_space.slice(12, 100);
+        }
+        if (curr_space.slice(7,11) == 'Cafe') {
+            room_name = curr_space.slice(11, 100);
+        }
+        if (curr_space.slice(7,16) == 'Classroom') {
+            room_name = curr_space.slice(16, 100);
+        }
+        if (curr_space.slice(7,14) == 'Library') {
+            room_name = curr_space.slice(14, 100);
+        }
+        if (curr_space.slice(7,13) == 'Forest') {
+            room_name = curr_space.slice(13, 100);
+        }
+
+        /*---------- response ----------*/
+        let handleSubmit = async (e) => {
+            e.preventDefault()
+            let room = room_name
+            let name = document.getElementById("dName").value
+        
+            let response = await fetch('/Space/get_token/?channel='+`${room}`)
+            let data = await response.json()
+        
+            let UID = data.uid
+            let token = data.token
+        
+            sessionStorage.setItem('UID',UID)
+            sessionStorage.setItem('token',token)
+            sessionStorage.setItem('room',room)
+            sessionStorage.setItem('name',name)
+
+            var path_url = document.getElementById("pathName").value;
+            window.location.pathname = path_url;
+        }
+        document.getElementById('button').addEventListener('click', handleSubmit)
+    </script>
+
+</html>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
+    .box {
+        position: relative;
+        width: 682px;
+        height: 703px;
+
+        top: 14vh;
+        left: 33%;
+
+        background: #FAF4F0;
+        box-shadow: 4px 4px 4px 5px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+    }
+
+    .sheep {
+        position: absolute;
+        width: 159px;
+        height: 159px;
+        left: 40%;
+        top: 20%;
+    }
+
+    .icon {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        left: 42.7%;
+        top: 20.8%;
+    }
+
+    .text {
+        position: absolute;
+        width: 714px;
+        height: 114px;
+
+        left: -2.346%;
+        top: 52%;
+        
+        font-family: 'Patrick Hand SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 34px;
+        line-height: 38px;
+        text-align: center;
+        
+        color: #B8A195;
+    }
+
+    .button {
+        position: absolute;
+        width: 270px;
+        height: 60px;
+        left: 30.2%;
+        top: 74.25%;
+
+        background: #68C548;
+        border-radius: 10px;
+        border: 0;
+        
+        font-family: 'Patrick Hand SC';
+        font-style: normal;
+        color: #FFFFFF;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 49px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: #bce191;
+    }
+
+    .pathName {
+        display: none;
+    }
+    
+    </style>

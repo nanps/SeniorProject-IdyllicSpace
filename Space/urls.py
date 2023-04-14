@@ -8,6 +8,7 @@ urlpatterns = [
 
     path('home/', views.home, name='home'),
     path('enterDisplayName/', views.enterDisplayName, name='enterDisplayName'),
+    path('backToSpace/', views.backToSpace, name='backToSpace'),
 
     path('get_token/', views.getToken),
     path('create_member/', views.createMember),
@@ -15,7 +16,8 @@ urlpatterns = [
     path('delete_member/', views.deleteMember),
 
     path('userProfilePage/', views.userProfilePage, name='userProfilePage'),
-    path('settingPage/', views.settingPage, name='settingPage'),
+    path('settingPage/',auth_views.PasswordChangeView.as_view(template_name='settingPage.html'), name='settingPage'),
+    path('password_change_done/', views.password_change_done, name='password_change_done'),
     path('maleAvatar_profile/', views.maleAvatar_profile, name='maleAvatar_profile'),
     path('femaleAvatar_profile/', views.femaleAvatar_profile, name='femaleAvatar_profile'),
     path('mysteryAvatar_profile/', views.mysteryAvatar_profile, name='mysteryAvatar_profile'),

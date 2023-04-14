@@ -1,5 +1,7 @@
 from django import forms
 from django.forms import ModelForm
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import UserManage, SpaceRoom, ChatMessage
 
 class DisplayNameForm(ModelForm) :
@@ -41,3 +43,8 @@ class LeaveRoomForm(ModelForm) :
     class Meta:
         model = SpaceRoom
         fields = ('inRoom', 'roomStatus',)
+
+class PasswordChangingForm(PasswordChangeForm) :
+    class Meta:
+        model = User
+        fields = ['old_password','new_password1','new_password2']

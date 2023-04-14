@@ -353,48 +353,6 @@
     <!-- end of edit bio content -->
 
 
-    <!-- setting content -->
-    <div class="settingBox" id="settingBox">
-        <div class="settingHeader">
-            <img class="settingCloseBtn" id="settingCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
-            <div class="settingHeaderTxt">SETTING</div>
-        </div>
-
-        <div class="accountTxt">Account</div>
-        <div class="emailTxt">e-mail</div>
-        <div class="emailValue">{{ user.email }}</div>
-
-        <div class="usernameTxt">username</div>
-        <div class="usernameValue">{{ user.username }}</div>
-
-        <div class="pwTxt">password</div>
-        <div class="pwShow">**************</div>
-
-        <button class="changePwBtn" id="changePwBtn">change</button>
-    </div>
-    <!-- setting content -->
-
-    <!-- change password content -->
-    <div class="changePwBox" id="changePwBox">
-        <div class="changePwHeader">
-            <img class="changePwCloseBtn" id="changePwCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
-        </div>
-
-        <div class="changePwTitleTxt">Change your password</div>
-
-        <div class="oldPwTxt">old password</div>
-        <input class="oldPwInput" type="password" id="oldPw"></input>
-
-        <div class="newPwTxt">new password</div>
-        <input class="newPwInput" type="password" id="newPw"></input>
-
-        <div class="confirmPwTxt">confirm password</div>
-        <input class="confirmPwInput" type="password" id="confirmPw"></input>
-
-        <button class="saveNewPwBtn" id="saveNewPwBtn">save</button>
-    </div>
-    <!-- end of change password content -->
-
     <!-- log out box -->
     <div class="logOutBox" id="logOutBox">
         <div class="logOutHeader">
@@ -885,39 +843,12 @@
         {% comment %} ----------------------------- {% endcomment %}
 
         // ----------- setting -----------
-        var settingCloseBtn = document.getElementById("settingCloseBtn");
-        var settingBox = document.getElementById("settingBox");
         var settingBtn = document.getElementById("settingBtn");
 
         function openSettingFunction() {
-            settingBox.style.display = "block";
-            MenuContent.style.display = "none";
+            window.location.pathname = "Space/settingPage"
         }
-
-        function closeSettingFunction() {
-            settingBox.style.display = "none";
-        }
-
         settingBtn.addEventListener('click', openSettingFunction)
-        settingCloseBtn.addEventListener('click', closeSettingFunction)
-        {% comment %} ----------------------------- {% endcomment %}
-        
-        var changePwBtn = document.getElementById("changePwBtn");
-        var changePwBox = document.getElementById("changePwBox");
-        var changePwCloseBtn = document.getElementById("changePwCloseBtn");
-
-        function openChangePwFunction() {
-            changePwBox.style.display = "block";
-        }
-
-        function closeChangePwFunction() {
-            changePwBox.style.display = "none";
-        }
-
-        changePwBtn.addEventListener('click', openChangePwFunction)
-        changePwCloseBtn.addEventListener('click', closeChangePwFunction)
-        {% comment %} ----------------------------- {% endcomment %}
-
 
         // ----------------------- stopwatch and timer -----------------------
         var Stopwatch = document.getElementById("Stopwatch");
