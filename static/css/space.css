@@ -7,6 +7,17 @@ body {
     height: 100vh;
 }
 
+.preloader {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    left: 43.4895833%;
+    top: 38.425925925925924%;
+}
+.pageContainer {
+    display: none;
+}
+
 .slugInput {
     display: none;
 }
@@ -250,7 +261,7 @@ body {
 }
 
 .muteBtn {
-    display: block;
+    /* display: none; */
 
     position: absolute;
     width: 30px;
@@ -260,7 +271,7 @@ body {
     cursor: pointer;
 }
 .unmuteBtn {
-    display: none;
+    /* display: block; */
 
     position: absolute;
     width: 30px;

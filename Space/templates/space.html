@@ -11,599 +11,618 @@
     
         <link rel="icon" type="image/png" href="{% static 'icon/logo.png' %}">
     </head>
-
-    <input style="display:none;" value="{{ room.slug }}" id="roomID"></input>
-    {% block spaceContent %}
-    {% endblock spaceContent %}
-
-    <body>
-
-    <!-- navbar -->
-    <div class="navbar">
-
-    <img class="burgerbar" id="Burger" src="{% static 'icon/burgerBar.png' %}"/>
-
-    <img class="dotMenuBtn" id="dotMenuBtn" src="{% static 'icon/Dot menu.png' %}"/>
-    </div>
-    <!-- end of navbar -->
-
-
-
-
-    <!-- burgerbar -->
-    <div class="burgerContent" id="BurgerContent">
-
-        <!-- default -->
-        <div class="burgerDefaultContent" id="BurgerDefaultContent">
-            
-            <div class="roomName" id="roomNameShow">{{ room.roomName }}</div>
-
-            <div class="memberContent">
-                {% for member in members %}
-                        <div class="memberName">{{ member.displayName }}
+    
+    {% comment %} <img class="preloader" id="preloader" src="{% static 'logo/IMG_2159.gif' %}"/> {% endcomment %}
+    {% comment %} <div class="pageContainer" id="pageContainer"> {% endcomment %}
         
-                            {% comment %} microphone status {% endcomment %}
-                            <img class="muteStatus" style="display:block;" id="muteStatus" src="{% static 'icon/microphone-mute.png' %}"/>
-                            <img class="muteStatus" style="display:none;" id="unmuteStatus" src="{% static 'icon/microphone.png' %}"/>
-        
-                            {% comment %} deafen status {% endcomment %}
-                            <img class="deafenStatus" style="display:none;" id="deafenStatus" src="{% static 'icon/headphone-mute.png' %}"/>
-                            <img class="deafenStatus" style="display:block;" id="undeafenStatus" src="{% static 'icon/headphone.png' %}"/>
-                        </div>
-                {% endfor %}
+        <input style="display:none;" value="{{ room.slug }}" id="roomID"></input>
+        {% comment %} {% block spaceContent %}
+        {% endblock spaceContent %} {% endcomment %}
+
+        <body>
+            {% block spaceContent %}
+            {% endblock spaceContent %}
+
+            <!-- navbar -->
+            <div class="navbar">
+
+            <img class="burgerbar" id="Burger" src="{% static 'icon/burgerBar.png' %}"/>
+
+            <img class="dotMenuBtn" id="dotMenuBtn" src="{% static 'icon/Dot menu.png' %}"/>
             </div>
-        
-            <style>
-                .roomName {
-                    position: absolute;
-                    height: 35px;
-                    left: 40px;
-                    top: 30px;
-        
-                    font-family: 'Patrick Hand SC';
-                    font-style: normal;
-                    font-size: 26px;
-                    color: #B8A195;
-                }
-        
-                .memberContent {
-                    position: absolute;
-                    width: 190px;
-                    height: 772px;
-                    left: 55px;
-                    top: 75px;
-                    /* background: #D9D9D9; */
-        
-                    display: flex;
-                    flex-direction: column;
-                }
-                .memberContent > div {
-                    padding: 5px;
-                }
-        
-                .memberName {
-                    width: 100px;
-                    height: 35px;
-        
-                    font-family: 'Patrick Hand SC';
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 26px;
-                    line-height: 35px;
-                    color: #B8A195;
-        
-                    display: flex;
-                }
+            <!-- end of navbar -->
+
+
+
+
+            <!-- burgerbar -->
+            <div class="burgerContent" id="BurgerContent">
+
+                <!-- default -->
+                <div class="burgerDefaultContent" id="BurgerDefaultContent">
+                    
+                    <div class="roomName" id="roomNameShow">{{ room.roomName }}</div>
+
+                    <div class="memberContent">
+                        {% for member in members %}
+                                <div class="memberName">{{ member.displayName }}
                 
-                .muteStatus {
-                    position: absolute;
-                    width: 15px;
-                    height: 15px;
-                    left: 120px;
-                    margin-top: 12px;
-                }
-                .deafenStatus {
-                    position: absolute;
-                    width: 15px;
-                    height: 15px;
-                    left: 145px;
-                    margin-top: 12px;
-                }
-            </style>
-
-        </div>
-        <!-- default -->
-
-        <!-- sound content -->
-        <div class="soundContent" id="soundContent">
-            
-            {% block soundContent %}
-            {% endblock soundContent %}
-
-        </div>
-        <!-- sound content -->
-
-        <img class="soundBtn" id="soundBtn" src="{% static 'icon/Music.png' %}" onclick="soundFunction()"/>
-        <img class="spaceBtn" id="spaceBtn" src="{% static 'logo/sheep/IMG_2168.png' %}" onclick="soundFunction()"/>
-        <div class="soundTxt" id="soundTxt">sound</div>
-
-        <img class="muteBtn" id="muteBtn" src="{% static 'icon/microphone-mute.png' %}" onclick="muteFunction()"/>
-        <img class="unmuteBtn" id="unmuteBtn" src="{% static 'icon/microphone.png' %}" onclick="muteFunction()"/>
-        {% comment %} <img class="muteBtn" id="muteBtn" src="{% static 'icon/microphone-mute.png' %}"/> {% endcomment %}
-        {% comment %} <img class="unmuteBtn" id="unmuteBtn" src="{% static 'icon/microphone.png' %}"/> {% endcomment %}
-        <div class="muteTxt" id="muteTxt">mute</div>
-
-        <img class="deafenBtn" id="deafenBtn" src="{% static 'icon/headphone-mute.png' %}" onclick="deafenFunction()"/>
-        <img class="undeafenBtn" id="undeafenBtn" src="{% static 'icon/headphone.png' %}" onclick="deafenFunction()"/>
-        <div class="deafenTxt" id="deafenTxt">undeafen</div>
-
-        <form method="POST" name="LeaveRoomForm">
-            {% csrf_token %}
-
-            <input style="display:none;" name="inRoom" id="inRoom"></input>
-            <input style="display:none;" name="roomStatus" id="roomStatus"></input>
-            <script>
-                window.onload = function() {
-                    var inRoomValue = {{ room.inRoom }};
-                    var minusone = inRoomValue - 1;
-                    document.getElementById("inRoom").value = minusone;
-
-                    if (inRoomValue == 1) {
-                        document.getElementById("roomStatus").value = "close";
-                    }
-                    else {
-                        document.getElementById("roomStatus").value = "open";
-                    }
-                }
-            </script>
-
-            <button class="leaveBtn" id="leaveBtn" onclick="leaveRoom()" type="submit">
-                <img src="{% static 'icon/back.png' %}" style="width:30px; height:30px; pointer-events:none;"/>
-            </button>
-            <div class="leaveTxt">leave</div>
-        </form>
-    </div>
-    <!-- end of burgerbar -->
-
-
-
-
-    <!-- right top Menu -->
-    <div class="rightTopMenu" id="rightTopMenu">
-
-        <img class="myprofileIcon" src="{% static 'icon/profile.png' %}"/>
-        <div class="myprofileTxt" id="myprofileBtn">MY PROFILE</div>
-
-        <img class="settingIcon" src="{% static 'icon/setting(1).png' %}"/>
-        <div class="settingTxt" id="settingBtn">SETTING</div>
-
-        <img class="aboutUsIcon" src="{% static 'icon/Logo-brown.png' %}"/>
-        <div class="aboutUsTxt" id="aboutUsBtn">ABOUT US</div>
-
-        <img class="logOutIcon" src="{% static 'icon/logout.png' %}"/>
-        <div class="logOutTxt" id="logOutBtn">LOG OUT</div>
-    </div>
-    <!-- end of right top Menu -->
-
-
-
-    <!-- my profile content -->
-    <div class="myProfileBox" id="myProfileBox">
-        <div class="myProfileHeader">
-            <img class="myProfileBoxCloseBtn" id="myProfileBoxCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
-            <div class="myProfileHeaderTxt">MY PROFILE</div>
-        </div>
-
-        <div class="avatarValue" id="avatarValue">{{ userData.avatar }}</div>
-        
-        <!-- avatar -->
-            <img class="avatarIcon" id="ENTJ_male_Icon" src="{% static 'avatar/ENTJ_male.png' %}"/>
-            <img class="avatarIcon" id="ENTJ_female_Icon" src="{% static 'avatar/ENTJ_female.png' %}"/>
-            <img class="avatarIcon" id="ENTP_male_Icon" src="{% static 'avatar/ENTP_male.png' %}"/>
-            <img class="avatarIcon" id="ENTP_female_Icon" src="{% static 'avatar/ENTP_female.png' %}"/>
-            <img class="avatarIcon" id="ENFJ_male_Icon" src="{% static 'avatar/ENFJ_male.png' %}"/>
-            <img class="avatarIcon" id="ENFJ_female_Icon" src="{% static 'avatar/ENFJ_female.png' %}"/>
-            <img class="avatarIcon" id="ENFP_male_Icon" src="{% static 'avatar/ENFP_male.png' %}"/>
-            <img class="avatarIcon" id="ENFP_female_Icon" src="{% static 'avatar/ENFP_female.png' %}"/>
-            <img class="avatarIcon" id="ESTJ_male_Icon" src="{% static 'avatar/ESTJ_male.png' %}"/>
-            <img class="avatarIcon" id="ESTJ_female_Icon" src="{% static 'avatar/ESTJ_female.png' %}"/>
-            <img class="avatarIcon" id="ESFJ_male_Icon" src="{% static 'avatar/ESFJ_male.png' %}"/>
-            <img class="avatarIcon" id="ESFJ_female_Icon" src="{% static 'avatar/ESFJ_female.png' %}"/>
-            <img class="avatarIcon" id="ESTP_male_Icon" src="{% static 'avatar/ESTP_male.png' %}"/>
-            <img class="avatarIcon" id="ESTP_female_Icon" src="{% static 'avatar/ESTP_female.png' %}"/>
-            <img class="avatarIcon" id="ESFP_male_Icon" src="{% static 'avatar/ESFP_male.png' %}"/>
-            <img class="avatarIcon" id="ESFP_female_Icon" src="{% static 'avatar/ESFP_female.png' %}"/>
-            <img class="avatarIcon" id="INTJ_male_Icon" src="{% static 'avatar/INTJ_male.png' %}"/>
-            <img class="avatarIcon" id="INTJ_female_Icon" src="{% static 'avatar/INTJ_female.png' %}"/>
-            <img class="avatarIcon" id="INTP_male_Icon" src="{% static 'avatar/INTP_male.png' %}"/>
-            <img class="avatarIcon" id="INTP_female_Icon" src="{% static 'avatar/INTP_female.png' %}"/>
-            <img class="avatarIcon" id="INFJ_male_Icon" src="{% static 'avatar/INFJ_male.png' %}"/>
-            <img class="avatarIcon" id="INFJ_female_Icon" src="{% static 'avatar/INFJ_female.png' %}"/>
-            <img class="avatarIcon" id="INFP_male_Icon" src="{% static 'avatar/INFP_male.png' %}"/>
-            <img class="avatarIcon" id="INFP_female_Icon" src="{% static 'avatar/INFP_female.png' %}"/>
-            <img class="avatarIcon" id="ISTJ_male_Icon" src="{% static 'avatar/ISTJ_male.png' %}"/>
-            <img class="avatarIcon" id="ISTJ_female_Icon" src="{% static 'avatar/ISTJ_female.png' %}"/>
-            <img class="avatarIcon" id="ISFJ_male_Icon" src="{% static 'avatar/ISFJ_male.png' %}"/>
-            <img class="avatarIcon" id="ISFJ_female_Icon" src="{% static 'avatar/ISFJ_female.png' %}"/>
-            <img class="avatarIcon" id="ISTP_male_Icon" src="{% static 'avatar/ISTP_male.png' %}"/>
-            <img class="avatarIcon" id="ISTP_female_Icon" src="{% static 'avatar/ISTP_female.png' %}"/>
-            <img class="avatarIcon" id="ISFP_male_Icon" src="{% static 'avatar/ISFP_male.png' %}"/>
-            <img class="avatarIcon" id="ISFP_female_Icon" src="{% static 'avatar/ISFP_female.png' %}"/>
-            <img class="avatarIcon" id="felis_Icon" src="{% static 'avatar/FELIS.png' %}"/>
-            <img class="avatarIcon" id="camis_Icon" src="{% static 'avatar/CAMIS.png' %}"/>
-        <!-- avatar -->
-
-        <button class="editAvatarBtn" id="editAvatarBtn">edit avatar</button>
-
-        <div class="nameTxt">name</div>
-        <div class="displayNameValue" id="displayNameValue">{{ userData.displayName }}</div>
-        <div class="editNameBtnBG">
-            <img class="editNameBtn" id="editNameBtn" src="{% static 'icon/Edit.png' %}"/>
-        </div>
-
-        <div class="bioTxt">bio</div>
-
-        {% if userData.bio == none %}
-            <div class="bioValue" id="bioValue"></div>
-        {% else %}
-            <div class="bioValue" id="bioValue">{{ userData.bio }}</div>
-        {% endif %}
-
-        <div class="editBioBtnBG">
-            <img class="editBioBtn" id="editBioBtn" src="{% static 'icon/Edit.png' %}"/>
-        </div>
-
-        <div class="moodTxt">mood</div>
-
-        {% if userData.mood == 'normal' %}
-            <div class="normalFOCUS"></div>
-
-        {% elif userData.mood == 'happy' %}
-            <div class="happyFOCUS"></div>
-
-        {% elif userData.mood == 'sad' %}
-            <div class="sadFOCUS"></div>
-
-        {% elif userData.mood == 'nerd' %}
-            <div class="nerdFOCUS"></div>
-
-        {% endif %}
-
-        <form name="MoodForm" method="POST">
-            {% csrf_token %}
-
-            <input value="normal" name="mood" style="display:none;"></input>
-
-            <button class="normalBtnBG" type="submit">
-                <img class="normalBtn" id="normalBtn" src="{% static 'icon/Mood-normal.png' %}"/>
-            </button >
-        </form>
-
-        <form name="MoodForm" method="POST">
-            {% csrf_token %}
-
-            <input value="happy" name="mood" style="display:none;"></input>
-
-            <button class="happyBtnBG" type="submit">
-                <img class="happyBtn" id="happyBtn" src="{% static 'icon/Mood-happy.png' %}"/>
-            </button >
-        </form>
-
-        <form name="MoodForm" method="POST">
-            {% csrf_token %}
-
-            <input value="sad" name="mood" style="display:none;"></input>
-
-            <button class="sadBtnBG" type="submit">
-                <img class="sadBtn" id="sadBtn" src="{% static 'icon/Mood-cry.png' %}"/>
-            </button>
-        </form>
-  
-        <form name="MoodForm" method="POST">
-            {% csrf_token %}
-
-            <input value="nerd" name="mood" style="display:none;"></input>
-
-            <button class="nerdBtnBG" type="submit">
-                <img class="nerdBtn" id="nerdBtn" src="{% static 'icon/Mood-nerd.png' %}"/>
-            </button>
-        </form>
-
-    </div>
-    <!-- end of my profile content -->
-
-    <!-- edit display name content -->
-    <div class="editBox" id="editDisplayNameBox">
-        <div class="editHeader">
-            <img class="editCloseBtn" id="editDisplayNameCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
-        </div>
-
-        <input class="slugInput" id="slugInput_editname" value="{{ room.slug }}" name="slug"></input>
-
-        <div class="editTxt">Change your display name</div>
-
-        <div class="labelTxt">name</div>
-
-        <form name="DisplayNameForm" method="POST">
-            {% csrf_token %}
-            <input class="inputNewInfo" type="text" id="newName" name="displayName"></input>
-            <button class="saveNewInfoBtn" type="submit" id="saveNameBtn" onclick="window.location.reload();">save</button>
-        </form>
-    </div>
-    <!-- end of edit display name content -->
-
-    <!-- edit bio content -->
-    <div class="editBox" id="editBioBox">
-        <div class="editHeader">
-            <img class="editCloseBtn" id="editBioCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
-        </div>
-
-        <input class="slugInput" id="slugInput_editbio" value="{{ room.slug }}" name="roomSlug"></input>
-
-        <div class="editTxt">Change your bio</div>
-
-        <div class="labelTxt">bio</div>
-
-        <form name="BioForm" method="POST">
-            {% csrf_token %}
-            <input class="inputNewInfo" type="text" id="newBio" name="bio"></input>
-            <button class="saveNewInfoBtn" type="submit" id="saveBioBtn">save</button>
-        </form>
-    </div>
-    <!-- end of edit bio content -->
-
-
-    <!-- log out box -->
-    <div class="logOutBox" id="logOutBox">
-        <div class="logOutHeader">
-            <div class="logOutHeaderTxt">LOG OUT</div>
-        </div>
-
-        <div class="logOutContentTxt">Are you sure you want to log out?</div>
-        
-        <button class="loggingOutBtn" id="loggingOutBtn">Log out</button>
-        <button class="cancelBtn" id="cancelBtn">Cancel</button>
-    </div>
-    <!-- end of log out box -->
-
-
-    <!-- chat icon & content -->
-    <img class="chatIcon" id="chatIcon" src="{% static 'icon/Chat.png' %}"/>
-
-    <div class="chatContentBox" id="chatContentBox">
-        <div class="chatHeader">
-            <div class="chatHeaderTxt">chat</div>
-            <img class="chatCloseBtn" id="chatCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
-        </div>
-
-        <div class="chatContent" id="chatContent">
-            {% block ChatMessageShow %}
-            {% endblock ChatMessageShow %}
-        </div>
-
-        <form name="MessageForm" method="POST">
-            {% csrf_token %}
-
-            <input value="{{ room.slug }}" name="slug" style="display:none;"></input>
-            <input class="inputChat" type="text" name="content"></input>
-
-            <button class="chatSendBtn" type="submit">send</button>
-        </form>
-    </div>
-    <!-- end of chat icon & content -->
-
-
-
-    <!-- Timer and Stopwatch -->
-    <div class="box">
-        <img class="timerIcon" id="timerIcon" src="{% static 'icon/sandclock.png' %}" onclick="OpenTimer()"/>
-        <div class="lineClock"></div>
-        <img class="stopwatchIcon" id="stopwatchIcon" src="{% static 'icon/stopwatch.png' %}" onclick="OpenStopwatch()"/>
-    </div>
-
-    <!-- timer -->
-        <div class="clockBox" id="Timer">
-            <img class="closeClock" id="closeClockBtn" src="{% static 'icon/Xmark.png' %}" onclick="closeClockFunction()"/>
-
-                <div class="clockTimer" id="timerClock">Time</div>
-
-                <div class="setTimer" id="setTimer">
-                    <div class="setTimer_h">h</div>
-                    <select class="selectHour" id="selectHour" name="TimerHour">
-                        <option value="00">0</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                    </select>
-
-                    <div class="setTimer_m">m</div>
-                    <select class="selectMinute" id="selectMinute" name="TimerMinute">
-                        <option value="00">0</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                        <option value="32">32</option>
-                        <option value="33">33</option>
-                        <option value="34">34</option>
-                        <option value="35">35</option>
-                        <option value="36">36</option>
-                        <option value="37">37</option>
-                        <option value="38">38</option>
-                        <option value="39">39</option>
-                        <option value="40">40</option>
-                        <option value="41">41</option>
-                        <option value="42">42</option>
-                        <option value="43">43</option>
-                        <option value="44">44</option>
-                        <option value="45">45</option>
-                        <option value="46">46</option>
-                        <option value="47">47</option>
-                        <option value="48">48</option>
-                        <option value="49">49</option>
-                        <option value="50">50</option>
-                        <option value="51">51</option>
-                        <option value="52">52</option>
-                        <option value="53">53</option>
-                        <option value="54">54</option>
-                        <option value="55">55</option>
-                        <option value="56">56</option>
-                        <option value="57">57</option>
-                        <option value="58">58</option>
-                        <option value="59">59</option>
-                    </select>
-
-                    <div class="setTimer_s">s</div>
-                    <select class="selectSecond" id="selectSecond" name="TimerSecond">
-                        <option value="00">0</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                        <option value="32">32</option>
-                        <option value="33">33</option>
-                        <option value="34">34</option>
-                        <option value="35">35</option>
-                        <option value="36">36</option>
-                        <option value="37">37</option>
-                        <option value="38">38</option>
-                        <option value="39">39</option>
-                        <option value="40">40</option>
-                        <option value="41">41</option>
-                        <option value="42">42</option>
-                        <option value="43">43</option>
-                        <option value="44">44</option>
-                        <option value="45">45</option>
-                        <option value="46">46</option>
-                        <option value="47">47</option>
-                        <option value="48">48</option>
-                        <option value="49">49</option>
-                        <option value="50">50</option>
-                        <option value="51">51</option>
-                        <option value="52">52</option>
-                        <option value="53">53</option>
-                        <option value="54">54</option>
-                        <option value="55">55</option>
-                        <option value="56">56</option>
-                        <option value="57">57</option>
-                        <option value="58">58</option>
-                        <option value="59">59</option>
-                    </select>
+                                    <div id="{{ member.displayName }}">
+                                        {% comment %} microphone status {% endcomment %}
+                                        <img class="muteStatus" style="display:none;" id="muteStatus" src="{% static 'icon/microphone-mute.png' %}"/>
+                                        <img class="muteStatus" style="display:block;" id="unmuteStatus" src="{% static 'icon/microphone.png' %}"/>
+
+                                        {% comment %} deafen status {% endcomment %}
+                                        <img class="deafenStatus" style="display:none;" id="deafenStatus" src="{% static 'icon/headphone-mute.png' %}"/>
+                                        <img class="deafenStatus" style="display:block;" id="undeafenStatus" src="{% static 'icon/headphone.png' %}"/>
+                                    </div>
+                                
+                                </div>
+                        {% endfor %}
+                    </div>
+                
+                    <style>
+                        .roomName {
+                            position: absolute;
+                            height: 35px;
+                            left: 40px;
+                            top: 30px;
+                
+                            font-family: 'Patrick Hand SC';
+                            font-style: normal;
+                            font-size: 26px;
+                            color: #B8A195;
+                        }
+                
+                        .memberContent {
+                            position: absolute;
+                            width: 190px;
+                            height: 772px;
+                            left: 55px;
+                            top: 75px;
+                            /* background: #D9D9D9; */
+                
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .memberContent > div {
+                            padding: 5px;
+                        }
+                
+                        .memberName {
+                            width: 100px;
+                            height: 35px;
+                
+                            font-family: 'Patrick Hand SC';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 26px;
+                            line-height: 35px;
+                            color: #B8A195;
+                
+                            display: flex;
+                        }
+                        
+                        .muteStatus {
+                            position: absolute;
+                            width: 15px;
+                            height: 15px;
+                            left: 120px;
+                            margin-top: 12px;
+                        }
+                        .deafenStatus {
+                            position: absolute;
+                            width: 15px;
+                            height: 15px;
+                            left: 145px;
+                            margin-top: 12px;
+                        }
+                    </style>
+
+                </div>
+                <!-- default -->
+
+                <!-- sound content -->
+                <div class="soundContent" id="soundContent">
+                    
+                    {% block soundContent %}
+                    {% endblock soundContent %}
+
+                </div>
+                <!-- sound content -->
+
+                <img class="soundBtn" id="soundBtn" src="{% static 'icon/Music.png' %}" onclick="soundFunction()"/>
+                <img class="spaceBtn" id="spaceBtn" src="{% static 'logo/sheep/IMG_2168.png' %}" onclick="soundFunction()"/>
+                <div class="soundTxt" id="soundTxt">sound</div>
+
+                <img class="muteBtn" id="muteBtn" style="display:none;" src="{% static 'icon/microphone-mute.png' %}" onclick="muteFunction()"/>
+                <img class="unmuteBtn" id="unmuteBtn" style="display:block;" src="{% static 'icon/microphone.png' %}" onclick="muteFunction()"/>
+                {% comment %} <img class="muteBtn" id="muteBtn" style="display:none;" src="{% static 'icon/microphone-mute.png' %}"/> {% endcomment %}
+                {% comment %} <img class="unmuteBtn" id="unmuteBtn" style="display:block;" src="{% static 'icon/microphone.png' %}"/> {% endcomment %}
+                <div class="muteTxt" id="muteTxt">unmute</div>
+
+                <img class="deafenBtn" id="deafenBtn" src="{% static 'icon/headphone-mute.png' %}" onclick="deafenFunction()"/>
+                <img class="undeafenBtn" id="undeafenBtn" src="{% static 'icon/headphone.png' %}" onclick="deafenFunction()"/>
+                <div class="deafenTxt" id="deafenTxt">undeafen</div>
+
+                <form method="POST" name="LeaveRoomForm">
+                    {% csrf_token %}
+
+                    <input style="display:none;" name="inRoom" id="inRoom"></input>
+                    <input style="display:none;" name="roomStatus" id="roomStatus"></input>
+                    <script>
+                        window.onload = function() {
+                            var inRoomValue = {{ room.inRoom }};
+                            var minusone = inRoomValue - 1;
+                            document.getElementById("inRoom").value = minusone;
+
+                            if (inRoomValue == 1) {
+                                document.getElementById("roomStatus").value = "close";
+                            }
+                            else {
+                                document.getElementById("roomStatus").value = "open";
+                            }
+                        }
+                    </script>
+
+                    <button class="leaveBtn" id="leaveBtn" onclick="leaveRoom()" type="submit">
+                        <img src="{% static 'icon/back.png' %}" style="width:30px; height:30px; pointer-events:none;"/>
+                    </button>
+                    <div class="leaveTxt">leave</div>
+                </form>
+            </div>
+            <!-- end of burgerbar -->
+
+
+
+
+            <!-- right top Menu -->
+            <div class="rightTopMenu" id="rightTopMenu">
+
+                <img class="myprofileIcon" src="{% static 'icon/profile.png' %}"/>
+                <div class="myprofileTxt" id="myprofileBtn">MY PROFILE</div>
+
+                <img class="settingIcon" src="{% static 'icon/setting(1).png' %}"/>
+                <div class="settingTxt" id="settingBtn">SETTING</div>
+
+                <img class="aboutUsIcon" src="{% static 'icon/Logo-brown.png' %}"/>
+                <div class="aboutUsTxt" id="aboutUsBtn">ABOUT US</div>
+
+                <img class="logOutIcon" src="{% static 'icon/logout.png' %}"/>
+                <div class="logOutTxt" id="logOutBtn">LOG OUT</div>
+            </div>
+            <!-- end of right top Menu -->
+
+
+
+            <!-- my profile content -->
+            <div class="myProfileBox" id="myProfileBox">
+                <div class="myProfileHeader">
+                    <img class="myProfileBoxCloseBtn" id="myProfileBoxCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                    <div class="myProfileHeaderTxt">MY PROFILE</div>
                 </div>
 
-                <button class="setBtn" id="setTimerBtn" type="submit" onclick="setTimer()">Set</button>
-                <button class="startBtnTM" id="startTimerBtn" onclick="PauseResume()">Start</button>
-                <button class="pauseBtn" id="pauseTimerBtn" onclick="PauseResume()">Pause</button>
-                <button class="resumeBtn" id="resumeTimerBtn" onclick="PauseResume()">Resume</button>
-                <div class="timesUp" id="timesUp">Times Up
-                    <audio autoplay loop  id="timesUpAudio">
-                        <source src="{% static 'mp3/TimesUp.mp3' %}">
-                    </audio>
+                <div class="avatarValue" id="avatarValue">{{ userData.avatar }}</div>
+                
+                <!-- avatar -->
+                    <img class="avatarIcon" id="ENTJ_male_Icon" src="{% static 'avatar/ENTJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ENTJ_female_Icon" src="{% static 'avatar/ENTJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ENTP_male_Icon" src="{% static 'avatar/ENTP_male.png' %}"/>
+                    <img class="avatarIcon" id="ENTP_female_Icon" src="{% static 'avatar/ENTP_female.png' %}"/>
+                    <img class="avatarIcon" id="ENFJ_male_Icon" src="{% static 'avatar/ENFJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ENFJ_female_Icon" src="{% static 'avatar/ENFJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ENFP_male_Icon" src="{% static 'avatar/ENFP_male.png' %}"/>
+                    <img class="avatarIcon" id="ENFP_female_Icon" src="{% static 'avatar/ENFP_female.png' %}"/>
+                    <img class="avatarIcon" id="ESTJ_male_Icon" src="{% static 'avatar/ESTJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ESTJ_female_Icon" src="{% static 'avatar/ESTJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ESFJ_male_Icon" src="{% static 'avatar/ESFJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ESFJ_female_Icon" src="{% static 'avatar/ESFJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ESTP_male_Icon" src="{% static 'avatar/ESTP_male.png' %}"/>
+                    <img class="avatarIcon" id="ESTP_female_Icon" src="{% static 'avatar/ESTP_female.png' %}"/>
+                    <img class="avatarIcon" id="ESFP_male_Icon" src="{% static 'avatar/ESFP_male.png' %}"/>
+                    <img class="avatarIcon" id="ESFP_female_Icon" src="{% static 'avatar/ESFP_female.png' %}"/>
+                    <img class="avatarIcon" id="INTJ_male_Icon" src="{% static 'avatar/INTJ_male.png' %}"/>
+                    <img class="avatarIcon" id="INTJ_female_Icon" src="{% static 'avatar/INTJ_female.png' %}"/>
+                    <img class="avatarIcon" id="INTP_male_Icon" src="{% static 'avatar/INTP_male.png' %}"/>
+                    <img class="avatarIcon" id="INTP_female_Icon" src="{% static 'avatar/INTP_female.png' %}"/>
+                    <img class="avatarIcon" id="INFJ_male_Icon" src="{% static 'avatar/INFJ_male.png' %}"/>
+                    <img class="avatarIcon" id="INFJ_female_Icon" src="{% static 'avatar/INFJ_female.png' %}"/>
+                    <img class="avatarIcon" id="INFP_male_Icon" src="{% static 'avatar/INFP_male.png' %}"/>
+                    <img class="avatarIcon" id="INFP_female_Icon" src="{% static 'avatar/INFP_female.png' %}"/>
+                    <img class="avatarIcon" id="ISTJ_male_Icon" src="{% static 'avatar/ISTJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ISTJ_female_Icon" src="{% static 'avatar/ISTJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ISFJ_male_Icon" src="{% static 'avatar/ISFJ_male.png' %}"/>
+                    <img class="avatarIcon" id="ISFJ_female_Icon" src="{% static 'avatar/ISFJ_female.png' %}"/>
+                    <img class="avatarIcon" id="ISTP_male_Icon" src="{% static 'avatar/ISTP_male.png' %}"/>
+                    <img class="avatarIcon" id="ISTP_female_Icon" src="{% static 'avatar/ISTP_female.png' %}"/>
+                    <img class="avatarIcon" id="ISFP_male_Icon" src="{% static 'avatar/ISFP_male.png' %}"/>
+                    <img class="avatarIcon" id="ISFP_female_Icon" src="{% static 'avatar/ISFP_female.png' %}"/>
+                    <img class="avatarIcon" id="felis_Icon" src="{% static 'avatar/FELIS.png' %}"/>
+                    <img class="avatarIcon" id="camis_Icon" src="{% static 'avatar/CAMIS.png' %}"/>
+                <!-- avatar -->
+
+                <button class="editAvatarBtn" id="editAvatarBtn">edit avatar</button>
+
+                <div class="nameTxt">name</div>
+                <div class="displayNameValue" id="displayNameValue">{{ userData.displayName }}</div>
+                <div class="editNameBtnBG">
+                    <img class="editNameBtn" id="editNameBtn" src="{% static 'icon/Edit.png' %}"/>
                 </div>
 
-                <div class="resetBtn" id="resetTimer" onclick="Reset_timer()">Reset</div>
-        </div>
-    <!-- end of timer -->
+                <div class="bioTxt">bio</div>
 
-    <!-- stopwatch -->
-    <div class="clockBox" id="Stopwatch">
-        <img class="closeClock" id="closeClockBtn" src="{% static 'icon/Xmark.png' %}" onclick="closeClockFunction()"/>
+                {% if userData.bio == none %}
+                    <div class="bioValue" id="bioValue"></div>
+                {% else %}
+                    <div class="bioValue" id="bioValue">{{ userData.bio }}</div>
+                {% endif %}
 
-            <div class="clock" id="stopWatchClock">00h 00m 00s</div>
+                <div class="editBioBtnBG">
+                    <img class="editBioBtn" id="editBioBtn" src="{% static 'icon/Edit.png' %}"/>
+                </div>
 
-            <button class="startBtn" id="startStopwatch" onclick="startStop_SW()">Start</button>
-            <div class="resetBtn" id="resetStopwatch" onclick="Reset_SW()">Reset</div>
-        </div>
-    <!-- end of stopwatch -->
+                <div class="moodTxt">mood</div>
 
-    <!-- end of Timer and Stopwatch -->
+                {% if userData.mood == 'normal' %}
+                    <div class="normalFOCUS"></div>
+
+                {% elif userData.mood == 'happy' %}
+                    <div class="happyFOCUS"></div>
+
+                {% elif userData.mood == 'sad' %}
+                    <div class="sadFOCUS"></div>
+
+                {% elif userData.mood == 'nerd' %}
+                    <div class="nerdFOCUS"></div>
+
+                {% endif %}
+
+                <form name="MoodForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="normal" name="mood" style="display:none;"></input>
+
+                    <button class="normalBtnBG" type="submit">
+                        <img class="normalBtn" id="normalBtn" src="{% static 'icon/Mood-normal.png' %}"/>
+                    </button >
+                </form>
+
+                <form name="MoodForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="happy" name="mood" style="display:none;"></input>
+
+                    <button class="happyBtnBG" type="submit">
+                        <img class="happyBtn" id="happyBtn" src="{% static 'icon/Mood-happy.png' %}"/>
+                    </button >
+                </form>
+
+                <form name="MoodForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="sad" name="mood" style="display:none;"></input>
+
+                    <button class="sadBtnBG" type="submit">
+                        <img class="sadBtn" id="sadBtn" src="{% static 'icon/Mood-cry.png' %}"/>
+                    </button>
+                </form>
+        
+                <form name="MoodForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="nerd" name="mood" style="display:none;"></input>
+
+                    <button class="nerdBtnBG" type="submit">
+                        <img class="nerdBtn" id="nerdBtn" src="{% static 'icon/Mood-nerd.png' %}"/>
+                    </button>
+                </form>
+
+            </div>
+            <!-- end of my profile content -->
+
+            <!-- edit display name content -->
+            <div class="editBox" id="editDisplayNameBox">
+                <div class="editHeader">
+                    <img class="editCloseBtn" id="editDisplayNameCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                </div>
+
+                <input class="slugInput" id="slugInput_editname" value="{{ room.slug }}" name="slug"></input>
+
+                <div class="editTxt">Change your display name</div>
+
+                <div class="labelTxt">name</div>
+
+                <form name="DisplayNameForm" method="POST">
+                    {% csrf_token %}
+                    <input class="inputNewInfo" type="text" id="newName" name="displayName"></input>
+                    <button class="saveNewInfoBtn" type="submit" id="saveNameBtn" onclick="window.location.reload();">save</button>
+                </form>
+            </div>
+            <!-- end of edit display name content -->
+
+            <!-- edit bio content -->
+            <div class="editBox" id="editBioBox">
+                <div class="editHeader">
+                    <img class="editCloseBtn" id="editBioCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                </div>
+
+                <input class="slugInput" id="slugInput_editbio" value="{{ room.slug }}" name="roomSlug"></input>
+
+                <div class="editTxt">Change your bio</div>
+
+                <div class="labelTxt">bio</div>
+
+                <form name="BioForm" method="POST">
+                    {% csrf_token %}
+                    <input class="inputNewInfo" type="text" id="newBio" name="bio"></input>
+                    <button class="saveNewInfoBtn" type="submit" id="saveBioBtn">save</button>
+                </form>
+            </div>
+            <!-- end of edit bio content -->
+
+
+            <!-- log out box -->
+            <div class="logOutBox" id="logOutBox">
+                <div class="logOutHeader">
+                    <div class="logOutHeaderTxt">LOG OUT</div>
+                </div>
+
+                <div class="logOutContentTxt">Are you sure you want to log out?</div>
+                
+                <button class="loggingOutBtn" id="loggingOutBtn">Log out</button>
+                <button class="cancelBtn" id="cancelBtn">Cancel</button>
+            </div>
+            <!-- end of log out box -->
+
+
+            <!-- chat icon & content -->
+            <img class="chatIcon" id="chatIcon" src="{% static 'icon/Chat.png' %}"/>
+
+            <div class="chatContentBox" id="chatContentBox">
+                <div class="chatHeader">
+                    <div class="chatHeaderTxt">chat</div>
+                    <img class="chatCloseBtn" id="chatCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                </div>
+
+                <div class="chatContent" id="chatContent">
+                    {% block ChatMessageShow %}
+                    {% endblock ChatMessageShow %}
+                </div>
+
+                <form name="MessageForm" method="POST">
+                    {% csrf_token %}
+
+                    <input value="{{ room.slug }}" name="slug" style="display:none;"></input>
+                    <input class="inputChat" type="text" name="content"></input>
+
+                    <button class="chatSendBtn" type="submit">send</button>
+                </form>
+            </div>
+            <!-- end of chat icon & content -->
 
 
 
-    <!-- ABOUT US -->
-    <div class="aboutUsBox" id="aboutUsBox">
-        <div class="aboutUsHeader">
-            <img class="aboutUsCloseBtn" id="aboutUsCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
-        </div>
+            <!-- Timer and Stopwatch -->
+            <div class="box">
+                <img class="timerIcon" id="timerIcon" src="{% static 'icon/sandclock.png' %}" onclick="OpenTimer()"/>
+                <div class="lineClock"></div>
+                <img class="stopwatchIcon" id="stopwatchIcon" src="{% static 'icon/stopwatch.png' %}" onclick="OpenStopwatch()"/>
+            </div>
 
-        <div class="text-1">We are naïve web developers that like to relax and work<br>
-            in co - working space. We will never try to get rid of the<br>
-            ambience created by individuals conversing calmly,<br>
-            the beauty of nature, and the music playing.
-            <br><br>
-            Hope you had fun!</div>
+            <!-- timer -->
+                <div class="clockBox" id="Timer">
+                    <img class="closeClock" id="closeClockBtn" src="{% static 'icon/Xmark.png' %}" onclick="closeClockFunction()"/>
 
-        <div class="text-2">DEVELOPED & DESIGNED BY beforedecember - bearwearsdress</div>
+                        <div class="clockTimer" id="timerClock">Time</div>
 
-        <div class="text-3">in case you need to contact us</div>
+                        <div class="setTimer" id="setTimer">
+                            <div class="setTimer_h">h</div>
+                            <select class="selectHour" id="selectHour" name="TimerHour">
+                                <option value="00">0</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                            </select>
 
-        <div class="text-4">idyllicspace.official@gmail.com</div>
-    </div>
-    <!-- end of ABOUT US -->
+                            <div class="setTimer_m">m</div>
+                            <select class="selectMinute" id="selectMinute" name="TimerMinute">
+                                <option value="00">0</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>
+                                <option value="49">49</option>
+                                <option value="50">50</option>
+                                <option value="51">51</option>
+                                <option value="52">52</option>
+                                <option value="53">53</option>
+                                <option value="54">54</option>
+                                <option value="55">55</option>
+                                <option value="56">56</option>
+                                <option value="57">57</option>
+                                <option value="58">58</option>
+                                <option value="59">59</option>
+                            </select>
 
-    </body>
+                            <div class="setTimer_s">s</div>
+                            <select class="selectSecond" id="selectSecond" name="TimerSecond">
+                                <option value="00">0</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>
+                                <option value="49">49</option>
+                                <option value="50">50</option>
+                                <option value="51">51</option>
+                                <option value="52">52</option>
+                                <option value="53">53</option>
+                                <option value="54">54</option>
+                                <option value="55">55</option>
+                                <option value="56">56</option>
+                                <option value="57">57</option>
+                                <option value="58">58</option>
+                                <option value="59">59</option>
+                            </select>
+                        </div>
 
+                        <button class="setBtn" id="setTimerBtn" type="submit" onclick="setTimer()">Set</button>
+                        <button class="startBtnTM" id="startTimerBtn" onclick="PauseResume()">Start</button>
+                        <button class="pauseBtn" id="pauseTimerBtn" onclick="PauseResume()">Pause</button>
+                        <button class="resumeBtn" id="resumeTimerBtn" onclick="PauseResume()">Resume</button>
+                        <div class="timesUp" id="timesUp">Times Up
+                            <audio autoplay loop  id="timesUpAudio">
+                                <source src="{% static 'mp3/TimesUp.mp3' %}">
+                            </audio>
+                        </div>
+
+                        <div class="resetBtn" id="resetTimer" onclick="Reset_timer()">Reset</div>
+                </div>
+            <!-- end of timer -->
+
+            <!-- stopwatch -->
+            <div class="clockBox" id="Stopwatch">
+                <img class="closeClock" id="closeClockBtn" src="{% static 'icon/Xmark.png' %}" onclick="closeClockFunction()"/>
+
+                    <div class="clock" id="stopWatchClock">00h 00m 00s</div>
+
+                    <button class="startBtn" id="startStopwatch" onclick="startStop_SW()">Start</button>
+                    <div class="resetBtn" id="resetStopwatch" onclick="Reset_SW()">Reset</div>
+                </div>
+            <!-- end of stopwatch -->
+
+            <!-- end of Timer and Stopwatch -->
+
+
+
+            <!-- ABOUT US -->
+            <div class="aboutUsBox" id="aboutUsBox">
+                <div class="aboutUsHeader">
+                    <img class="aboutUsCloseBtn" id="aboutUsCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                </div>
+
+                <div class="text-1">We are naïve web developers that like to relax and work<br>
+                    in co - working space. We will never try to get rid of the<br>
+                    ambience created by individuals conversing calmly,<br>
+                    the beauty of nature, and the music playing.
+                    <br><br>
+                    Hope you had fun!</div>
+
+                <div class="text-2">DEVELOPED & DESIGNED BY beforedecember - bearwearsdress</div>
+
+                <div class="text-3">in case you need to contact us</div>
+
+                <div class="text-4">idyllicspace.official@gmail.com</div>
+            </div>
+            <!-- end of ABOUT US -->
+
+        </body>
+    {% comment %} </div> {% endcomment %}
 
 
 
     <script>
+                /*----------- loading -----------*/
+                {% comment %} window.addEventListener("load", function() {
+                    setTimeout(showPage, 1200);
+                })
+        
+                function showPage() {
+                    document.getElementById("preloader").style.display = "none";
+                    document.getElementById("pageContainer").style.display = "block";
+                } {% endcomment %}
+
+
         document.getElementById("timesUpAudio").pause();
         
         // ----------- Burgerbar -----------
@@ -645,59 +664,6 @@
             }
         }
 
-        // ----------- mute -----------
-        var muteBtn = document.getElementById("muteBtn");
-        var unmuteBtn = document.getElementById("unmuteBtn");
-        var muteTxt = document.getElementById("muteTxt");
-
-        var muteStatus = document.getElementById("muteStatus");
-        var unmuteStatus = document.getElementById("unmuteStatus");
-
-        function muteFunction() {
-            if(muteBtn.style.display == "block") {
-                muteBtn.style.display = "none";
-                unmuteBtn.style.display = "block";
-                muteTxt.innerHTML = "unmute";
-
-                /* muteStatus.style.display = "none";
-                unmuteStatus.style.display = "block"; */
-            }
-            else {
-                muteBtn.style.display = "block";
-                unmuteBtn.style.display = "none";
-                muteTxt.innerHTML = "mute";
-
-                /* muteStatus.style.display = "block";
-                unmuteStatus.style.display = "none"; */
-            }
-        }
-        
-        // ----------- undeafen -----------
-        var deafenBtn = document.getElementById("deafenBtn");
-        var undeafenBtn = document.getElementById("undeafenBtn");
-        var deafenTxt = document.getElementById("deafenTxt");
-
-        var deafenStatus = document.getElementById("deafenStatus");
-        var undeafenStatus = document.getElementById("undeafenStatus");
-
-        function deafenFunction() {
-            if(deafenBtn.style.display == "block") {
-                deafenBtn.style.display = "none";
-                undeafenBtn.style.display = "block";
-                deafenTxt.innerHTML = "undeafen";
-
-                deafenStatus.style.display = "none";
-                undeafenStatus.style.display = "block";
-            }
-            else {
-                deafenBtn.style.display = "block";
-                undeafenBtn.style.display = "none";
-                deafenTxt.innerHTML = "deafen";
-
-                deafenStatus.style.display = "block";
-                undeafenStatus.style.display = "none";
-            }
-        }
 
         // ----------- leaveBtn -----------
         var leaveBtn = document.getElementById("leaveBtn");

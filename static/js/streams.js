@@ -20,19 +20,11 @@ let joinAndDisplayLocalStream = async () => {
     }
 
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
-    localTracks[1].setMuted(true)
+    // localTracks[1].setMuted(true)
 
     let member = await createMember()
 
-    // let player = `<div  class="video-container" id="user-container-${UID}">
-    //                  <div class="video-player" id="user-${UID}"></div>
-    //                  <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
-    //               </div>`
-    
-    // document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
-    // localTracks[1].play(`user-${UID}`)
     await client.publish(localTracks)
-
 }
 
 let handleUserJoined = async (user, mediaType) => {
@@ -76,27 +68,74 @@ let leaveAndRemoveLocalStream = async () => {
     deleteMember()
 }
 
+/*-------------- MIC TOGGLE -----------------*/
+var muteBtn = document.getElementById("muteBtn");
+var unmuteBtn = document.getElementById("unmuteBtn");
+var muteTxt = document.getElementById("muteTxt");
 
-let toggleMic = async (e) => {
+let member_name = document.getElementById("displayNameValue").innerHTML;
+var microphoneDIV = document.getElementById(member_name);
+
+function muteFunction() {
     console.log('TOGGLE MIC TRIGGERED')
-    if(localTracks[0].muted){
-        document.getElementById("unmuteStatus").style.display = "block"
-        document.getElementById("muteStatus").style.display = "none"
+    if(muteBtn.style.display == "block") {
+        muteBtn.style.display = "none";
+        unmuteBtn.style.display = "block";
+        muteTxt.innerHTML = "unmute";
 
-        // document.getElementById("unmuteBtn").style.display = "block"
-        // document.getElementById("muteBtn").style.display = "none"
+        microphoneDIV.querySelector('#muteStatus').style.display = "none";
+        microphoneDIV.querySelector('#unmuteStatus').style.display = "block";
 
-        await localTracks[0].setMuted(false)
-    }else{
-        document.getElementById("unmuteStatus").style.display = "block"
-        document.getElementById("muteStatus").style.display = "none"
+        localTracks[0].setMuted(false)
+    }
+    else {
+        muteBtn.style.display = "block";
+        unmuteBtn.style.display = "none";
+        muteTxt.innerHTML = "mute";
 
-        // document.getElementById("unmuteBtn").style.display = "block"
-        // document.getElementById("muteBtn").style.display = "none"
+        microphoneDIV.querySelector('#muteStatus').style.display = "block";
+        microphoneDIV.querySelector('#unmuteStatus').style.display = "none";
 
-        await localTracks[0].setMuted(true)
+        localTracks[0].setMuted(true)
     }
 }
+
+// function toggleMic() {
+//     console.log('TOGGLE MIC TRIGGERED')
+//         if(localTracks[0].muted) {
+//             localTracks[0].setMuted(false)
+//         }else {            
+//             localTracks[0].setMuted(true)
+//         }
+// }
+
+
+/*-------------- DEAFEN --------------*/
+var deafenBtn = document.getElementById("deafenBtn");
+var undeafenBtn = document.getElementById("undeafenBtn");
+var deafenTxt = document.getElementById("deafenTxt");
+
+var hearingDIV = document.getElementById(member_name);
+
+function deafenFunction() {
+    if(deafenBtn.style.display == "block") {
+        deafenBtn.style.display = "none";
+        undeafenBtn.style.display = "block";
+        deafenTxt.innerHTML = "undeafen";
+
+        hearingDIV.querySelector('#deafenStatus').style.display = "none";
+        hearingDIV.querySelector('#undeafenStatus').style.display = "block";
+    }
+    else {
+        deafenBtn.style.display = "block";
+        undeafenBtn.style.display = "none";
+        deafenTxt.innerHTML = "deafen";
+
+        hearingDIV.querySelector('#deafenStatus').style.display = "block";
+        hearingDIV.querySelector('#undeafenStatus').style.display = "none";
+    }
+}
+
 
 let createMember = async () => {
     let response = await fetch('/Space/create_member/', {
@@ -132,4 +171,3 @@ let deleteMember = async () => {
 joinAndDisplayLocalStream()
 
 document.getElementById('leaveBtn').addEventListener('click', leaveAndRemoveLocalStream)
-document.getElementById('muteBtn').addEventListener('click', toggleMic)

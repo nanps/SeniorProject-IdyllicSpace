@@ -3,17 +3,457 @@
 {% load static %}
 
 {% block spaceContent %}
-    {% comment %} <body background="{% static 'wallpaper/Beach.png' %}"> {% endcomment %}
     <body>
-        
+        <div class="bg">
+            <img src="{% static 'wallpaper/Classroom.png' %}" style="position:fixed; width:1920px; height:1080px; left:1px; top:44px;">
+        </div>
+
+            <!-- avatar in space -->
+            {% for member in members %}
+            <div class="{% cycle 'avatar-position1' 'avatar-position2' 'avatar-position3' 'avatar-position4' 'avatar-position5' 'avatar-position6' 'avatar-position7' 'avatar-position8' 'avatar-position9' 'avatar-position10' %}">
+                
+                {% if member.avatar == 'ENTJ_male' %}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENTJ_male.png' %}"/>
+                {% elif member.avatar == 'ENTJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENTJ_female.png' %}"/>
+                {% elif member.avatar == 'ENTP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENTP_male.png' %}"/>
+                {% elif member.avatar == 'ENTP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENTP_female.png' %}"/>
+                {% elif member.avatar == 'ENFJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENFJ_male.png' %}"/>
+                {% elif member.avatar == 'ENFJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENFJ_female.png' %}"/>
+                {% elif member.avatar == 'ENFP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENFP_male.png' %}"/>
+                {% elif member.avatar == 'ENFP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ENFP_female.png' %}"/>
+                {% elif member.avatar == 'ESTJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESTJ_male.png' %}"/>
+                {% elif member.avatar == 'ESTJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESTJ_female.png' %}"/>
+                {% elif member.avatar == 'ESFJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESFJ_male.png' %}"/>
+                {% elif member.avatar == 'ESFJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESFJ_female.png' %}"/>
+                {% elif member.avatar == 'ESTP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESTP_male.png' %}"/>
+                {% elif member.avatar == 'ESTP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESTP_female.png' %}"/>
+                {% elif member.avatar == 'ESFP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESFP_male.png' %}"/>
+                {% elif member.avatar == 'ESFP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ESFP_female.png' %}"/>
+                {% elif member.avatar == 'INTJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INTJ_male.png' %}"/>
+                {% elif member.avatar == 'INTJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INTJ_female.png' %}"/>
+                {% elif member.avatar == 'INTP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INTP_male.png' %}"/>
+                {% elif member.avatar == 'INTP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INTP_female.png' %}"/>
+                {% elif member.avatar == 'INFJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INFJ_male.png' %}"/>
+                {% elif member.avatar == 'INFJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INFJ_female.png' %}"/>
+                {% elif member.avatar == 'INFP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INFP_male.png' %}"/>
+                {% elif member.avatar == 'INFP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/INFP_female.png' %}"/>
+                {% elif member.avatar == 'ISTJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISTJ_male.png' %}"/>
+                {% elif member.avatar == 'ISTJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISTJ_female.png' %}"/>
+                {% elif member.avatar == 'ISFJ_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISFJ_male.png' %}"/>
+                {% elif member.avatar == 'ISFJ_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISFJ_female.png' %}"/>
+                {% elif member.avatar == 'ISTP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISTP_male.png' %}"/>
+                {% elif member.avatar == 'ISTP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISTP_female.png' %}"/>
+                {% elif member.avatar == 'ISFP_male'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISFP_male.png' %}"/>
+                {% elif member.avatar == 'ISFP_female'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/ISFP_female.png' %}"/>
+                {% elif member.avatar == 'FELIS'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/FELIS.png' %}"/>
+                {% elif member.avatar == 'CAMIS'%}
+                <img style="position:absolute; width: 260px; height:260px;" src="{% static 'avatar/CAMIS.png' %}"/>
+                {% endif %}
+                
+            </div>
+        {% endfor %}
+        <!-- avatar in space -->
+
+        {% comment %}------ Profile box -----{% endcomment %}
+        {% for member in members %}
+            
+            <div class="{% cycle 'memberProfileBox1' 'memberProfileBox2' 'memberProfileBox3' 'memberProfileBox4' 'memberProfileBox5' 'memberProfileBox6' 'memberProfileBox7' 'memberProfileBox8' 'memberProfileBox9' 'memberProfileBox10' %}">
+                
+                    <div class="profileBoxHeader">
+                        <div class="profileBoxHeaderTxt">PROFILE</div>
+                        <img class="profileCloseBtn" id="profileCloseBtn" src="{% static 'icon/Cross - white.png' %}"/>
+                    </div>
+                
+                    {% if member.mood == 'normal' %}
+                        <img class="MoodShow" src="{% static 'icon/Mood-normal.png' %}"/>
+                    {% elif member.mood == 'happy' %}
+                        <img class="MoodShow" src="{% static 'icon/Mood-happy.png' %}"/>
+                    {% elif member.mood == 'sad' %}
+                        <img class="MoodShow" src="{% static 'icon/Mood-cry.png' %}"/>
+                    {% elif member.mood == 'nerd' %}
+                        <img class="MoodShow" src="{% static 'icon/Mood-nerd.png' %}"/>
+                    {% endif %}
+                        
+                    <div class="memberAvatarValue" id="profileAvatarValue" style="display:none;">{{ member.avatar }}</div>
+
+                    <!-- avatar -->
+                        {% if member.avatar == 'ENTJ_male' %}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:2620px;" src="{% static 'avatar/ENTJ_male.png' %}"/>
+                        {% elif member.avatar == 'ENTJ_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENTJ_female.png' %}"/>
+                        {% elif member.avatar == 'ENTP_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENTP_male.png' %}"/>
+                        {% elif member.avatar == 'ENTP_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENTP_female.png' %}"/>
+                        {% elif member.avatar == 'ENFJ_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENFJ_male.png' %}"/>
+                        {% elif member.avatar == 'ENFJ_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENFJ_female.png' %}"/>
+                        {% elif member.avatar == 'ENFP_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENFP_male.png' %}"/>
+                        {% elif member.avatar == 'ENFP_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENFP_female.png' %}"/>
+                        {% elif member.avatar == 'ESTJ_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ESTJ_male.png' %}"/>
+                        {% elif member.avatar == 'ESTJ_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ESTJ_female.png' %}"/>
+                        {% elif member.avatar == 'ESFJ_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ESFJ_male.png' %}"/>
+                        {% elif member.avatar == 'ESFJ_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ESFJ_female.png' %}"/>
+                        {% elif member.avatar == 'ESTP_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ESTP_male.png' %}"/>
+                        {% elif member.avatar == 'ESTP_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ESTP_female.png' %}"/>
+                        {% elif member.avatar == 'ESFP_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ESFP_male.png' %}"/>
+                        {% elif member.avatar == 'ESFP_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ESFP_female.png' %}"/>
+                        {% elif member.avatar == 'INTJ_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/INTJ_male.png' %}"/>
+                        {% elif member.avatar == 'INTJ_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/INTJ_female.png' %}"/>
+                        {% elif member.avatar == 'INTP_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/INTP_male.png' %}"/>
+                        {% elif member.avatar == 'INTP_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/INTP_female.png' %}"/>
+                        {% elif member.avatar == 'INFJ_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/INFJ_male.png' %}"/>
+                        {% elif member.avatar == 'INFJ_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/INFJ_female.png' %}"/>
+                        {% elif member.avatar == 'INFP_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/INFP_male.png' %}"/>
+                        {% elif member.avatar == 'INFP_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/INFP_female.png' %}"/>
+                        {% elif member.avatar == 'ISTJ_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ISTJ_male.png' %}"/>
+                        {% elif member.avatar == 'ISTJ_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ISTJ_female.png' %}"/>
+                        {% elif member.avatar == 'ISFJ_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ISFJ_male.png' %}"/>
+                        {% elif member.avatar == 'ISFJ_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ISFJ_female.png' %}"/>
+                        {% elif member.avatar == 'ISTP_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ISTP_male.png' %}"/>
+                        {% elif member.avatar == 'ISTP_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ISTP_female.png' %}"/>
+                        {% elif member.avatar == 'ISFP_male'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ISFP_male.png' %}"/>
+                        {% elif member.avatar == 'ISFP_female'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ISFP_female.png' %}"/>
+                        {% elif member.avatar == 'FELIS'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/FELIS.png' %}"/>
+                        {% elif member.avatar == 'CAMIS'%}
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/CAMIS.png' %}"/>
+                        {% endif %}
+                    <!-- avatar -->
+                
+                    <div class="nameTxt">name</div>
+                    <div class="displayNameValue" id="profileDisplayNameValue">{{ member.displayName }}</div>
+                        
+                    <div class="bioTxt">bio</div>
+                    {% if member.bio == none %}
+                        <div class="profileBioValue" id="profileBioValue"></div>
+                    {% else %}
+                        <div class="profileBioValue" id="profileBioValue">{{ member.bio }}</div>
+                    {% endif %}
+            </div>
+            
+        {% endfor %}
+        {% comment %}------ Profile box -----{% endcomment %}
     </body>
     
     <style>
+        .avatar-position1 {
+            position:absolute;
+            left: 1177px;
+            top: 592px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position2 {
+            position:absolute;
+            left: 1198px;
+            top: 605px;
+            cursor: pointer;
+        }
+        .avatar-position3 {
+            position:absolute;
+            left: 1328px;
+            top: 722px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position4 {
+            position:absolute;
+            left: 787px;
+            top: 794px;
+            cursor: pointer;
+        }
+        .avatar-position5 {
+            position:absolute;
+            left: 700px;
+            top: 794px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position6 {
+            position:absolute;
+            left: 624px;
+            top: 686px;
+            cursor: pointer;
+        }
+        .avatar-position7 {
+            position:absolute;
+            left: 1674px;
+            top: 570px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position8 {
+            position:absolute;
+            left: 306px;
+            top: 631px;
+            cursor: pointer;
+        }
+        .avatar-position9 {
+            position:absolute;
+            left: 285px;
+            top: 620px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            cursor: pointer;
+        }
+        .avatar-position10 {
+            position:absolute;
+            left: 1695px;
+            top: 686px;            
+            cursor: pointer;            
+        }
 
+        .memberProfileBox1 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox2 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox3 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox4 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox5 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox6 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox7 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox8 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox9 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+        .memberProfileBox10 {
+            display: none;
+            position: absolute;
+            width: 580px;
+            height: 318px;
+            left: 35%;
+            top: 33%;
+            background: #FAF4F0;
+            border: 3px solid #B8A195;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
     </style>
 
     <script>
+        document.getElementsByClassName("avatar-position1")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox1")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox1")[0].style.display = "none";
+        });
 
+        document.getElementsByClassName("avatar-position2")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox2")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[1].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox2")[0].style.display = "none";
+        });
+
+        document.getElementsByClassName("avatar-position3")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox3")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[2].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox3")[0].style.display = "none";
+        });
+
+        document.getElementsByClassName("avatar-position4")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox4")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[3].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox4")[0].style.display = "none";
+        });
+
+        document.getElementsByClassName("avatar-position5")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox5")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[4].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox5")[0].style.display = "none";
+        });
+
+        document.getElementsByClassName("avatar-position6")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox6")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[5].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox6")[0].style.display = "none";
+        });
+
+        document.getElementsByClassName("avatar-position7")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox7")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[6].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox7")[0].style.display = "none";
+        });
+
+        document.getElementsByClassName("avatar-position8")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox8")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[7].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox8")[0].style.display = "none";
+        });
+
+        document.getElementsByClassName("avatar-position9")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox9")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[8].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox9")[0].style.display = "none";
+        });
+
+        document.getElementsByClassName("avatar-position10")[0].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox10")[0].style.display = "block";
+        });
+        document.getElementsByClassName("profileCloseBtn")[9].addEventListener("click", function() {
+            document.getElementsByClassName("memberProfileBox10")[0].style.display = "none";
+        });
     </script>
 {% endblock spaceContent %}
 

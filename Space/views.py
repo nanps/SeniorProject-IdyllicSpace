@@ -66,15 +66,17 @@ def deleteMember(request):
 @login_required
 def home(request) :   
     usernameInput = request.user
-    userData = UserManage.objects.get(username=usernameInput)
 
     if request.method == 'POST':
 
         if (UserManage.objects.filter(username=usernameInput).exists()) :
-            if (userData.currentSpaceRoom != "None") :
-                return redirect('backToSpace')
-            else :
+            userData = UserManage.objects.get(username=usernameInput)
+            if (userData.currentSpaceRoom == "None") :
                 return redirect('enterSpace')
+            elif (userData.currentSpaceRoom is None) :
+                return redirect('enterSpace')
+            else :
+                return redirect('backToSpace')
         else :
             return redirect('maleAvatar')
 
@@ -420,8 +422,8 @@ def Classroom_Create(request) :
         else :
             messages.info(request, "Space Name cannot be blank.")
 
-    Classrooms = {'SpaceRoom':SpaceRoom}
-    return render(request, 'classroom_create.html', Classrooms)
+    rooms = {'SpaceRoom':SpaceRoom}
+    return render(request, 'classroom_create.html', rooms)
 
 # --------------- FOREST (CREATE) ---------------
 @login_required
@@ -437,8 +439,8 @@ def Forest_Create(request) :
         else :
             messages.info(request, "Space Name cannot be blank.")
 
-    Classrooms = {'SpaceRoom':SpaceRoom}
-    return render(request, 'forest_create.html', Classrooms)
+    rooms = {'SpaceRoom':SpaceRoom}
+    return render(request, 'forest_create.html', rooms)
 
 # --------------- CAFE (CREATE) ---------------
 @login_required
@@ -454,8 +456,8 @@ def Cafe_Create(request) :
         else :
             messages.info(request, "Space Name cannot be blank.")
 
-    Classrooms = {'SpaceRoom':SpaceRoom}
-    return render(request, 'cafe_create.html', Classrooms)
+    rooms = {'SpaceRoom':SpaceRoom}
+    return render(request, 'cafe_create.html', rooms)
 
 # --------------- LIBRARY (CREATE) ---------------
 @login_required
@@ -471,8 +473,8 @@ def Library_Create(request) :
         else :
             messages.info(request, "Space Name cannot be blank.")
 
-    Classrooms = {'SpaceRoom':SpaceRoom}
-    return render(request, 'library_create.html', Classrooms)
+    rooms = {'SpaceRoom':SpaceRoom}
+    return render(request, 'library_create.html', rooms)
 
 # --------------- BEACH (CREATE) ---------------
 @login_required
@@ -496,8 +498,8 @@ def Beach_Create(request) :
         else :
             messages.info(request, "Space Name cannot be blank.")
 
-    Classrooms = {'SpaceRoom':SpaceRoom}
-    return render(request, 'beach_create.html', Classrooms)
+    rooms = {'SpaceRoom':SpaceRoom}
+    return render(request, 'beach_create.html', rooms)
 
 
 
@@ -731,6 +733,143 @@ def Beach_Confirm(request):
 @login_required
 def Classroom_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
+    slugValue = room.slug
+
+    ChatMessages = ChatMessage.objects.filter(slug=slugValue) 
+
+    usernameInput = request.user
+
+    userData = UserManage.objects.get(username=usernameInput)
+    user = User.objects.get(username=usernameInput)
+
+    currSpaceValue = "Space/Classroom/" + slug
+    members = UserManage.objects.filter(currentSpaceRoom=currSpaceValue)
+
+    if request.method == 'POST':
+
+        leaveForm = LeaveRoomForm(request.POST)
+        if leaveForm.is_valid() :
+            if SpaceRoom.objects.filter(slug=slug).exists():
+                UserManage.objects.filter(username=usernameInput).update(currentSpaceRoom="None")
+                
+                instanceinRoom = leaveForm.save(commit=False)
+                instanceinRoom.slug = slug
+                instanceinRoom.save(update_fields=['inRoom', 'roomStatus'])
+
+                if request.POST['roomStatus'] == "close" :
+                    SpaceRoom.objects.get(slug=slug).delete()
+                    ChatMessages.delete()
+
+                return redirect('enterSpace')
+            
+        chatForm = MessageForm(request.POST)
+        if chatForm.is_valid() :
+            chatForm.instance.displayName = userData
+            chatForm.save()
+
+            return render(request, 'classroom_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+    
+        moodForm = MoodForm(request.POST)
+        if moodForm.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceMood = moodForm.save(commit=False)
+                instanceMood.username = request.user
+                instanceMood.save(update_fields=['mood'])
+
+                return render(request, 'classroom_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+            
+        DNform = DisplayNameForm(request.POST)
+        if DNform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = DNform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['displayName'])
+
+                return render(request, 'classroom_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, })
+        # else :
+        #     messages.info(request, "Display Name cannot be blank.")
+
+        BIOform = BioForm(request.POST)
+        if BIOform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceBio = BIOform.save(commit=False)
+                instanceBio.username = request.user
+                instanceBio.save(update_fields=['bio'])
+
+                return render(request, 'classroom_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+
+    return render(request, 'classroom_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+
+# --------------- CAFE (SPACE) ---------------
+@login_required
+def Cafe_Space(request, slug):
+    room = SpaceRoom.objects.get(slug=slug)
+    slugValue = room.slug
+
+    ChatMessages = ChatMessage.objects.filter(slug=slugValue) 
+
+    usernameInput = request.user
+
+    userData = UserManage.objects.get(username=usernameInput)
+    user = User.objects.get(username=usernameInput)
+
+    currSpaceValue = "Space/Cafe/" + slug
+    members = UserManage.objects.filter(currentSpaceRoom=currSpaceValue)
+
+    if request.method == 'POST':
+
+        leaveForm = LeaveRoomForm(request.POST)
+        if leaveForm.is_valid() :
+            if SpaceRoom.objects.filter(slug=slug).exists():
+                UserManage.objects.filter(username=usernameInput).update(currentSpaceRoom="None")
+                
+                instanceinRoom = leaveForm.save(commit=False)
+                instanceinRoom.slug = slug
+                instanceinRoom.save(update_fields=['inRoom', 'roomStatus'])
+
+                if request.POST['roomStatus'] == "close" :
+                    SpaceRoom.objects.get(slug=slug).delete()
+                    ChatMessages.delete()
+
+                return redirect('enterSpace')
+            
+        chatForm = MessageForm(request.POST)
+        if chatForm.is_valid() :
+            chatForm.instance.displayName = userData
+            chatForm.save()
+
+            return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+    
+        moodForm = MoodForm(request.POST)
+        if moodForm.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceMood = moodForm.save(commit=False)
+                instanceMood.username = request.user
+                instanceMood.save(update_fields=['mood'])
+
+                return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+            
+        DNform = DisplayNameForm(request.POST)
+        if DNform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = DNform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['displayName'])
+
+                return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, })
+        # else :
+        #     messages.info(request, "Display Name cannot be blank.")
+
+        BIOform = BioForm(request.POST)
+        if BIOform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceBio = BIOform.save(commit=False)
+                instanceBio.username = request.user
+                instanceBio.save(update_fields=['bio'])
+
+                return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+
+    return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
 
     return render(request, 'classroom_space.html', {'room': room})
 
@@ -880,8 +1019,143 @@ def Cafe_Space(request, slug):
 @login_required
 def Library_Space(request, slug):
     room = SpaceRoom.objects.get(slug=slug)
+    slugValue = room.slug
 
-    return render(request, 'library_space.html', {'room': room})
+    ChatMessages = ChatMessage.objects.filter(slug=slugValue) 
+
+    usernameInput = request.user
+
+    userData = UserManage.objects.get(username=usernameInput)
+    user = User.objects.get(username=usernameInput)
+
+    currSpaceValue = "Space/Library/" + slug
+    members = UserManage.objects.filter(currentSpaceRoom=currSpaceValue)
+
+    if request.method == 'POST':
+
+        leaveForm = LeaveRoomForm(request.POST)
+        if leaveForm.is_valid() :
+            if SpaceRoom.objects.filter(slug=slug).exists():
+                UserManage.objects.filter(username=usernameInput).update(currentSpaceRoom="None")
+                
+                instanceinRoom = leaveForm.save(commit=False)
+                instanceinRoom.slug = slug
+                instanceinRoom.save(update_fields=['inRoom', 'roomStatus'])
+
+                if request.POST['roomStatus'] == "close" :
+                    SpaceRoom.objects.get(slug=slug).delete()
+                    ChatMessages.delete()
+
+                return redirect('enterSpace')
+            
+        chatForm = MessageForm(request.POST)
+        if chatForm.is_valid() :
+            chatForm.instance.displayName = userData
+            chatForm.save()
+
+            return render(request, 'library_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+    
+        moodForm = MoodForm(request.POST)
+        if moodForm.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceMood = moodForm.save(commit=False)
+                instanceMood.username = request.user
+                instanceMood.save(update_fields=['mood'])
+
+                return render(request, 'library_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+            
+        DNform = DisplayNameForm(request.POST)
+        if DNform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = DNform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['displayName'])
+
+                return render(request, 'library_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, })
+        # else :
+        #     messages.info(request, "Display Name cannot be blank.")
+
+        BIOform = BioForm(request.POST)
+        if BIOform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceBio = BIOform.save(commit=False)
+                instanceBio.username = request.user
+                instanceBio.save(update_fields=['bio'])
+
+                return render(request, 'library_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+
+    return render(request, 'library_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+
+# --------------- CAFE (SPACE) ---------------
+@login_required
+def Cafe_Space(request, slug):
+    room = SpaceRoom.objects.get(slug=slug)
+    slugValue = room.slug
+
+    ChatMessages = ChatMessage.objects.filter(slug=slugValue) 
+
+    usernameInput = request.user
+
+    userData = UserManage.objects.get(username=usernameInput)
+    user = User.objects.get(username=usernameInput)
+
+    currSpaceValue = "Space/Cafe/" + slug
+    members = UserManage.objects.filter(currentSpaceRoom=currSpaceValue)
+
+    if request.method == 'POST':
+
+        leaveForm = LeaveRoomForm(request.POST)
+        if leaveForm.is_valid() :
+            if SpaceRoom.objects.filter(slug=slug).exists():
+                UserManage.objects.filter(username=usernameInput).update(currentSpaceRoom="None")
+                
+                instanceinRoom = leaveForm.save(commit=False)
+                instanceinRoom.slug = slug
+                instanceinRoom.save(update_fields=['inRoom', 'roomStatus'])
+
+                if request.POST['roomStatus'] == "close" :
+                    SpaceRoom.objects.get(slug=slug).delete()
+                    ChatMessages.delete()
+
+                return redirect('enterSpace')
+            
+        chatForm = MessageForm(request.POST)
+        if chatForm.is_valid() :
+            chatForm.instance.displayName = userData
+            chatForm.save()
+
+            return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+    
+        moodForm = MoodForm(request.POST)
+        if moodForm.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceMood = moodForm.save(commit=False)
+                instanceMood.username = request.user
+                instanceMood.save(update_fields=['mood'])
+
+                return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+            
+        DNform = DisplayNameForm(request.POST)
+        if DNform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = DNform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['displayName'])
+
+                return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, })
+        # else :
+        #     messages.info(request, "Display Name cannot be blank.")
+
+        BIOform = BioForm(request.POST)
+        if BIOform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instanceBio = BIOform.save(commit=False)
+                instanceBio.username = request.user
+                instanceBio.save(update_fields=['bio'])
+
+                return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+
+    return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
 
 # --------------- BEACH (SPACE) ---------------
 @login_required
@@ -901,6 +1175,17 @@ def Beach_Space(request, slug):
 
     if request.method == 'POST':
 
+        DNform = DisplayNameForm(request.POST)
+        if DNform.is_valid() :
+            if UserManage.objects.filter(username=usernameInput).exists():
+                instance = DNform.save(commit=False)
+                instance.username = request.user
+                instance.save(update_fields=['displayName'])
+
+                return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+        # else :
+        #     messages.info(request, "Display Name cannot be blank.")
+        
         leaveForm = LeaveRoomForm(request.POST)
         if leaveForm.is_valid() :
             if SpaceRoom.objects.filter(slug=slug).exists():
@@ -931,17 +1216,6 @@ def Beach_Space(request, slug):
                 instanceMood.save(update_fields=['mood'])
 
                 return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
-            
-        DNform = DisplayNameForm(request.POST)
-        if DNform.is_valid() :
-            if UserManage.objects.filter(username=usernameInput).exists():
-                instance = DNform.save(commit=False)
-                instance.username = request.user
-                instance.save(update_fields=['displayName'])
-
-                return render(request, 'beach_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, })
-        # else :
-        #     messages.info(request, "Display Name cannot be blank.")
 
         BIOform = BioForm(request.POST)
         if BIOform.is_valid() :
