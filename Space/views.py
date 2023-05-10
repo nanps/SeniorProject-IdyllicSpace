@@ -761,14 +761,14 @@ def Classroom_Space(request, slug):
                     ChatMessages.delete()
 
                 return redirect('enterSpace')
-            
+    
         chatForm = MessageForm(request.POST)
         if chatForm.is_valid() :
             chatForm.instance.displayName = userData
             chatForm.save()
 
             return render(request, 'classroom_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
-    
+        
         moodForm = MoodForm(request.POST)
         if moodForm.is_valid() :
             if UserManage.objects.filter(username=usernameInput).exists():
@@ -785,7 +785,7 @@ def Classroom_Space(request, slug):
                 instance.username = request.user
                 instance.save(update_fields=['displayName'])
 
-                return render(request, 'classroom_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, })
+                return render(request, 'classroom_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
         # else :
         #     messages.info(request, "Display Name cannot be blank.")
 
@@ -818,6 +818,13 @@ def Cafe_Space(request, slug):
 
     if request.method == 'POST':
 
+        chatForm = MessageForm(request.POST)
+        if chatForm.is_valid() :
+            chatForm.instance.displayName = userData
+            chatForm.save()
+
+            return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
+            
         leaveForm = LeaveRoomForm(request.POST)
         if leaveForm.is_valid() :
             if SpaceRoom.objects.filter(slug=slug).exists():
@@ -832,13 +839,6 @@ def Cafe_Space(request, slug):
                     ChatMessages.delete()
 
                 return redirect('enterSpace')
-            
-        chatForm = MessageForm(request.POST)
-        if chatForm.is_valid() :
-            chatForm.instance.displayName = userData
-            chatForm.save()
-
-            return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
     
         moodForm = MoodForm(request.POST)
         if moodForm.is_valid() :
@@ -1000,7 +1000,7 @@ def Cafe_Space(request, slug):
                 instance.username = request.user
                 instance.save(update_fields=['displayName'])
 
-                return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, })
+                return render(request, 'cafe_space.html', {'room': room, 'userData':userData, 'user':user, 'ChatMessages':ChatMessages, 'members':members, })
         # else :
         #     messages.info(request, "Display Name cannot be blank.")
 

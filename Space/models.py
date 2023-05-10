@@ -28,11 +28,8 @@ class UserManage(models.Model) :
 class ChatMessage(models.Model) :
     slug = models.CharField(max_length=40, blank=False, null=False)
     displayName = models.ForeignKey(UserManage, on_delete=models.CASCADE, null=True)
-    content = models.TextField(blank=False, primary_key=True)
-
-    # slug = models.CharField(max_length=40, blank=False, null=False)
-    # displayName = models.ForeignKey(UserManage, on_delete=models.CASCADE, null=False)
-    # content = models.TextField(blank=False, null=False)
+    content = models.TextField(blank=False)
+    update_time = models.DateTimeField(auto_now=True, primary_key=True)
 
     def __str__(self) :
         return self.content
@@ -45,4 +42,6 @@ class RoomMember(models.Model):
 
     def __str__(self):
         return self.name
+    
+
     

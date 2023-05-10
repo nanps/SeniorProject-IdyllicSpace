@@ -24,7 +24,7 @@
             {% endblock spaceContent %}
 
             <!-- navbar -->
-            <div class="navbar">
+            <div class="navbar" style="position:fixed;">
 
             <img class="burgerbar" id="Burger" src="{% static 'icon/burgerBar.png' %}"/>
 
@@ -858,10 +858,10 @@
         chatIcon.addEventListener('click', openChatFunction)
         chatCloseBtn.addEventListener('click', closeChatFunction)
 
-        window.setInterval(function() {
+        {% comment %} window.setInterval(function() {
             var elem = document.getElementById('chatContent');
             elem.scrollTop = elem.scrollHeight;
-        }, 500);
+        }, 500); {% endcomment %}
 
 
 

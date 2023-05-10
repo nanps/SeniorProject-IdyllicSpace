@@ -215,7 +215,7 @@ body {
 .burgerContent {
     display: none; /* Hidden by default */
     
-    position: absolute;
+    position:fixed;
     width: 263px;
     height: 94vh;
     left: 0px;

@@ -5,7 +5,7 @@
 {% block spaceContent %}
     <body>
         <div class="bg">
-            <img src="{% static 'wallpaper/Cafe.png' %}" style="position:fixed; width:1920px; height:1079px; left:0px; top:0px;">
+            <img src="{% static 'wallpaper/Cafe.png' %}" style="position:absolute; width:1920px; height:1079px; left:0px; top:0px;">
         </div>
         
         <!-- avatar in space -->
@@ -206,7 +206,7 @@
     
     <style>
         .table {
-            position: fixed;
+            position:absolute;
             width: 320px;
             height: 320px;
             pointer-events: none;
@@ -214,8 +214,8 @@
 
         .avatar-position1 {
             position:absolute;
-            left: 1076px;
-            top: 835px;
+            left: 1087px;
+            top: 805px;
             transform: matrix(-1, 0, 0, 1, 0, 0);
             cursor: pointer;
         }
