@@ -17,7 +17,7 @@ def logIn(request) :
             messages.info(request, 'Please try again.')
 
     else :
-        return render(request, 'logIn.html')
+        return render(request, 'index.html')
 
 def createAcc(request) :
     if request.method == 'POST':

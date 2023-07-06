@@ -23,7 +23,7 @@ urlpatterns = [
 
     path('logOut/', auth_views.LogoutView.as_view(), name='logOut'),
 
-    path('', auth_views.LoginView.as_view(template_name='logIn.html'), name='logIn'),
+    path('', auth_views.LoginView.as_view(template_name='index.html'), name='logIn'),
 
     path('home/', include('Space.urls')), # /home/home
     
