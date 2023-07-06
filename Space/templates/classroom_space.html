@@ -3,6 +3,8 @@
 {% load static %}
 
 {% block spaceContent %}
+    <title>Classroom</title>
+
     <body>
         <div class="bg">
             <img src="{% static 'wallpaper/Classroom.png' %}" style="position:absolute; width:1920px; height:1080px; left:1px; top:44px;">
@@ -110,7 +112,7 @@
 
                     <!-- avatar -->
                         {% if member.avatar == 'ENTJ_male' %}
-                        <img style="position:absolute; left:20px; top:83px; width:220px; height:2620px;" src="{% static 'avatar/ENTJ_male.png' %}"/>
+                        <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENTJ_male.png' %}"/>
                         {% elif member.avatar == 'ENTJ_female'%}
                         <img style="position:absolute; left:20px; top:83px; width:220px; height:220px;" src="{% static 'avatar/ENTJ_female.png' %}"/>
                         {% elif member.avatar == 'ENTP_male'%}
